@@ -1,0 +1,119 @@
+/* Datatables */
+    #ajax_data.m-datatable--default>.m-datatable__table>.m-datatable__foot .m-datatable__row>.m-datatable__cell,
+    #ajax_data.m-datatable--default>.m-datatable__table>.m-datatable__head .m-datatable__row>.m-datatable__cell,
+    #pickup_datatable.m-datatable--default>.m-datatable__table>.m-datatable__foot .m-datatable__row>.m-datatable__cell,
+    #pickup_datatable.m-datatable--default>.m-datatable__table>.m-datatable__head .m-datatable__row>.m-datatable__cell {
+        background: #A5392C;
+        padding: 0.5rem;
+    }
+
+    .m-datatable.m-datatable--default>.m-datatable__table>.m-datatable__body .m-datatable__row>.m-datatable__cell {
+        padding: 0.5rem;
+    }
+
+
+    .m-form .m-form__section {
+        font-size: 1.0rem !important;
+    }
+
+    .m-form .m-form__group {
+        padding: 5px;
+    }
+
+    .m-portlet {
+        margin-bottom: 1.0rem !important;
+    }
+
+    .m-portlet .m-portlet__body {
+        padding: 1rem !important;
+    }
+
+    .form_label {
+        color: #265791;
+        font-weight: bold !important;
+    }
+
+
+
+    /* Label and fields */
+    .select2-container--default .select2-selection--single .select2-selection__rendered{
+        padding: .3rem;
+    }
+
+    .m-form .m-form__group label.col-form-label {
+        padding-top: .3rem;
+    }
+
+    .m-tabs-line.m-tabs-line--primary a.m-tabs__link.active,
+    .m-tabs-line.m-tabs-line--primary a.m-tabs__link:hover,
+    .m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link.active,
+    .m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link:hover {
+        color: #4A78BB;
+        border-bottom: 3px solid #4A78BB;
+    }
+
+    .m-portlet .m-portlet__head {
+        border-bottom: 1px solid #eee;
+        background: #dce2ec;
+    }
+
+    .m-tabs-line .m-tabs__item {
+        margin-right: 15px;
+        margin-bottom: -1px;
+    }
+
+    .m-tabs-line a.m-tabs__link,
+    .m-tabs-line.nav.nav-tabs .nav-link,
+    .m-portlet.m-portlet--tabs .m-portlet__head .m-portlet__head-tools .m-tabs-line .m-tabs__link {
+        color: #265791;
+        padding-left: 20px;
+        padding-right: 20px;
+        transition: all 0.3s ease-out 0s;
+    }
+
+    .m-tabs-line.m-tabs-line--primary a.m-tabs__link.active,
+    .m-tabs-line.m-tabs-line--primary a.m-tabs__link:hover,
+    .m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link.active,
+    .m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link:hover {
+        background-color: #fff !important;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1) !important;
+        border-bottom: 3px solid #fff;
+        color: #4A78BB;
+        transition: all 0.3s ease-out 0s;
+    }
+
+    .m-tabs-line.m-tabs-line--primary a.m-tabs__link{
+        position: relative;
+        transition: all 0.3s ease-out 0s;
+    }
+    .m-tabs-line.m-tabs-line--primary a.m-tabs__link.active:after{
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        background-color: #fff;
+        bottom: -11px;
+        left: 0;
+        right: 0;
+        content: "";
+        display: inline-block;
+        transition: all 0.3s ease-out 0s;
+    }
+
+    .btn-file{
+      background-color: #265791;
+      border:#265791;
+    }
+
+    .btn-file:hover{
+      background-color: #265791;
+      border:#265791;
+      transition: all 0.3s ease-out 0s;
+    }
+
+    .m-portlet.m-portlet--full-height.m-portlet--tabs{
+        box-shadow: none;
+    }
+    .has-danger .form-control-feedback, .form-control-feedback {
+        color: #f4516c; font-size:14px; line-height:20px;
+    }
+

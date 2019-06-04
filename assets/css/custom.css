@@ -1,0 +1,78 @@
+.m-form .m-form__section {
+    font-size: 1.0rem !important;
+}
+.form_label {
+    color: #265791;
+    font-weight: bold !important;
+}
+.m-tabs-line.m-tabs-line--primary a.m-tabs__link.active,
+.m-tabs-line.m-tabs-line--primary a.m-tabs__link:hover,
+.m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link.active,
+.m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link:hover {
+    color: #4A78BB;
+    border-bottom: 3px solid #4A78BB;
+}
+.m-portlet .m-portlet__head {
+    border-bottom: 1px solid #eee;
+    background: #dce2ec;
+}
+.m-tabs-line .m-tabs__item {
+    margin-right: 15px;
+    margin-bottom: -1px;
+}
+.m-tabs-line a.m-tabs__link,
+.m-tabs-line.nav.nav-tabs .nav-link,
+.m-portlet.m-portlet--tabs .m-portlet__head .m-portlet__head-tools .m-tabs-line .m-tabs__link {
+    color: #999;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.m-tabs-line.m-tabs-line--primary a.m-tabs__link.active,
+.m-tabs-line.m-tabs-line--primary a.m-tabs__link:hover,
+.m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link.active,
+.m-tabs-line.m-tabs-line--primary.nav.nav-tabs .nav-link:hover {
+    background-color: #fff !important;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 3px solid #fff;
+    color: #4A78BB;
+}
+.form-control-feedback{
+	color:red;
+}
+.has-danger .form-control-feedback, .form-control-feedback {
+    color: #f4516c; font-size:14px; line-height:20px;
+}
+
+.show-pickup-info{
+
+}
+.show-pickup-info label{
+    font-weight: 600;
+    color: #265791;
+}
+.show-pickup-info p{
+    font-weight: 500;
+    color: #575962;
+}
+
+.bg-custom{
+    background-color: #265791;
+}
+
+.pac-container{
+z-index: 8000;
+}
+    
+.show-pickup-info p{
+        padding: 5px 10px;
+        background-color: #fff;
+        min-height: 31px;
+    }
+    .show-pickup-info label{
+        padding: 5px 0px;
+    }
+    @media (min-width: 768px){
+        .show-pickup-info .col-md-9, .show-pickup-info .col-md-7{
+            padding-left: 0;
+        }
+    }

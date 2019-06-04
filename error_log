@@ -1,0 +1,377 @@
+[21-Nov-2017 14:15:39 Etc/GMT] PHP Fatal error:  Call to a member function result() on boolean in /home/cmexpknw/public_html/phishem/application/models/My_model.php on line 84
+[21-Nov-2017 14:15:46 Etc/GMT] PHP Fatal error:  Call to a member function result() on boolean in /home/cmexpknw/public_html/phishem/application/models/My_model.php on line 84
+[21-Nov-2017 14:15:48 Etc/GMT] PHP Fatal error:  Call to a member function result() on boolean in /home/cmexpknw/public_html/phishem/application/models/My_model.php on line 84
+[21-Nov-2017 14:16:02 Etc/GMT] PHP Fatal error:  Call to a member function result() on boolean in /home/cmexpknw/public_html/phishem/application/models/My_model.php on line 84
+[21-Nov-2017 14:16:05 Etc/GMT] PHP Fatal error:  Call to a member function result() on boolean in /home/cmexpknw/public_html/phishem/application/models/My_model.php on line 84
+[21-Nov-2017 14:16:21 Etc/GMT] PHP Fatal error:  Call to a member function result() on boolean in /home/cmexpknw/public_html/phishem/application/models/My_model.php on line 84
+[24-Nov-2017 12:35:48 Etc/GMT] PHP Fatal error:  Call to undefined function set_default_timezone() in /home/cmexpknw/public_html/phishem/index.php on line 2
+[24-Nov-2017 12:35:50 Etc/GMT] PHP Fatal error:  Call to undefined function set_default_timezone() in /home/cmexpknw/public_html/phishem/index.php on line 2
+[24-Nov-2017 19:59:37 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[24-Nov-2017 20:00:02 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[24-Nov-2017 20:01:05 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 12:31:53 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 12:32:00 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:19:52 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:39:28 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:43:54 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:44:10 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:44:37 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:48:30 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 16:48:33 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 19:27:56 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 19:45:18 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 19:45:21 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 19:45:35 Asia/kolkata] PHP Fatal error:  Call to a member function getTrainingDatatable() on null in /home/cmexpknw/public_html/phishem/application/controllers/User_managment.php on line 53
+[04-Dec-2017 20:09:37 Asia/kolkata] PHP Fatal error:  Call to undefined method User_managment_model::getActivePackages() in /home/cmexpknw/public_html/phishem/application/models/User_managment_model.php on line 80
+[04-Dec-2017 20:36:16 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/cmexpknw/public_html/phishem/application/libraries/Datatables.php on line 454
+[04-Dec-2017 20:36:34 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/cmexpknw/public_html/phishem/application/libraries/Datatables.php on line 454
+[07-Dec-2017 14:46:37 Etc/GMT] PHP Fatal error:  Call to undefined function file_put_content() in /home/cmexpknw/public_html/phishem/main.php on line 5
+[07-Dec-2017 14:47:41 Etc/GMT] PHP Fatal error:  Call to undefined function file_put_content() in /home/cmexpknw/public_html/phishem/main.php on line 5
+[07-Dec-2017 14:48:32 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:48:59 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:02 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:02 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:03 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:04 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:04 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:05 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:43 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:49:47 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:01 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:02 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:17 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:17 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:18 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:20 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:23 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:23 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:24 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:26 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:51 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:52 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:52 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:53 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:54 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:54 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:54 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:50:55 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:51:17 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:51:17 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:51:19 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:51:20 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:51:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[07-Dec-2017 14:51:22 Etc/GMT] PHP Parse error:  syntax error, unexpected '*' in /home/cmexpknw/public_html/phishem/main.php on line 11
+[12-Dec-2017 06:18:44 Etc/GMT] PHP Warning:  readfile(/assets/images/bg.jpg): failed to open stream: No such file or directory in /home/cmexpknw/public_html/phishem/main.php on line 11
+[12-Dec-2017 06:18:46 Etc/GMT] PHP Warning:  readfile(/assets/images/bg.jpg): failed to open stream: No such file or directory in /home/cmexpknw/public_html/phishem/main.php on line 11
+[12-Dec-2017 06:20:24 Etc/GMT] PHP Warning:  readfile(/assets/images/bg.jpg): failed to open stream: No such file or directory in /home/cmexpknw/public_html/phishem/main.php on line 10
+[12-Dec-2017 06:20:48 Etc/GMT] PHP Warning:  readfile(/assets/images/blank.gif): failed to open stream: No such file or directory in /home/cmexpknw/public_html/phishem/main.php on line 10
+[12-Dec-2017 07:47:46 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 07:47:46 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 07:47:46 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 07:47:46 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 07:47:46 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 07:47:46 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 07:56:19 Etc/GMT] PHP Warning:  mysqli::mysqli(): (42000/1102): Incorrect database name '	' in /home/cmexpknw/public_html/phishem/main.php on line 12
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:00:39 Etc/GMT] PHP Warning:  mysqli::mysqli(): (42000/1102): Incorrect database name '	' in /home/cmexpknw/public_html/phishem/main.php on line 12
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:56:07 Etc/GMT] PHP Warning:  mysqli::mysqli(): (42000/1102): Incorrect database name '	' in /home/cmexpknw/public_html/phishem/main.php on line 12
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:56:12 Etc/GMT] PHP Warning:  mysqli::mysqli(): (42000/1102): Incorrect database name '	' in /home/cmexpknw/public_html/phishem/main.php on line 12
+[12-Dec-2017 08:57:44 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:57:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:57:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:57:44 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:57:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:57:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 22
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Deprecated:  mysql_real_escape_string(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): Access denied for user 'root'@'localhost' (using password: NO) in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 08:58:44 Etc/GMT] PHP Warning:  mysql_real_escape_string(): A link to the server could not be established in /home/cmexpknw/public_html/phishem/main.php on line 23
+[12-Dec-2017 09:05:59 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:00 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:02 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:02 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:03 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:04 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:05 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:06 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:06 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:07 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:07 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:08 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[12-Dec-2017 09:06:34 Etc/GMT] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/cmexpknw/public_html/phishem/main.php on line 28
+[23-Dec-2017 06:32:22 Asia/kolkata] PHP Fatal error:  require_once(): Failed opening required 'system/libraries/dompdf/dompdf_config.inc.php' (include_path='.:/opt/alt/php56/usr/share/pear:/opt/alt/php56/usr/share/php') in /home/cmexpknw/public_html/phishem/application/libraries/Html2pdf.php on line 137
+[25-Dec-2017 14:23:21 Etc/GMT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cmexpknw/public_html/phishem/main.php:26) in /home/cmexpknw/public_html/phishem/main.php on line 40
+[25-Dec-2017 14:23:25 Etc/GMT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cmexpknw/public_html/phishem/main.php:26) in /home/cmexpknw/public_html/phishem/main.php on line 40
+[25-Dec-2017 14:23:28 Etc/GMT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cmexpknw/public_html/phishem/main.php:26) in /home/cmexpknw/public_html/phishem/main.php on line 40
+[27-Dec-2017 11:32:46 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:47 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:47 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:48 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:48 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:49 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:50 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:50 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:51 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:51 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:52 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:53 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:53 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:54 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:54 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:54 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:32:54 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:23 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:23 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:24 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:24 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:25 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:25 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:25 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:26 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:27 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:27 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:28 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 11:33:28 Asia/kolkata] PHP Parse error:  syntax error, unexpected '=>' (T_DOUBLE_ARROW) in /home/cmexpknw/public_html/phishem/application/models/Campaign_management_model.php on line 487
+[27-Dec-2017 17:41:26 Etc/GMT] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/cmexpknw/public_html/phishem/main.php:29) in /home/cmexpknw/public_html/phishem/main.php on line 43
+[26-Dec-2018 19:17:14 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[27-Dec-2018 03:29:44 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[10-Jan-2019 20:03:03 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[10-Jan-2019 20:03:08 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[15-Jan-2019 03:07:21 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[15-Jan-2019 03:07:40 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[15-Jan-2019 03:11:37 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[15-Jan-2019 20:55:36 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 10:55:35 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 10:55:41 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 10:55:48 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 10:55:52 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 10:56:10 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 10:56:12 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:00:38 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:00:50 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:01:11 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:01:25 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:01:36 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:02:10 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:02:10 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:07 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:16 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:17 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:18 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:18 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:42 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:03:57 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:06:10 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:06:34 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:06:35 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:06:36 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:06:37 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:06:38 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:08:47 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:08:49 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:08:49 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:08:49 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:08:51 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:10:17 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:10:18 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:10:30 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 11:18:17 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 12:25:07 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[16-Jan-2019 12:52:30 Asia/kolkata] PHP Fatal error:  Call to a member function referrer() on null in /home/embarquesoft/public_html/application/modules/company/controllers/Pickup.php on line 78
+[16-Jan-2019 13:16:15 Asia/kolkata] PHP Fatal error:  Call to a member function referrer() on null in /home/embarquesoft/public_html/application/modules/company/controllers/Pickup.php on line 78
+[17-Jan-2019 06:29:56 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[17-Jan-2019 18:17:46 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[17-Jan-2019 18:17:46 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[17-Jan-2019 18:17:47 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[18-Jan-2019 14:29:00 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[18-Jan-2019 14:30:09 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[18-Jan-2019 15:19:50 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[18-Jan-2019 15:19:52 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[18-Jan-2019 15:19:57 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[18-Jan-2019 15:20:00 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[21-Jan-2019 11:52:02 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[23-Jan-2019 12:05:07 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[23-Jan-2019 18:37:26 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[23-Jan-2019 18:37:29 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[23-Jan-2019 18:37:34 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[24-Jan-2019 12:56:59 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[24-Jan-2019 16:46:03 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[25-Jan-2019 16:17:08 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[25-Jan-2019 17:31:50 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[28-Jan-2019 11:06:26 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[28-Jan-2019 11:09:22 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[28-Jan-2019 11:12:20 Asia/kolkata] PHP Fatal error:  Call to undefined method Main_model::updateHistory() in /home/embarquesoft/public_html/application/modules/company/controllers/Pickup.php on line 447
+[28-Jan-2019 20:59:47 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[29-Jan-2019 10:48:51 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[29-Jan-2019 20:10:33 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[31-Jan-2019 18:49:03 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[01-Feb-2019 20:19:15 Asia/kolkata] PHP Fatal error:  Class 'Invoices_model' not found in /home/embarquesoft/public_html/application/third_party/MX/Loader.php on line 225
+[04-Feb-2019 11:23:55 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[04-Feb-2019 11:23:56 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[07-Feb-2019 15:52:58 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[07-Feb-2019 15:53:20 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[07-Feb-2019 15:58:36 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[07-Feb-2019 16:00:01 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[12-Feb-2019 11:06:26 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[12-Feb-2019 15:30:03 Asia/kolkata] PHP Fatal error:  Call to a member function from() on null in /home/embarquesoft/public_html/application/models/Common.php on line 551
+[13-Mar-2019 23:44:46 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:47 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:47 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:47 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:47 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:49 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:49 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:49 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:44:49 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:08 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:35 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:36 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:36 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:36 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:36 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[13-Mar-2019 23:47:37 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:00 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:06 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:06 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:06 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:07 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:08 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:09 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 15:36:10 Asia/kolkata] PHP Fatal error:  Call to undefined function parseInt() in /home/embarquesoft/public_html/application/modules/company/views/invoices/edit_invoice_content.php on line 351
+[14-Mar-2019 22:58:02 Asia/kolkata] PHP Fatal error:  Class 'Invoices_model' not found in /home/embarquesoft/public_html/application/third_party/MX/Loader.php on line 225
+[14-Mar-2019 23:39:36 Asia/kolkata] PHP Fatal error:  Call to a member function row() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 163
+[19-Mar-2019 16:06:27 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Pickup_model.php on line 133
+[19-Mar-2019 16:06:27 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Pickup_model.php on line 133
+[19-Mar-2019 19:35:13 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 95
+[20-Mar-2019 16:44:44 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 95
+[22-Mar-2019 21:35:13 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 95
+[28-Mar-2019 19:03:39 Asia/kolkata] PHP Fatal error:  Call to undefined method Invoices_model::get_datatables1() in /home/embarquesoft/public_html/application/modules/company/controllers/Invoices.php on line 76
+[28-Mar-2019 19:12:45 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 146
+[28-Mar-2019 19:13:03 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 146
+[28-Mar-2019 19:13:35 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 146
+[28-Mar-2019 19:13:48 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 146
+[28-Mar-2019 19:33:21 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 145
+[28-Mar-2019 20:24:55 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 134
+[28-Mar-2019 20:25:05 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 134
+[28-Mar-2019 20:25:22 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 134
+[28-Mar-2019 20:29:01 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Invoices_model.php on line 134
+[28-Mar-2019 20:33:21 Asia/kolkata] PHP Fatal error:  Class 'Invoices_model' not found in /home/embarquesoft/public_html/application/third_party/MX/Loader.php on line 225
+[28-Mar-2019 22:58:42 Asia/kolkata] PHP Fatal error:  Class 'Invoices_model' not found in /home/embarquesoft/public_html/application/third_party/MX/Loader.php on line 225
+[29-Mar-2019 21:30:26 Asia/kolkata] PHP Fatal error:  Call to a member function is_referral() on null in /home/embarquesoft/public_html/application/modules/company/controllers/Customer.php on line 919
+[29-Mar-2019 21:30:31 Asia/kolkata] PHP Fatal error:  Call to a member function is_referral() on null in /home/embarquesoft/public_html/application/modules/company/controllers/Customer.php on line 919
+[01-Apr-2019 20:07:11 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:13 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:16 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:20 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:20 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:54 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:54 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:07:59 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:00 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:01 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:03 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:29 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:33 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:37 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:37 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:08:40 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:19:03 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:19:06 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:19:09 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[01-Apr-2019 20:24:45 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[02-Apr-2019 03:23:47 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Pickup_model.php on line 133
+[02-Apr-2019 03:23:47 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Pickup_model.php on line 133
+[02-Apr-2019 15:54:35 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Pickup_model.php on line 445
+[02-Apr-2019 15:54:42 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Pickup_model.php on line 445
+[03-Apr-2019 18:36:16 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 18:36:17 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 18:36:20 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 18:36:20 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:00:10 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:00:12 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:00:21 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:00:22 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:00:22 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:00:39 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:11:49 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:17:31 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:22:47 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 20:29:27 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 21:47:49 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:47:51 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:47:53 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:47:53 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:47:54 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:47:54 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:48:02 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:49:27 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_encrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 21:53:57 Asia/kolkata] PHP Fatal error:  Call to undefined function AES_decrypt() in /home/embarquesoft/public_html/application/modules/company/views/user/edit.php on line 262
+[03-Apr-2019 22:03:15 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:05:44 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:21:44 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:31:57 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:32:57 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:33:29 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:37:18 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:37:24 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:38:29 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:39:02 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:39:08 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:41:25 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:41:30 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:43:14 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:46:31 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:47:30 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 22:52:13 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[03-Apr-2019 23:33:33 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 15:16:21 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 15:26:40 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 16:00:35 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 16:00:38 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 16:10:39 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 16:11:14 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 16:21:52 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
+[04-Apr-2019 16:22:00 Asia/kolkata] PHP Fatal error:  Call to a member function num_rows() on boolean in /home/embarquesoft/public_html/application/modules/company/models/Agent_model.php on line 79
