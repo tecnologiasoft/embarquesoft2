@@ -21,10 +21,14 @@ class Invoices_model extends My_Model {
     // invoices Models
     function _get_datatables_query($customer_id = "")
     {
+        /*$this->company_db->select("ih.*");
+        $this->company_db->from('invoice_header_payment ih');
+        $this->company_db->where('ih.customer_id' ,$customer_id);*/
         $this->company_db->select("ih.sub_total as sub_total,ih.id as invoices_id,ih.*, c.email,c.address_line1, CONCAT(c.tele_country_code, ' ', c.telephone_number) as telephone_number, CONCAT(c.cell_country_code , ' ', c.cellphone_number) as cellphone_number, CONCAT(c.fname, ' ', c.lname) as name, c.state, CONCAT(s.fname, ' ', s.lname) as consignee");
         $this->company_db->from('tbl_invoice_header ih');
         $this->company_db->join('tbl_customer c','ih.customer_id = c.id');
         $this->company_db->join('tbl_shipto s','ih.shipto_id = s.id');
+        //$this->company_db->join('invoice_header_payment ihp','ih.id = ihp.invoice_id');
         
         if($customer_id){
             $this->company_db->where('ih.customer_id' ,$customer_id);
@@ -606,10 +610,16 @@ function _get_datatables_queryss($customer_id = "")
     // customer edit page payment screen abhishek
     function _get_datatables_payment_query($customer_id = "")
     {
-        $this->company_db->select("ih.sub_total as sub_total,ih.id as invoices_id,ih.*, c.email,c.address_line1, CONCAT(c.tele_country_code, ' ', c.telephone_number) as telephone_number, CONCAT(c.cell_country_code , ' ', c.cellphone_number) as cellphone_number, CONCAT(c.fname, ' ', c.lname) as name, c.state, CONCAT(s.fname, ' ', s.lname) as consignee");
+        $this->company_db->select("ih.*,p.sub_total as sub_total");
+        $this->company_db->from('invoice_header_payment ih');
+        $this->company_db->where('ih.customer_id' ,$customer_id);
+        //$this->company_db->where('ih.customer_id' ,$customer_id);
+        $this->company_db->join('tbl_invoice_header p','ih.invoice_id = p.id');
+        //$this->company_db->where('ih.balance ==' 0);
+        /*$this->company_db->select("ih.sub_total as sub_total,ih.id as invoices_id,ih.*, c.email,c.address_line1, CONCAT(c.tele_country_code, ' ', c.telephone_number) as telephone_number, CONCAT(c.cell_country_code , ' ', c.cellphone_number) as cellphone_number, CONCAT(c.fname, ' ', c.lname) as name, c.state, CONCAT(s.fname, ' ', s.lname) as consignee");
         $this->company_db->from('tbl_invoice_header ih');
         $this->company_db->join('tbl_customer c','ih.customer_id = c.id');
-        $this->company_db->join('tbl_shipto s','ih.shipto_id = s.id');
+        $this->company_db->join('tbl_shipto s','ih.shipto_id = s.id');*/
         // $this->company_db->join('invoice_header_payment p','ih.id = p.invoice_id');
         if($customer_id){
             $this->company_db->where('ih.customer_id' ,$customer_id);
@@ -650,7 +660,7 @@ function _get_datatables_queryss($customer_id = "")
          
         }else{
 
-            $this->company_db->where('ih.balance >','0');
+            $this->company_db->where('ih.balance <=','0');
         }
 
         if(isset($_REQUEST['datatable']['query']['Type']) && !empty($_REQUEST['datatable']['query']['Type']))  // Login or Logout check

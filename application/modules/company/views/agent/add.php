@@ -4,7 +4,7 @@
    <!--begin::Form-->
    <?php 
       $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data'); 
-      echo form_open($formAction,$form_data);
+      echo form_open($formAction,$form_data); 
       ?> 
    
    <div class="row">
@@ -216,13 +216,13 @@
 
                                        <label class="m-radio">
                                           <input name="agent_module" value="Yes" type="radio" checked = "checked">
-                                          <?php echo lang('label_yes')?>
+                                          <?=lang('label_yes')?>
                                           <span></span>
                                        </label>
 
                                        <label class="m-radio">
-                                          <input name="agent_module" value="No" type="radio" <?php echo @$result['agent_module']=='No'?"checked":""?>>
-                                          <?php echo lang('label_no')?>
+                                          <input name="agent_module" value="No" type="radio" <?=@$result['agent_module']=='No'?"checked":""?>>
+                                          <?=lang('label_no')?>
                                           <span></span>
                                        </label>
 
@@ -240,7 +240,7 @@
                                     <?php echo $this->lang->line('label_comment'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                 <textarea class="form-control m-input" name="comment" id="comment" placeholder="<?php echo $this->lang->line('label_comment')?>"><?php echo set_value('comment')?set_value('comment'):$result['comment']; ?></textarea>   
+                                 <textarea class="form-control m-input" name="comment" id="comment" placeholder="<?=$this->lang->line('label_comment')?>"><?php echo set_value('comment')?set_value('comment'):$result['comment']; ?></textarea>   
                                  <?php echo form_error('comment'); ?>
                                  </div>
                               </div>
@@ -343,7 +343,7 @@
                                           <?php }} else{ ?>
                                           
                                              <input name="rights[<?php echo $key; ?>]" value="<?php echo $value; ?>" type="hidden">
-                                          <?php } ?>
+                                          <?} ?>
                                             
                                             
                                           </div>

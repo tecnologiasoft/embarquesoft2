@@ -57,7 +57,7 @@ class Driver extends MYcom_Controller {
         $data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js',MAP_API_URL,'driver'];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
         $data['next_id'] = $this->driver_model->get_next_id();
 
         //$this->form_validation->set_rules('co_driverid',$this->lang->line('field_driverid'),'required|trim');
@@ -210,7 +210,7 @@ class Driver extends MYcom_Controller {
         $data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js',MAP_API_URL,'driver'];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
 
         //$this->form_validation->set_rules('co_driverid',$this->lang->line('field_driverid'),'required|trim');
         //$this->form_validation->set_rules('company_name',$this->lang->line('field_company_name'),'required|trim');

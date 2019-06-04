@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 class Customer extends MYcom_Controller
 {
 
@@ -47,7 +48,7 @@ class Customer extends MYcom_Controller
         echo json_encode($output);
     }
 
-    /*rajesh List all invoice by customer id ajax call*/
+    /* List all invoice by customer id ajax call*/
     public function invoice_list()
     {
         $AllPostData = $this->input->post();
@@ -72,15 +73,17 @@ class Customer extends MYcom_Controller
         $data['css'] = ['customer'];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
-        //var_dump($data['branch_list']);exit;
+        $data['branch_list'] = $this->branch_model->getBranch();
         $data['current_user_branchId'] = $this->customer_model->get_cur_branchId($this->id);
+        //print_r($data);
         //die();
         $this->loadView($this->view_folder . 'add', $data);
-        //print_r($data);exit;
     }
+/*View details of invoice in customer edit page*/
+/*public function view(){
 
-    /*Add new Customer*/
+}
+  */  /*Add new Customer*/
     public function save()
     {
 
@@ -289,7 +292,22 @@ class Customer extends MYcom_Controller
             redirect('company/customer/listing/', 'refresh');
         }
     }
+/*4-Jun-2019*/
+public function invoiceview()
+    {
+       $data['title'] = $this->lang->line('title_view_invoice');
+        $data['second_title'] = $this->lang->line('title_invoice_details');
+        $data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js', MAP_API_URL, 'customer'];
+        $data['css'] = ['custom'];
+        $data['function'] = 'edit';
+        $data = array();
 
+        $data['result'] = $this->customer_model->get_invoice_data($this->uri->segment(4));
+        $this->load->view($this->view_folder . 'view_invoice', $data);
+        //redirect('company/customer/view/', 'refresh');
+        //$this->load->model('company/customer_model');
+        //$this->loadView($this->view_folder . 'view', $data);
+    }
     /*Load user profile details*/
     public function edit()
     {
@@ -299,7 +317,7 @@ class Customer extends MYcom_Controller
         $data['css'] = ['custom'];
         $data['function'] = 'edit';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
 
         if (!$this->uri->segment(4)) {
             redirect('company/customer/listing', 'refresh');
@@ -683,6 +701,30 @@ class Customer extends MYcom_Controller
         );
         //output to json format
         echo json_encode($output);
+    }
+/*4-Jun-2019*/
+    public function invoice_detail_ajax_list()
+    {
+        $AllPostData = $this->input->post();
+        //$invoice_id = $this->uri->segment(4));
+        //print_r($AllPostData);
+        //die();
+        $list = $this->customer_model->get_invoice_details_datatables();
+        $data = array();
+
+        $output = array(
+            "meta" => array('page' => $AllPostData['datatable']['pagination']['page'], 'pages' => $AllPostData['datatable']['pagination']['pages'], 'perpage' => $AllPostData['datatable']['pagination']['perpage'], 'total' => $this->customer_model->invoice_details_count_filtered(), 'sort' => 'asc', 'field' => 'company_id'),
+            "data" => $list,
+        );
+        $data['result'] = $output;
+        $this->load->view($this->view_folder . 'view_invoice', $data);
+        //echo "<pre>";
+        //print_r($output);
+        //echo "</pre>";
+        //die();
+        //output to json format
+        //echo json_encode($output);
+        //return json_encode($output);
     }
 
     public function create_invoice_shipto(){
@@ -1135,12 +1177,12 @@ class Customer extends MYcom_Controller
         $data = array();
         $this->load->model('company/invoices_model');
         $data['driver_list'] = $this->invoices_model->get_driver_list();
-        //print_r($data);
-        //die;
+       
         $data['payment_type'] = $this->Main_model->getType('payment');
         $data['customer_id'] = $this->input->post('id');
         $string =  $this->load->view($this->payment_view_folder.'payments_data_screen',$data,true);
-
+//print_r($data);
+        //die;
         $res['status'] = SUCCESS_CODE;
         $res['data'] = $string;
         $res['message'] = '';

@@ -68,7 +68,8 @@ class Invoices extends MYcom_Controller {
         //output to json format
         echo json_encode($output);
     } 
-    // customer edit payment screen abhishek
+    // customer
+    // customer edit payment screen 
     function ajax_payment_list($customer_id = '')
     {
         $AllPostData = $this->input->post();
@@ -82,7 +83,7 @@ class Invoices extends MYcom_Controller {
         //output to json format
         echo json_encode($output);
     } 
-/*rajesh*/
+
 function ajax_listss($customer_id = '')
     {
         $AllPostData = $this->input->post();

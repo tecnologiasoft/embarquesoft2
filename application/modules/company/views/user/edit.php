@@ -44,7 +44,7 @@
                                     * <?php echo $this->lang->line('label_item').'#'; ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="item_number" id="item_number" placeholder="<?php echo $this->lang->line('label_item_number'); ?>" value="<?php echo $result['master_user_id']?>" maxlength="128" disabled = "disabled">
+                                       <input type="text" class="form-control m-input" name="item_number" id="item_number" placeholder="<?php echo $this->lang->line('label_item_number'); ?>" value="<?=$result['master_user_id']?>" maxlength="128" disabled = "disabled">
                                        <input type="hidden" name="item_number_hdn" id="item_number_hdn" value="<?php echo $result['master_user_id']; ?>">
                                        <?php echo form_error('item_number'); ?>
                                     </div>
@@ -182,7 +182,7 @@
                                        <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id']?"selected":"";?>><?php echo $val->branch_name; ?></option>
                                        <?php } } else{?>
                                        <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?php } ?>
+                                       <?} ?>
                                     </select>
                                  </div>
                               </div>
@@ -403,7 +403,7 @@
                                           <?php }} else{ ?>
                                           
                                              <input name="rights[<?php echo $key; ?>]" value="<?php echo $value; ?>" type="hidden">
-                                          <?php } ?>
+                                          <?} ?>
                                             
                                             
                                           </div>
