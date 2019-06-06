@@ -1,28 +1,26 @@
 <?php
-class Branch_model extends My_model {
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-    var $column_search = array("b.name", "CONCAT(b.address_line1, ' ', b.address_line2)", "CONCAT(b.tele_country_code1, ' ', b.telephone_number1)", "CONCAT(b.tele_country_code2, ' ', b.telephone_number2)"); //set column field database for datatable searchable 
-    var $order = array('b.id' => 'DESC'); // default order 
+class Batch_distribution_model extends My_model {
+	
+    var $column_search = array("d.MDist_BatchNum","d.MDist_Zone", "d.MDist_status", "d.MDist_Date", "d.MDist_BType", "d.MDist_Driver"); //set column field database for datatable searchable 
+    var $order = array('d.MDist_BatchNum' => 'DESC'); // default order 
 
-    function __construct()
-    {
-        parent::__construct();        
-    }
 
 
     /* get a driver record counts */
-    function branch_count()
+    function driver_count()
     {
-        $this->company_db->from('tbl_branch');
-        return $this->company_db->row();
+        $this->company_db->from('tbl_driver');
+        return $this->company_db->count_all_results();
     }
 
-    // branch Models
+    // driver Models
     function _get_datatables_query()
     {
-        $this->company_db->select("b.id as branch_id,b.*, CONCAT(b.address_line1, ' ', b.address_line2) as address, CONCAT(b.tele_country_code1, ' ', b.telephone_number1) as telephone_number1, CONCAT(b.tele_country_code2, ' ', b.telephone_number2) as telephone_number2,");
-        $this->company_db->from('tbl_branch b');
-        $this->company_db->where('b.void','No');
+        $this->company_db->select("d.MDist_BatchNum, d.MDist_Zone, d.MDist_status, d.MDist_Date, d.MDist_BType, d.MDist_Driver");
+        $this->company_db->from('tbl_MDist_Batch d');
+        //$this->company_db->where('d.void','No');
         $i = 0;
         
         if(isset($_REQUEST['datatable']['query']['generalSearch']) && !empty($_REQUEST['datatable']['query']['generalSearch'])) // if datatable send POST for search
@@ -67,7 +65,7 @@ class Branch_model extends My_model {
         }
     }
 
-    /*Get branch records pagination*/
+    /*Get driver records pagination*/
     function get_datatables()
     {
         $offset = ($_REQUEST['datatable']['pagination']['page'] - 1)*$_REQUEST['datatable']['pagination']['perpage'];
@@ -90,7 +88,7 @@ class Branch_model extends My_model {
         }
     }
     
-    /*Get branch counter*/
+    /*Get driver counter*/
     function count_filtered()
     {
         $this->_get_datatables_query();
@@ -98,83 +96,21 @@ class Branch_model extends My_model {
         return $query->num_rows();
     }
 
-    /*Get branch details*/
-    function get_branch_data($branch_id)
-    {
-        $this->company_db->select("b.*");
-        $this->company_db->from('tbl_branch b');
-        $this->company_db->where('b.id', $branch_id);    
-        $query = $this->company_db->get();
-        //echo $this->company_db->last_query();die;
-        if($query->num_rows() >= 1)
-        {
-            return $query->row_array();
-        }
-        else
-        {
-            return array();
-        }
-    }
- 
-    /* Add data of company in table and return id of it */
-    function add_branch($params){
-        $this->company_db->insert('tbl_branch', $params);
-        return $this->company_db->insert_id();
-    }
 
-    /* Update copany data */
-    function update_branch($id,$params)
-    {
-        $this->company_db->where('id',$id);
-        $this->company_db->update('tbl_branch',$params);
-    }
-
-    /* Check params in table */
-    function check_param($where)
-    {
-        $this->company_db->select("*");
-        $this->company_db->from('tbl_branch');
-        $this->company_db->where($where);
-        $query = $this->company_db->get();
-
-        if($query->num_rows() >= 1)
-        {
-            return $query->row_array();
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public function getBranch($data=""){
+    public function getZone($data=""){
        
-        $data['select'] = ['id','concat(id,"-",name) as branch_name'];
-        $data['table'] = 'tbl_branch';
-        $response = $this->selectRecords($data);
+        $data['select'] = ['id','zone'];
+        $data['table'] = 'tbl_pickup_zone';
         //var_dump($response);exit();
+        $response = $this->selectRecords($data);
         return $response;
         
     }
 
 
-    /*public function getBranch($data="")
-    {
-        $this->company_db->select("id,concat(id,'-',name) as branch_name");
-        $this->company_db->from('tbl_branch');
-        $query = $this->company_db->get();
-
-        if($query->num_rows() >= 1)
-        {
-            return $query->row_array();
-        }
-        else
-        {
-            return false;
-        }
-    }*/
-
 
 
 }
-?>
+
+/* End of file Batch_distribucion_model.php */
+/* Location: ./application/modules/company/models/Batch_distribucion_model.php */

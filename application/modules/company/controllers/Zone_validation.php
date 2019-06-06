@@ -7,7 +7,7 @@ class Zone_validation extends MYcom_Controller {
     {
         parent::__construct();
         
-        if(!$this->session->userdata('company_id'))
+        /*if(!$this->session->userdata('company_id'))
         {
             redirect('company/login/', 'refresh');
         }
@@ -15,7 +15,7 @@ class Zone_validation extends MYcom_Controller {
         if ($this->session->userdata('admin_login') == '0') 
         {
             redirect('company/lock', 'refresh');
-        }
+        }*/
         
         $this->load->model('company/zone_validation_model');
     }

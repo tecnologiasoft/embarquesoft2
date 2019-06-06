@@ -1,19 +1,18 @@
 
-               
                     <div class="m-content">
                         
                         <div class="m-portlet m-portlet--mobile">
                             
                             <div class="m-portlet__body">
                                 <!--begin: Search Form -->
-                                <div class="m-form m-form--label-align-right m--margin-bottom-30">
+                                <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
                                     <div class="row align-items-center">
                                         <div class="col-xl-8 order-2 order-xl-1">
                                             <div class="form-group m-form__group row align-items-center">
                                                 
                                                 <div class="col-md-4">
                                                     <div class="m-input-icon m-input-icon--left">
-                                                        <input type="text" class="form-control m-input high-input" placeholder="<?php echo $this->lang->line('label_search'); ?>" id="m_form_search">
+                                                        <input type="text" class="form-control m-input" placeholder="<?php echo $this->lang->line('label_search'); ?>" id="m_form_search">
                                                         <span class="m-input-icon__icon m-input-icon__icon--left">
                                                             <span>
                                                                 <i class="la la-search"></i>
@@ -22,16 +21,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4 order-1 order-xl-2 m--align-right">
-                                                    
-                                                    <a href="<?php echo $this->rights->access('company/employee/add'); ?>" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
+                                                    <a href="<?php echo site_url('company/batch_distribution/add');?>" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill">
                                                         <span>
-                                                            <i class="la la-plus"></i> 
+                                                            <i class="la la-user-plus"></i> 
                                                             <span>
-                                                                <?php echo $this->lang->line('add_employee'); ?>
+                                                                <?php echo $this->lang->line('title_add_new_batch'); ?>
                                                             </span>
                                                         </span>
                                                     </a>
-                                                    
                                                     <div class="m-separator m-separator--dashed d-xl-none"></div>
                                                 </div>
                                             </div>
@@ -45,8 +42,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-           
+               
         <script type="text/javascript">
             var m_datatables = null;
             var DatatableRemoteAjaxDemo = function() {
@@ -56,7 +52,7 @@
                     type: "remote",
                     source: {
                         read: {
-                            url: "<?php echo site_url('company/employee/ajax_list')?>"
+                            url: "<?php echo site_url('company/batch_distribution/ajax_list')?>"
                         }
                     },
                     pageSize: 10,
@@ -82,24 +78,25 @@
                     //sortable: !1,
                     width: 50,
                     selector: false,
-                    textAlign: "center",
-                    template: function(t) {
-                        <?php if($this->rights->access("company/employee/add") != 'javascript:void(0);') { ?>
-                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/employee/edit/";?>'+t.id+'" class="">\t\t\t\t\t\t\t'+t.id+'\t\t\t\t\t\t</a>'
-                        <?php } ?>
-                    }
-                },  {
-                    field: "first_name",
-                    title: "<?php echo $this->lang->line('label_name'); ?>",
+                    textAlign: "center"
                 }, {
-                    field: "address1",
-                    title: "<?php echo $this->lang->line('label_address'); ?>",
+                    field: "MDist_BatchNum",
+                    title: "<?php echo $this->lang->line('label_batch'); ?>",
                 }, {
-                    field: "tel",
-                    title: "<?php echo $this->lang->line('label_telephone'); ?>",
-                },{
-                    field: "cel",
-                    title: "<?php echo $this->lang->line('label_cellphone'); ?>",
+                    field: "MDist_Zone",
+                    title: "<?php echo $this->lang->line('label_zone'); ?>",
+                }, {
+                    field: "MDist_status",
+                    title: "<?php echo $this->lang->line('label_status'); ?>",
+                }, {
+                    field: "MDist_Date",
+                    title: "<?php echo $this->lang->line('label_date'); ?>",
+                }, {
+                    field: "MDist_BType",
+                    title: "<?php echo $this->lang->line('label_type'); ?>",
+                }, {
+                    field: "MDist_Driver",
+                    title: "<?php echo $this->lang->line('label_driver'); ?>",
                 },
                 {
                     field: "Actions",
@@ -108,13 +105,8 @@
                     sortable: !1,
                     overflow: "visible",
                     template: function(t) {
-                        /* \t\t\t\t\t\t<a href="<?php echo base_url()."company/inventory/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a> */
-                        
-                        <?php if($this->rights->access("company/employee/add") != 'javascript:void(0);') { ?>
-                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php  echo base_url()."company/employee/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_inventory('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
-                       <?php } ?> 
-                        
-                        
+                        /* \t\t\t\t\t\t<a href="<?php echo base_url()."company/driver/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a> */
+                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/driver/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_driver('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
                     }
                 }]
             }),
@@ -141,24 +133,21 @@
                 DatatableRemoteAjaxDemo.init()
             });
 
-            function delete_inventory(id) 
+            function delete_driver(id) 
             {
                 swal({   
                     title: "<?php echo $this->lang->line('label_are_you_sure') ?>",
-                    text: "<?php echo $this->lang->line('label_you_want_to_delete_employee') ?>",
+                    text: "<?php echo $this->lang->line('label_you_want_to_delete_driver') ?>",
                     type: "warning",   
                     showCancelButton: true,   
                     confirmButtonColor: "#DD6B55",   
                     confirmButtonText: "<?php echo $this->lang->line('label_confirm') ?>",
                 }).then(function () {
                     $.ajax({
-                        url:  "<?php echo base_url(); ?>company/employee/delete/"+id,
+                        url:  "<?php echo base_url(); ?>company/driver/delete/"+id,
                         type: "GET",
                         success: function(data)
                         {
-                            //$('#user_table').bootstrapTable('refresh');
-                            //$(".m_datatable").mDatatable().ajax.reload();
-                            //DatatableRemoteAjaxDemo.init();
                             m_datatables.reload();
                         },
                             error: function(jqXHR, textStatus, errorThrown){                
@@ -170,4 +159,4 @@
                 });
             }
         </script>
-  
+

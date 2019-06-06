@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <?php $this->load->view('company/inc/stylesheet'); ?>
         <style type="text/css">
-            .m-form .m-form__section {
+            /* .m-form .m-form__section {
                 font-size: 1.0rem !important;
             }
             .select2-container--default .select2-selection--single .select2-selection__rendered, .form-control { 
@@ -28,7 +28,7 @@
             }
             .m-portlet .m-portlet__body{
                 padding: 0.5rem !important;
-            }
+            } */
         </style>
 
         <!-- link for material file upload -->
@@ -95,7 +95,7 @@
                             echo form_open('company/package_status/add/',$form_data); 
                         ?>  
                             <div class="row">
-                                <div class="col-xl-4">
+                                <div class="col-xl-6 offset-xl-2">
                                     <div class="m-portlet m-portlet--tab">
                                         <div class="m-portlet__body">
                                             <div class="m-form__section m-form__section--first">
@@ -156,22 +156,22 @@
 
                                                 <!-- <div class="form-group m-form__group row">
                                                     <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-                                                        * <?php echo $this->lang->line('label_active'); ?>:
+                                                        * <?php //echo $this->lang->line('label_active'); ?>:
                                                     </label>
                                                     <div class="col-xl-9 col-lg-9">
                                                         <div class="m-radio-inline">
                                                             <label class="m-radio">
                                                                 <input name="active" value="Yes" type="radio" checked="">
-                                                                <?php echo $this->lang->line('label_yes'); ?>
+                                                                <?php //echo $this->lang->line('label_yes'); ?>
                                                                 <span></span>
                                                             </label>
                                                             <label class="m-radio">
                                                                 <input name="active" value="No" type="radio" >
-                                                                <?php echo $this->lang->line('label_no'); ?>
+                                                                <?php //echo $this->lang->line('label_no'); ?>
                                                                 <span></span>
                                                             </label>
                                                         </div>
-                                                        <?php echo form_error('active'); ?>
+                                                        <?php //echo form_error('active'); ?>
                                                     </div>
                                                 </div> -->
 
@@ -229,7 +229,7 @@
                                             <div class="m-form__section m-form__section--first">
                                                 <div class="m-form__heading">
                                                     <h3 class="m-form__heading-title">
-                                                        <?php echo $this->lang->line('label_other_details'); ?>
+                                                        <?php //echo $this->lang->line('label_other_details'); ?>
                                                     </h3>
                                                 </div>  
                                             </div>

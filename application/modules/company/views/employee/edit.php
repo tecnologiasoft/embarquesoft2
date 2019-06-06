@@ -33,7 +33,7 @@
                                        <?php echo $this->lang->line('emp_code').'#'; ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="item_number" id="item_number" placeholder="<?php echo $this->lang->line('label_item_number'); ?>" value="<?=$result['id']?>" maxlength="128" disabled = "disabled">
+                                          <input type="text" class="form-control m-input" name="item_number" id="item_number" placeholder="<?php echo $this->lang->line('label_item_number'); ?>" value="<?php echo $result['id']?>" maxlength="128" disabled = "disabled">
                                           <input type="hidden" name="item_number_hdn" id="item_number_hdn" value="<?php echo $max_value; ?>">
                                           <?php echo form_error('item_number'); ?>
                                        </div>
@@ -45,7 +45,7 @@
                                        <?php echo $this->lang->line('label_email'); ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="email" id="email" placeholder="<?php echo $this->lang->line('label_email'); ?>" value="<?=@$result['email']?$result['email']:set_value('email')?>" maxlength="128" tabindex = "11">
+                                          <input type="text" class="form-control m-input" name="email" id="email" placeholder="<?php echo $this->lang->line('label_email'); ?>" value="<?php echo $result['email']?$result['email']:set_value('email')?>" maxlength="128" tabindex = "11">
                                           <?php echo form_error('email'); ?>
                                        </div>
                                     </div>
@@ -58,7 +58,7 @@
                                        * <?php echo $this->lang->line('label_first_name'); ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="first_name" id="first_name" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?=$result['first_name']?$result['first_name']:set_value('first_name')?>" tabindex = "1">
+                                          <input type="text" class="form-control m-input" name="first_name" id="first_name" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?php echo $result['first_name']?$result['first_name']:set_value('first_name')?>" tabindex = "1">
                                           <?php echo form_error('first_name'); ?>
                                        </div>
                                     </div>
@@ -69,7 +69,7 @@
                                        * <?php echo $this->lang->line('label_country'); ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="country" id="country" placeholder="<?php echo $this->lang->line('label_country'); ?>" value="<?php echo set_value('country')?set_value('country'):$result['country']; ?>" tabindex = "12">
+                                          <input type="text" class="form-control m-input" name="country" id="country" placeholder="<?php echo $this->lang->line('label_country'); ?>" value="<?php echo set_value('country') ? set_value('country'):$result['country']; ?>" tabindex = "12">
                                           <?php echo form_error('country'); ?>
                                        </div>
                                     </div>
@@ -82,7 +82,7 @@
                                        * <?php echo $this->lang->line('label_last_name'); ?>
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="last_name" id="last_name" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?=$result['last_name']?$result['last_name']:set_value('last_name')?>" tabindex = "2">
+                                          <input type="text" class="form-control m-input" name="last_name" id="last_name" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?php echo $result['last_name']?$result['last_name']:set_value('last_name')?>" tabindex = "2">
                                           <?php echo form_error('last_name'); ?>
                                        </div>
                                     </div>
@@ -94,20 +94,20 @@
                                        * <?php echo $this->lang->line('label_branch'); ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                       <select class = "form-control m-input" name="branch" id="branch">
-                                       
-                                       <?php if(count($branch_list) > 0){
-                                       ?>
-                                       
-                                       <?php      
-                                          foreach($branch_list as $val) {   
+                                          <select class = "form-control m-input" name="branch" id="branch">
+                                          
+                                          <?php if(count($branch_list) > 0){
                                           ?>
-                                       <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id'] ? "selected":""; ?>><?php echo $val->branch_name; ?></option>
-                                       <?php } } else{?>
-                                       <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?} ?>
-                                       
-                                    </select>
+                                          
+                                          <?php      
+                                             foreach($branch_list as $val) {   
+                                             ?>
+                                          <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id'] ? "selected":""; ?>><?php echo $val->branch_name; ?></option>
+                                          <?php } } else{ ?>
+                                          <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
+                                          <?php } ?>
+                                          
+                                       </select>
                                     
                                        </div>
                                     </div>
@@ -121,7 +121,7 @@
                                        <?php echo $this->lang->line('field_address_line_1'); ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="address1" id="address1" placeholder="<?php echo $this->lang->line('field_address_line_1'); ?>" value="<?=@$result['address1']?$result['address1']:set_value('address1')?>" tabindex = "3">
+                                          <input type="text" class="form-control m-input" name="address1" id="address1" placeholder="<?php echo $this->lang->line('field_address_line_1'); ?>" value="<?php echo $result['address1']?$result['address1']:set_value('address1')?>" tabindex = "3">
                                           <?php echo form_error('address1'); ?>
                                        </div>
                                     </div>
@@ -134,12 +134,12 @@
                                        <div class="col-md-8 col-lg-9">
                                           <div class="m-radio-inline">
                                              <label class="m-radio">
-                                             <input name="is_driver" value="1" type="radio" <?=$result['is_driver'] == '1' ? 'checked':'';?> tabindex = "14">
+                                             <input name="is_driver" value="1" type="radio" <?php echo $result['is_driver'] == '1' ? 'checked':'';?> tabindex = "14">
                                              <?php echo $this->lang->line('label_yes'); ?>
                                              <span></span>
                                              </label>
                                              <label class="m-radio">
-                                             <input name="is_driver" value="0" type="radio" <?=$result['is_driver'] == '0' ? 'checked':'';?> tabindex = "15">
+                                             <input name="is_driver" value="0" type="radio" <?php echo $result['is_driver'] == '0' ? 'checked':'';?> tabindex = "15">
                                              <?php echo $this->lang->line('label_no'); ?>
                                              <span></span>
                                              <?php echo form_error('is_driver'); ?>
@@ -156,7 +156,7 @@
                                        <?php echo $this->lang->line('field_address_line_2'); ?>:
                                        </label>
                                        <div class="col-md-8 col-lg-9">
-                                          <input type="text" class="form-control m-input" name="address2" id="address2" placeholder="<?php echo $this->lang->line('field_address_line_2'); ?>" value="<?=$result['address2']?$result['address2']:set_value('address2')?>" tabindex = "4"> 
+                                          <input type="text" class="form-control m-input" name="address2" id="address2" placeholder="<?php echo $this->lang->line('field_address_line_2'); ?>" value="<?php echo $result['address2']?$result['address2']:set_value('address2')?>" tabindex = "4"> 
                                           <?php echo form_error('address2'); ?>
                                        </div>
                                     </div>
@@ -169,12 +169,12 @@
                                        <div class="col-md-8 col-lg-9">
                                           <div class="m-radio-inline">
                                              <label class="m-radio">
-                                             <input name="is_warehouse" value="1" type="radio" <?=$result['is_warehouse'] == '1' ? 'checked':''?> tabindex = "16">
+                                             <input name="is_warehouse" value="1" type="radio" <?php echo $result['is_warehouse'] == '1' ? 'checked':''?> tabindex = "16">
                                              <?php echo $this->lang->line('label_yes'); ?>
                                              <span></span>
                                              </label>
                                              <label class="m-radio">
-                                             <input name="is_warehouse" value="0" type="radio" <?=$result['is_warehouse'] == '0' ? 'checked':''?> tabindex = "17">
+                                             <input name="is_warehouse" value="0" type="radio" <?php echo $result['is_warehouse'] == '0' ? 'checked':''?> tabindex = "17">
                                              <?php echo $this->lang->line('label_no'); ?>
                                              <span></span>
                                              <?php echo form_error('is_warehouse'); ?>
@@ -192,7 +192,7 @@
                                     <?php echo $this->lang->line('label_city'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="city" id="city" placeholder="<?php echo $this->lang->line('label_city'); ?>" value="<?=$result['city']?$result['city']:set_value('city')?>" tabindex = "5">
+                                       <input type="text" class="form-control m-input" name="city" id="city" placeholder="<?php echo $this->lang->line('label_city'); ?>" value="<?php echo $result['city']?$result['city']:set_value('city')?>" tabindex = "5">
                                        <?php echo form_error('city'); ?>
                                     </div>
                                  </div>
@@ -203,7 +203,7 @@
                                     <?php echo $this->lang->line('field_birthdate'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="dob" id="dob" placeholder="<?php echo $this->lang->line('field_birthdate'); ?>" value="<?=$result['dob']?$result['dob']:set_value('dob')?>" tabindex = "18">
+                                       <input type="text" class="form-control m-input" name="dob" id="dob" placeholder="<?php echo $this->lang->line('field_birthdate'); ?>" value="<?php echo $result['dob']?$result['dob']:set_value('dob')?>" tabindex = "18">
                                        <?php echo form_error('dob'); ?>
                                     </div>
                                  </div>
@@ -216,7 +216,7 @@
                                     <?php echo $this->lang->line('label_state'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="state" id="state" placeholder="<?php echo $this->lang->line('label_state'); ?>" value="<?=@$result['state']?$result['state']:set_value('state')?>" tabindex = "6">
+                                       <input type="text" class="form-control m-input" name="state" id="state" placeholder="<?php echo $this->lang->line('label_state'); ?>" value="<?php echo $result['state']?$result['state']:set_value('state')?>" tabindex = "6">
                                        <?php echo form_error('state'); ?>
                                     </div>
                                  </div>
@@ -227,7 +227,7 @@
                                     <?php echo $this->lang->line('field_social_security'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="social_security" id="social_security" placeholder="<?php echo $this->lang->line('field_social_security'); ?>" value="<?=@$result['social_security']?$result['social_security']:set_value('factor_of_volume')?>" tabindex = "19">
+                                       <input type="text" class="form-control m-input" name="social_security" id="social_security" placeholder="<?php echo $this->lang->line('field_social_security'); ?>" value="<?php echo $result['social_security']?$result['social_security']:set_value('factor_of_volume')?>" tabindex = "19">
                                        <?php echo form_error('social_security'); ?>
                                     </div>
                                  </div>
@@ -240,7 +240,7 @@
                                     <?php echo $this->lang->line('label_zipcode'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="zipcode" id="zipcode" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?=@$result['zipcode']?$result['zipcode']:set_value('zipcode')?>" tabindex = "7">
+                                       <input type="text" class="form-control m-input" name="zipcode" id="zipcode" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?php echo $result['zipcode']?$result['zipcode']:set_value('zipcode')?>" tabindex = "7">
                                        <?php echo form_error('zipcode'); ?>
                                     </div>
                                  </div>
@@ -251,7 +251,7 @@
                                     <?php echo $this->lang->line('label_cellphone'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="cel" id="cellphone_number" placeholder="<?php echo $this->lang->line('label_cellphone'); ?>" value="<?=@$result['cel']?$result['cel']:set_value('cel')?>" tabindex = "20">
+                                       <input type="text" class="form-control m-input" name="cel" id="cellphone_number" placeholder="<?php echo $this->lang->line('label_cellphone'); ?>" value="<?php echo $result['cel']?$result['cel']:set_value('cel')?>" tabindex = "20">
                                        <?php echo form_error('cel'); ?>
                                     </div>
                                  </div>
@@ -264,7 +264,7 @@
                                     * <?php echo $this->lang->line('label_telephone'); ?>:
                                     </label>
                                     <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="telephone" id="telephone" placeholder="<?php echo $this->lang->line('label_cellphone'); ?>" value="<?=@$result['tel']?$result['tel']:set_value('tel')?>" tabindex = "8">
+                                       <input type="text" class="form-control m-input" name="telephone" id="telephone" placeholder="<?php echo $this->lang->line('label_cellphone'); ?>" value="<?php echo $result['tel']?$result['tel']:set_value('tel')?>" tabindex = "8">
                                        <?php echo form_error('tel'); ?>
                                     </div>
                                  </div>

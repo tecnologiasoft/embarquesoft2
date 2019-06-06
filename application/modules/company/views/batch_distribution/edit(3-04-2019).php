@@ -324,22 +324,22 @@
                                                     <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
                                                         * <?php echo $this->lang->line('label_branch'); ?>:
                                                     </label>
-                                                    <!-- <div class="col-xl-9 col-lg-9">
-                                                        <select class="form-control m-input" name="branch_id" id="branch_id" placeholder="<?php //echo $this->lang->line('label_branch'); ?>">
-                                                            <option value=""><?php //echo $this->lang->line('label_branch'); ?></option>
+                                                    <div class="col-xl-9 col-lg-9">
+                                                        <select class="form-control m-input" name="branch_id" id="branch_id" placeholder="<?php echo $this->lang->line('label_branch'); ?>">
+                                                            <option value=""><?php echo $this->lang->line('label_branch'); ?></option>
                                                             <?php 
-                                                                //if(!empty($branch_list)){
-                                                                    //foreach ($branch_list as $key => $value) {
+                                                                if(!empty($branch_list)){
+                                                                    foreach ($branch_list as $key => $value) {
                                                             ?>
-                                                                        <option value="<?php //echo $value['id']; ?>" <?php //if($result['branch_id'] == $value['id']) echo "selected"; ?>><?php //echo $value['name']; ?></option>
+                                                                        <option value="<?php echo $value['id']; ?>" <?php if($result['branch_id'] == $value['id']) echo "selected"; ?>><?php echo $value['name']; ?></option>
                                                             <?php
                                                                     }
                                                                 }
                                                             ?>
                                                         </select>
-                                                    
+
                                                         <?php echo form_error('branch_id'); ?>
-                                                    </div> -->
+                                                    </div>
                                                 </div> 
                                                 <div class="form-group m-form__group row">
                                                     <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">

@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Package_status extends MYcom_Controller {
 
 	private $view_folder = 'company/package_status/';
@@ -7,7 +8,7 @@ class Package_status extends MYcom_Controller {
     {
         parent::__construct();
         
-        if(!$this->session->userdata('company_id'))
+        /*if(!$this->session->userdata('company_id'))
         {
             redirect('company/login/', 'refresh');
         }
@@ -15,7 +16,7 @@ class Package_status extends MYcom_Controller {
         if ($this->session->userdata('admin_login') == '0') 
         {
             redirect('company/lock', 'refresh');
-        }
+        }*/
         
         $this->load->model('company/package_status_model');
     }

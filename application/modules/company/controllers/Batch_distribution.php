@@ -1,16 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Driver extends MYcom_Controller {
 
-	private $view_folder = 'company/driver/';
-	function __construct()
-    {
-        parent::__construct();
-        
-       
+class Batch_distribution extends MYcom_Controller {
 
-        $this->load->model('company/driver_model');
-    }
+	private $view_folder = 'company/batch_distribution/';
+	public function __construct()
+	{
+		parent::__construct();
+		
+		$this->load->model('company/Batch_distribution_model');
+	}
 
     /*Default index call*/
 	function index()
@@ -18,12 +17,12 @@ class Driver extends MYcom_Controller {
 		$this->listing();
 	}
 
-    /*Listing all drivers*/
+    /*Listing all batch*/
 	function listing()
     {
         $data = array();
-        $data['title'] = $this->lang->line('title_driver_list');
-        $data['second_title'] = $this->lang->line('title_add_new_driver');
+        $data['title'] = $this->lang->line('title_batch_list');
+        //$data['second_title'] = $this->lang->line('title_add_new_batch');
         
         $this->loadView($this->view_folder.'listing', $data);
     }
@@ -32,11 +31,11 @@ class Driver extends MYcom_Controller {
     function ajax_list()
     {
         $AllPostData = $this->input->post();
-        $list = $this->driver_model->get_datatables();
+        $list = $this->Batch_distribution_model->get_datatables();
         $data = array();
 
         $output = array(
-                    "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->driver_model->count_filtered(),'sort'=>'asc','field'=>'company_id'),
+                    "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->Batch_distribution_model->count_filtered(),'sort'=>'asc','field'=>'company_id'),
                     "data" => $list,
                 );
         //output to json format
@@ -49,16 +48,16 @@ class Driver extends MYcom_Controller {
         $data = array();
         /*$data['title'] = $this->lang->line('title_driver_list');
         $data['second_title'] = $this->lang->line('title_add_new_driver');*/
-        $data['title'] = $this->lang->line('title_add_new_driver');
-        $data['second_title'] = $this->lang->line('title_driver_list');
+        $data['title'] = $this->lang->line('title_add_new_batch');
+        //$data['second_title'] = $this->lang->line('title_batch_list');
         $data['css'] = ['customer'];
-        $data['max_value']= $this->Main_model->maxId('tbl_driver');
-        $data['formAction'] = 'company/driver/add/';
+       //* $data['max_value']= $this->Main_model->maxId('tbl_driver');
+        $data['formAction'] = 'company/batch_distribution/add/';
         $data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js',MAP_API_URL,'driver'];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
-        $data['next_id'] = $this->driver_model->get_next_id();
+        $data['zone_list'] = $this->Batch_distribution_model->getZone($id);
+       //* $data['next_id'] = $this->driver_model->get_next_id();
 
         //$this->form_validation->set_rules('co_driverid',$this->lang->line('field_driverid'),'required|trim');
         //$this->form_validation->set_rules('company_name',$this->lang->line('field_company_name'),'required|trim');
@@ -117,7 +116,7 @@ class Driver extends MYcom_Controller {
         else 
         {   
             /* check driver name already registered or not? */
-            $already_register = $this->driver_model->check_param(array('user_name' => $this->input->post('username')));
+            $already_register = $this->Batch_distribution_model->check_param(array('user_name' => $this->input->post('username')));
             if(!empty($already_register)){
                 $this->session->set_flashdata('err_msg1', $this->lang->line('text_customer_user_name_exist'));
                 $this->loadView($this->view_folder.'add', $data);
@@ -125,7 +124,7 @@ class Driver extends MYcom_Controller {
                 return;
             }
             /* check email already registered or not? */
-            $already_register = $this->driver_model->check_param(array('email' => $this->input->post('email')));
+            $already_register = $this->Batch_distribution_model->check_param(array('email' => $this->input->post('email')));
             if(!empty($already_register)){
                 $this->session->set_flashdata('err_msg1', $this->lang->line('text_customer_email_exist'));
                 $this->loadView($this->view_folder.'add', $data);
@@ -409,4 +408,7 @@ class Driver extends MYcom_Controller {
         die(json_encode($data));
     }
 
- }
+}
+
+/* End of file Batch_distribution.php */
+/* Location: ./application/modules/company/controllers/Batch_distribution.php */

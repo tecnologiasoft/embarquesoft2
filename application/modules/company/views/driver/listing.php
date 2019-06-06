@@ -1,8 +1,5 @@
-
-                    <div class="m-content">
-                        
-                        <div class="m-portlet m-portlet--mobile">
-                            
+                    <div class="m-content">                        
+                        <div class="m-portlet m-portlet--mobile">                            
                             <div class="m-portlet__body">
                                 <!--begin: Search Form -->
                                 <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">

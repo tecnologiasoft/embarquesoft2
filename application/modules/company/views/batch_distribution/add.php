@@ -41,17 +41,23 @@
                      <div class="row">
                            
                            <div class="col-lg-6">
-
                               <div class="row mb-3">
-                                    <label class="form_label col-md-4 col-lg-3 text-right">
-                                     <?php echo $this->lang->line('label_driverid').'#'; ?>:
-                                    </label>
-                                    <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="item_number" id="item_number" placeholder="<?php echo $this->lang->line('label_item_number'); ?>" value="<?php echo $result['id']?$result['id']:$max_value; ?>" maxlength="128" disabled = "disabled">
-                                       <input type="hidden" name="item_number_hdn" id="item_number_hdn" value="<?php echo $result['id']?$result['id']:$max_value; ?>">
-                                       <?php echo form_error('item_number'); ?>
-
-                                    </div>
+                                 <label class="form_label col-md-4 col-lg-3 text-right">
+                                 <span id="astric">*</span> <?php echo $this->lang->line('label_zone'); ?>:
+                                 </label>
+                                 <div class="col-md-8 col-lg-9">
+                                    <select class = "form-control m-input" name="zone" id="zone">
+                                       <?php if(count($zone_list) > 0){
+                                          ?>
+                                       <?php      
+                                          foreach($zone_list as $val) {   
+                                          ?>
+                                       <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['zone'] ?"selected" : ""; ?>><?php echo $val->zone; ?></option>
+                                       <?php } } else{?>
+                                       <option value = ""><?php echo $this->lang->line('label_zone').' '.$this->lang->line('not_found'); ?></option>
+                                       <?php } ?>
+                                    </select>
+                                 </div>
                               </div>
 
 
@@ -60,7 +66,7 @@
                                  <span id="astric">*</span> <?php echo $this->lang->line('label_first_name'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                    <input type="text" class="form-control m-input" name="fname" id="fname" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?php echo set_value('fname')?set_value('fname'):$result['fname']; ?>" maxlength="64" >
+                                    <input type="text" class="form-control m-input" name="form_zone" id="form_zone" placeholder="<?php echo $this->lang->line('label_zone'); ?>" value="<?php echo set_value('form_zone')?set_value('form_zone'):$result['form_zone']; ?>" maxlength="64" >
                                
                                     <div class="has-danger"><div id="fname_msg" class="form-control-feedback" style="display: none;">This field is required.</div></div>
                                  </div>
@@ -68,10 +74,10 @@
 
                               <div class="row mb-3">
                                  <label class="form_label col-md-4 col-lg-3 text-right">
-                                 <span id="astric">*</span> <?php echo $this->lang->line('label_last_name'); ?>:
+                                 <span id="astric">*</span> <?php echo $this->lang->line('label_status'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                    <input type="text" class="form-control m-input" name="lname" id="lname" placeholder="<?php echo $this->lang->line('label_last_name'); ?>" value="<?php echo set_value('lname')?set_value('lname'):$result['lname']; ?>" maxlength="64">
+                                    <input type="text" class="form-control m-input" name="form_status" id="form_status" placeholder="<?php echo $this->lang->line('label_status'); ?>" value="<?php echo set_value('form_status')?set_value('form_status'):$result['form_status']; ?>" maxlength="64">
                                 
                                     <div class="has-danger"><div id="lname_msg" class="form-control-feedback" style="display: none;">This field is required.</div></div>
                                  </div>
