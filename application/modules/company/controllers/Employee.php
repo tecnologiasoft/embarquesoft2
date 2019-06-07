@@ -75,7 +75,7 @@ class Employee extends MYcom_Controller {
         $data['formAction'] = 'company/employee/add';
         $this->load->model('company/branch_model');
 
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
         $this->form_validation->set_rules('first_name',$this->lang->line('label_first_name'),'required|trim');
         $this->form_validation->set_rules('last_name',$this->lang->line('label_last_name'),'required|trim');
         $this->form_validation->set_rules('telephone', 'tel', 'required|trim|min_length[8]|max_length[14]');
@@ -150,7 +150,7 @@ class Employee extends MYcom_Controller {
         $data['js'] = ['employee',MAP_API_URL];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
         $data['formAction'] = 'company/employee/edit/'.$id;
         // echo '<pre>';
         // print_r($data['result']);

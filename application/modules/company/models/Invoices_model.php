@@ -21,10 +21,14 @@ class Invoices_model extends My_Model {
     // invoices Models
     function _get_datatables_query($customer_id = "")
     {
+        /*$this->company_db->select("ih.*");
+        $this->company_db->from('invoice_header_payment ih');
+        $this->company_db->where('ih.customer_id' ,$customer_id);*/
         $this->company_db->select("ih.sub_total as sub_total,ih.id as invoices_id,ih.*, c.email,c.address_line1, CONCAT(c.tele_country_code, ' ', c.telephone_number) as telephone_number, CONCAT(c.cell_country_code , ' ', c.cellphone_number) as cellphone_number, CONCAT(c.fname, ' ', c.lname) as name, c.state, CONCAT(s.fname, ' ', s.lname) as consignee");
         $this->company_db->from('tbl_invoice_header ih');
         $this->company_db->join('tbl_customer c','ih.customer_id = c.id');
         $this->company_db->join('tbl_shipto s','ih.shipto_id = s.id');
+        //$this->company_db->join('invoice_header_payment ihp','ih.id = ihp.invoice_id');
         
         if($customer_id){
             $this->company_db->where('ih.customer_id' ,$customer_id);
@@ -152,6 +156,12 @@ function _get_datatables_queryss($customer_id = "")
     function count_filtered()
     {
         $this->_get_datatables_query();
+        $query = $this->company_db->get();
+        return $query->num_rows();
+    }/*Get payment on edit customer counter*/
+    function payment_count_filtered()
+    {
+        $this->_get_datatables_payment_query();
         $query = $this->company_db->get();
         return $query->num_rows();
     }
@@ -603,21 +613,20 @@ function _get_datatables_queryss($customer_id = "")
         }
     }
 
-    // customer edit page payment screen abhishek
+    // customer edit page payment screen 
     function _get_datatables_payment_query($customer_id = "")
     {
-        $this->company_db->select("ih.sub_total as sub_total,ih.id as invoices_id,ih.*, c.email,c.address_line1, CONCAT(c.tele_country_code, ' ', c.telephone_number) as telephone_number, CONCAT(c.cell_country_code , ' ', c.cellphone_number) as cellphone_number, CONCAT(c.fname, ' ', c.lname) as name, c.state, CONCAT(s.fname, ' ', s.lname) as consignee");
-        $this->company_db->from('tbl_invoice_header ih');
-        $this->company_db->join('tbl_customer c','ih.customer_id = c.id');
-        $this->company_db->join('tbl_shipto s','ih.shipto_id = s.id');
-        // $this->company_db->join('invoice_header_payment p','ih.id = p.invoice_id');
+        $this->company_db->select("ih.*,p.sub_total as sub_total,p.final_balance");
+        $this->company_db->from('invoice_header_payment ih');
+        $this->company_db->where('ih.customer_id' ,$customer_id);
+        $this->company_db->join('tbl_invoice_header p','ih.invoice_id = p.id', 'left');
+     
         if($customer_id){
             $this->company_db->where('ih.customer_id' ,$customer_id);
         }
-        //$this->company_db->where('ih.void','No');
         $i = 0;
-        
-        if(isset($_REQUEST['datatable']['query']['generalSearch']) && !empty($_REQUEST['datatable']['query']['generalSearch'])) // if datatable send POST for search
+        // if datatable send POST for search
+        if(isset($_REQUEST['datatable']['query']['generalSearch']) && !empty($_REQUEST['datatable']['query']['generalSearch'])) 
         {
             foreach ($this->column_search as $item) // loop column 
             {        
@@ -668,7 +677,7 @@ function _get_datatables_queryss($customer_id = "")
             $this->company_db->order_by(key($order), $order[key($order)]);
         }
     }
-/*rajesh*/
+
 
 }
 ?>

@@ -1,4 +1,4 @@
-<!-- END: Subheader -->
+<!-- END: Subheader git code -->
 <div class="m-content">
    <!--begin::Form-->
    <?php
@@ -154,7 +154,7 @@
                                  <?php echo $this->lang->line('label_zipcode'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                    <input type="text" class="form-control m-input" name="zipcode" id="zipcode" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?php $result['zipcode'] ? $result['zipcode'] : set_value('zipcode')?>" maxlength="32">
+                                    <input type="text" class="form-control m-input" name="zipcode" id="zipcode" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?=$result['zipcode'] ? $result['zipcode'] : set_value('zipcode')?>" maxlength="32">
                                     <?php echo form_error('zipcode'); ?>
                                  </div>
                               </div>
@@ -172,7 +172,7 @@
                                        <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id'] ? "selected":"" ?>><?php echo $val->branch_name; ?></option>
                                        <?php } } else{?>
                                        <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?php } ?>
+                                       <?} ?>
                                     </select>
                                     <?php echo form_error('branch'); ?>
                                      <div class="form-control-feedback" id="branch_msg" style="display: none;">This field is required.</div>
@@ -715,12 +715,18 @@
          $('#m_user_profile_tab_3').removeClass('active');
          $('#m_user_profile_tab_4').removeClass('active');
          $('#m_user_profile_tab_7').removeClass('active');
+         $('#m_user_profile_tab_3').removeClass('active');
       });
-       /*$('tab4').click(function(){
+       $('tab4').click(function(){
          $('#m_user_profile_tab_3').removeClass('active');
          $('#m_user_profile_tab_7').removeClass('active');
          $('#payment_list').removeClass('active');
-      });*/
+      });
+       $('#m_user_profile_tab_4').click(function(){
+         $('#m_user_profile_tab_3').removeClass('active');
+         $('#m_user_profile_tab_7').removeClass('active');
+         $('#payment_list').removeClass('active');
+      });
       
       //$("#fname").css("color", "red");
       //$('#branch').attr('style', 'pointer-events: all !important');
@@ -903,16 +909,16 @@
       var tt = function() {
       var tt = $(".mm_datatable").mDatatable({
           data: {
-              type: "remote",
-              source: {
-                  read: {
-                     url: "<?php echo site_url('company/customer/invoice_list/') ?>",
-                     method: 'GET',
-                     params: {
-                         customer_id: "<?php echo $result['id']; ?>"
-                     }
-                  }
-              },
+                type: "remote",
+                  source: {
+                           read: {
+                                    url: "<?php echo site_url('company/customer/invoice_list/') ?>",
+                                    method: 'GET',
+                                    params: {
+                                             customer_id: "<?php echo $result['id']; ?>"
+                                          }
+                                 }
+                           },
               pageSize: 10,
               saveState: {
                   cookie: false,
@@ -964,7 +970,15 @@
           }, {
               field: "invoice_date",
               title: "<?php echo $this->lang->line('label_invoice_date'); ?>",
-          }]
+          }, {
+                   field: "Actions",
+                   title: "<?php echo $this->lang->line('label_actions'); ?>",
+                   sortable: !1,
+                   overflow: "visible",
+                   template: function(t) {
+                       return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/customer/invoice_detail_ajax_list/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>'
+                   }
+               }]
       }),
       e = tt.getDataSourceQuery();
         mm_datatables = tt;
@@ -986,6 +1000,6 @@
       }
    }();
    jQuery(document).ready(function() {
-      //DatatableRemoteAjaxDemo.init()
+      DatatableRemoteAjaxDemo.init()
    });
 </script> 

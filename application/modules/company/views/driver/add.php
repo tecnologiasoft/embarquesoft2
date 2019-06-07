@@ -2,10 +2,10 @@
                              .vertical-a-t .m-checkbox{ vertical-align: top; margin-left: 5px; }
                              .inner-checkbox-list{ margin-top: 10px; }
                           </style>
-<!-- <?php //echo "<pre>";
+<?php //echo "<pre>";
 //print_r($result);
 //echo "</pre>";
-?> -->
+?>
 <div class="m-content">
    <!--begin::Form-->
    <?php 
@@ -61,7 +61,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
                                     <input type="text" class="form-control m-input" name="fname" id="fname" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?php echo set_value('fname')?set_value('fname'):$result['fname']; ?>" maxlength="64" >
-                               
+                                  <!--   <?php // echo form_error('fname'); ?> -->
                                     <div class="has-danger"><div id="fname_msg" class="form-control-feedback" style="display: none;">This field is required.</div></div>
                                  </div>
                               </div>
@@ -72,7 +72,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
                                     <input type="text" class="form-control m-input" name="lname" id="lname" placeholder="<?php echo $this->lang->line('label_last_name'); ?>" value="<?php echo set_value('lname')?set_value('lname'):$result['lname']; ?>" maxlength="64">
-                                
+                                    <?php //echo form_error('lname'); ?>
                                     <div class="has-danger"><div id="lname_msg" class="form-control-feedback" style="display: none;">This field is required.</div></div>
                                  </div>
                               </div>
@@ -167,7 +167,7 @@
                                 <span id="astric">*</span> <?php echo $this->lang->line('label_country'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                 
+                                    <?php //country_dropwon(); ?>
                                  <select class="form-control m-input" name="country" id="country" style="color: blue; font-weight: bold;">
                                        <option value="" selected="selected">Select Country</option>
                                     	<option value="100" <?php if($result['country'] == '100'){ echo "selected";}?>>United States</option>
@@ -184,16 +184,17 @@
                                  <span id="astric">*</span> <?php echo $this->lang->line('label_branch'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                    <select class = "form-control m-input" name="branch" id="branch">
-                                       <option value = ""><?php echo $this->lang->line('select').' '.$this->lang->line('label_branch'); ?></option>
-                        
+                                    <select class = "form-control m-input" name="branch_id" id="branch_id">
+                                        <option value="" selected="selected" >Select Branch</option>
                                        <?php if(count($branch_list) > 0){
+                                          ?>
+                                       <?php      
                                           foreach($branch_list as $val) {   
                                           ?>
-                                       <option value="<?php echo $val->id; ?>" <?php if($current_user_branchId == $val->id){ echo "Selected";}?>><?php echo $val->branch_name; ?></option>
-                                       <?php } } else{ ?>
+                                       <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id']?"selected":"";?>><?php echo $val->branch_name; ?></option>
+                                       <?php } } else{?>
                                        <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?php } ?>
+                                       <?} ?>
                                     </select>
                                      <div class="has-danger"><div id="branch_id_msg" class="form-control-feedback" style="display: none;">This field is required.</div></div>
                                  </div>
@@ -215,7 +216,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
                                     <input type="text" class="form-control m-input" name="username" id="username" placeholder="<?php echo $this->lang->line('label_username'); ?>" value="<?php echo set_value('username')?set_value('username'):$result['user_name']; ?>" maxlength="64" >
-                   
+                                   <!--  <?php //echo form_error('username'); ?> -->
                                     <div class="has-danger"><div id="username_msg" class="form-control-feedback" style="display: none;">This field is required.</div></div>
                                  </div>
                               </div>
@@ -354,7 +355,7 @@
                                           <?php }} else{ ?>
                                           
                                              <input name="rights[<?php echo $key; ?>]" value="<?php echo $value; ?>" type="hidden">
-                                          <?php } ?>
+                                          <?} ?>
                                             
                                             
                                           </div>
@@ -398,7 +399,10 @@
                      </div>                       
                      
                   </div>
-                                          <?php  } ?>
+                                          <?php 
+                                       
+                                      
+                                       } ?>
 
                </div>
 

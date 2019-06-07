@@ -180,12 +180,12 @@
                                           foreach($branch_list as $val) {   
                                           ?>
                                        <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id']?"selected":"";?>><?php echo $val->branch_name; ?></option>
-                                       <?php } } else{ ?>
+                                       <?php } } else{?>
                                        <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?php } ?>
+                                       <?} ?>
                                     </select>
                                  </div>
-                              </div> 
+                              </div>
                         
                         
                         
@@ -322,7 +322,7 @@
    ?>            
                
                <div class="tab-pane" id="m_user_profile_tab_2">
-                  <?php if($this->session->userdata('user_id') != "" || $result['master_user_id'] != '') {
+                  <?php if($this->session->userdata('user_id') != "" || @$result['master_user_id'] != '') {
                    // dd();
                   // dd($this->rights->rightsArray());
                   // die;
@@ -403,7 +403,7 @@
                                           <?php }} else{ ?>
                                           
                                              <input name="rights[<?php echo $key; ?>]" value="<?php echo $value; ?>" type="hidden">
-                                          <?php } ?>
+                                          <?} ?>
                                             
                                             
                                           </div>
