@@ -10,6 +10,7 @@
    <div class="row">
       <div class="col-xl-12">
          <div class="m-portlet m-portlet--full-height m-portlet--tabs">
+            
             <div class="m-portlet__head">
                <div class="m-portlet__head-tools">
                   <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--4x m-tabs-line--left m-tabs-line--primary" role="tablist">
