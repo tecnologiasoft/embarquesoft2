@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 class Customer extends MYcom_Controller
 {
 
@@ -47,7 +48,7 @@ class Customer extends MYcom_Controller
         echo json_encode($output);
     }
 
-    /*rajesh List all invoice by customer id ajax call*/
+    /* List all invoice by customer id ajax call*/
     public function invoice_list()
     {
         $AllPostData = $this->input->post();
@@ -72,15 +73,17 @@ class Customer extends MYcom_Controller
         $data['css'] = ['customer'];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
-        //var_dump($data['branch_list']);exit;
+        $data['branch_list'] = $this->branch_model->getBranch();
         $data['current_user_branchId'] = $this->customer_model->get_cur_branchId($this->id);
+        //print_r($data);
         //die();
         $this->loadView($this->view_folder . 'add', $data);
-        //print_r($data);exit;
     }
+/*View details of invoice in customer edit page*/
+/*public function view(){
 
-    /*Add new Customer*/
+}
+  */  /*Add new Customer*/
     public function save()
     {
 
@@ -289,7 +292,22 @@ class Customer extends MYcom_Controller
             redirect('company/customer/listing/', 'refresh');
         }
     }
+/*4-Jun-2019*/
+public function invoiceview()
+    {
+       $data['title'] = $this->lang->line('title_view_invoice');
+        $data['second_title'] = $this->lang->line('title_invoice_details');
+        $data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js', MAP_API_URL, 'customer'];
+        $data['css'] = ['custom'];
+        $data['function'] = 'edit';
+        $data = array();
 
+        $data['result'] = $this->customer_model->get_invoice_data($this->uri->segment(4));
+        $this->load->view($this->view_folder . 'view_invoice', $data);
+        //redirect('company/customer/view/', 'refresh');
+        //$this->load->model('company/customer_model');
+        //$this->loadView($this->view_folder . 'view', $data);
+    }
     /*Load user profile details*/
     public function edit()
     {
@@ -299,7 +317,7 @@ class Customer extends MYcom_Controller
         $data['css'] = ['custom'];
         $data['function'] = 'edit';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
 
         if (!$this->uri->segment(4)) {
             redirect('company/customer/listing', 'refresh');
@@ -684,6 +702,21 @@ class Customer extends MYcom_Controller
         //output to json format
         echo json_encode($output);
     }
+/*4-Jun-2019*/
+    public function invoice_detail_ajax_list()
+    {
+        $AllPostData = $this->input->post();
+        $list = $this->customer_model->get_invoice_details_datatables();
+        $data = array();
+
+        $output = array(
+            "meta" => array('page' => $AllPostData['datatable']['pagination']['page'], 'pages' => $AllPostData['datatable']['pagination']['pages'], 'perpage' => $AllPostData['datatable']['pagination']['perpage'], 'total' => $this->customer_model->invoice_details_count_filtered(), 'sort' => 'asc', 'field' => 'company_id'),
+            "data" => $list,
+        );
+        $data['result'] = $output;
+        $this->load->view($this->view_folder . 'view_invoice', $data);
+        
+    }
 
     public function create_invoice_shipto(){
 
@@ -788,12 +821,9 @@ class Customer extends MYcom_Controller
         $this->form_validation->set_rules('address', $this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('address_line_1', $this->lang->line('field_address_line_1'), 'trim');
         $this->form_validation->set_rules('address_line_2', $this->lang->line('field_address_line_2'), 'trim');
-        //$this->form_validation->set_rules('address_line_3',$this->lang->line('field_address_line_3'),'trim');
-        //$this->form_validation->set_rules('city',$this->lang->line('field_city'),'required|trim');
-        //$this->form_validation->set_rules('borough',$this->lang->line('field_borough'),'trim');
-       // $this->form_validation->set_rules('municipal', $this->lang->line('label_municipal'), 'required|trim');
+        
         $this->form_validation->set_rules('country', $this->lang->line('field_country'), 'required|trim');
-        //$this->form_validation->set_rules('region', $this->lang->line('label_region'), 'trim');
+       
         $this->form_validation->set_rules('province', $this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('sector', $this->lang->line('label_sector'), 'required|trim');
 
@@ -803,12 +833,8 @@ class Customer extends MYcom_Controller
             $this->form_validation->set_rules('cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim');
         }
         
-        //$this->form_validation->set_rules('fax_number',$this->lang->line('field_fax_number'),'trim');
-
         $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
         if ($this->form_validation->run() == false) {
-
-            //die(validation_errors());
 
             $this->loadView($this->view_folder . 'add_shipto', $data);
         } else {
@@ -825,7 +851,6 @@ class Customer extends MYcom_Controller
         }
 
             $lic_picture = "";
-            //$this->lang->line('text_customer_email_exist')
             if (!empty($_FILES['lic_picture']) && $_FILES['lic_picture']['size'] > 0) {
 
                 $lic_picture = $this->common->image_upload($field = 'lic_picture', $path = './' . SHIPT_TO_IMAGES);
@@ -962,12 +987,7 @@ class Customer extends MYcom_Controller
         $this->form_validation->set_rules('address', $this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('address_line_1', $this->lang->line('field_address_line_1'), 'trim');
         $this->form_validation->set_rules('address_line_2', $this->lang->line('field_address_line_2'), 'trim');
-        //$this->form_validation->set_rules('address_line_3',$this->lang->line('field_address_line_3'),'trim');
-        //$this->form_validation->set_rules('city',$this->lang->line('field_city'),'required|trim');
-        //$this->form_validation->set_rules('borough',$this->lang->line('field_borough'),'trim');
-       // $this->form_validation->set_rules('municipal', $this->lang->line('label_municipal'), 'required|trim');
         $this->form_validation->set_rules('country', $this->lang->line('field_country'), 'required|trim');
-        //$this->form_validation->set_rules('region', $this->lang->line('label_region'), 'trim');
         $this->form_validation->set_rules('province', $this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('sector', $this->lang->line('label_sector'), 'required|trim');
 
@@ -976,7 +996,6 @@ class Customer extends MYcom_Controller
             $this->form_validation->set_rules('telephone', $this->lang->line('field_telephone_number'), 'required|trim');
             $this->form_validation->set_rules('cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim');
         }
-        //$this->form_validation->set_rules('fax_number',$this->lang->line('field_fax_number'),'trim');
 
         $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
         if ($this->form_validation->run() == false) {
@@ -986,13 +1005,7 @@ class Customer extends MYcom_Controller
             $this->loadView($this->view_folder . 'edit_shipto', $data);
         } else {
 
-            /* check email already registered or not? */
-            // $already_register = $this->customer_model->check_shipto_param(array('email' => $this->input->post('email')));
-            // if(!empty($already_register)){
-
-            //     $this->session->set_flashdata('err_msg1', $this->lang->line('text_customer_email_exist'));
-            //     $this->load->view($this->view_folder.'add_shipto', $data); return;
-            // }
+           
 
             $lic_picture = $data['result']['lic_picture'];
             //$this->lang->line('text_customer_email_exist')
@@ -1061,7 +1074,6 @@ class Customer extends MYcom_Controller
             if ($this->input->post('longitude') != '') {
                 $params['longitude'] = $this->input->post('longitude');
             }
-            //$id = $this->customer_model->add_shipto($params);
 
             // Update customer details
             $this->customer_model->update_shipto($shipto_id, $params);
@@ -1135,12 +1147,10 @@ class Customer extends MYcom_Controller
         $data = array();
         $this->load->model('company/invoices_model');
         $data['driver_list'] = $this->invoices_model->get_driver_list();
-        //print_r($data);
-        //die;
+       
         $data['payment_type'] = $this->Main_model->getType('payment');
         $data['customer_id'] = $this->input->post('id');
         $string =  $this->load->view($this->payment_view_folder.'payments_data_screen',$data,true);
-
         $res['status'] = SUCCESS_CODE;
         $res['data'] = $string;
         $res['message'] = '';

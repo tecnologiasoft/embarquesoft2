@@ -68,12 +68,15 @@ class Invoices extends MYcom_Controller {
         //output to json format
         echo json_encode($output);
     } 
-    // customer edit payment screen abhishek
+    // customer
+    // customer edit payment screen 
     function ajax_payment_list($customer_id = '')
     {
         $AllPostData = $this->input->post();
         
         $list = $this->invoices_model->get_payment_datatables($customer_id);
+        //print_r($list);
+        //die();
         $data = array();
         $output = array(
                     "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->invoices_model->count_filtered(),'sort'=>'asc','field'=>'company_id'),
@@ -82,7 +85,7 @@ class Invoices extends MYcom_Controller {
         //output to json format
         echo json_encode($output);
     } 
-/*rajesh*/
+
 function ajax_listss($customer_id = '')
     {
         $AllPostData = $this->input->post();
@@ -521,33 +524,7 @@ public function payment_get_invoice_list(){
     {
         /*print_r($this->input->post()); die;*/
         $message = array();
-        /* customer information */
-        // $this->form_validation->set_rules('edit_customer_fname',$this->lang->line('field_first_name'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_lname',$this->lang->line('field_last_name'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_address',$this->lang->line('field_address'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_borough',$this->lang->line('field_borough'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_city',$this->lang->line('field_city'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_state',$this->lang->line('field_state'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_country',$this->lang->line('field_country'),'required|trim');
-        // $this->form_validation->set_rules('edit_customer_zipcode',$this->lang->line('field_zipcode'),'required|trim');
-        // if(empty($this->input->post('edit_customer_cellphone_number'))){
-        //     $this->form_validation->set_rules('edit_customer_telephone_number',$this->lang->line('field_telephone_number'),'required|trim');
-        // } 
-        // if(empty($this->input->post('edit_customer_telephone_number'))){
-        //     $this->form_validation->set_rules('edit_customer_cellphone_number',$this->lang->line('field_cellphone_number'),'required|trim');
-        // }
-
-        // /* shipto information */
-        // $this->form_validation->set_rules('edit_shipto_fname',$this->lang->line('field_first_name'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_lname',$this->lang->line('field_last_name'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_address',$this->lang->line('field_address'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_address_1',$this->lang->line('field_address'),'trim');
-        // $this->form_validation->set_rules('edit_shipto_borough',$this->lang->line('field_borough'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_city',$this->lang->line('field_city'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_state',$this->lang->line('field_state'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_country',$this->lang->line('field_country'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_telephone_number',$this->lang->line('field_telephone_number'),'required|trim');
-        // $this->form_validation->set_rules('edit_shipto_cellphone_number',$this->lang->line('field_cellphone_number'),'required|trim');
+        
         if($this->input->post('edit_text_customer_id') == ''){
             $message['code'] = "0";
             $res['message'] = $this->lang->line('please_add_a_customer_before_add_shipto');

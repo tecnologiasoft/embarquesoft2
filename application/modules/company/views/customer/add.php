@@ -1,5 +1,5 @@
 <!-- END: Subheader -->
-
+ <?php //echo $this->username; ?>
 <div class="m-content">
    <!--begin::Form-->
    <?php
@@ -57,7 +57,8 @@
                      <div class="m-form__section m-form__section--first">
                         <div class="row">
                            <div class="col-lg-6">
-                              
+                              <?php //echo $this->id;
+                              //echo $this->fname;?>
                               <div class="row mb-3">
                                  <label class="form_label col-md-4 col-lg-3 text-right">
                                  <span id="astric">*</span> 
@@ -86,6 +87,7 @@
                                                     </label>
                                                     <div class="col-md-8 col-lg-9">
                                                         <input type="text" class="form-control m-input" name="fname" id="firstname" placeholder="<?php echo $this->lang->line('label_first_name'); ?>" value="<?php if(!empty($result['fname'])) echo $result['fname']; else echo set_value('fname'); ?>" required>
+                                                        <?php //echo form_error('fname'); ?>
                                                         <div class="form-control-feedback" id="fname_msg" style="display: none;">This field is required.</div>
                                                     </div>
                                                 </div>
@@ -97,6 +99,7 @@
                                     </label>
                                     <div class="col-md-8 col-lg-9">
                                        <input type="text" class="form-control m-input" name="lname" id="lastname" placeholder="<?php echo $this->lang->line('label_last_name'); ?>" value="<?php if(!empty($result['lname'])) echo $result['lname']; else echo set_value('lname'); ?>" maxlength="64">
+                                       <?php //echo form_error('lname'); ?>
                                        <div class="form-control-feedback" id="lname_msg" style="display: none;">This field is required.</div>
                                     </div>
                               </div>
@@ -109,6 +112,7 @@
                                        <input type="text" class="form-control m-input" name="address_line1" id="address_line1" placeholder="<?php echo $this->lang->line('label_address'); ?>" value="<?php if(!empty($result['address_line1'])) echo $result['address_line1']; else echo set_value('address_line1'); ?>"  >
                                        <input type="hidden" name="latitude" id="latitude" value="<?php if(!empty($result['latitude'])) echo $result['latitude']; else echo set_value('latitude'); ?>">
                                        <input type="hidden" name="longitude" id="longitude" value="<?php if(!empty($result['longitude'])) echo $result['longitude']; else echo set_value('longitude'); ?>">
+                                       <?php //echo form_error('address_line1'); ?>
                                        <div class="form-control-feedback" id="address_line1_msg" style="display: none;">This field is required.</div>
                                     </div>
 
@@ -119,6 +123,8 @@
 
                                     <div class="col-md-2 col-lg-3">
                                        <input type="text" class="form-control m-input" name="apartment" id="apartment" placeholder="<?php echo $this->lang->line('apartment'); ?>" value="<?php if(!empty($result['apartment'])) echo $result['apartment']; else echo set_value('apartment'); ?>"  >
+                                       
+                                       <?php //echo form_error('address'); ?>
                                     </div>
                                  
                               </div>
@@ -128,6 +134,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
                                     <input type="text" class="form-control m-input" name="address_line2" id="address_line2" placeholder="<?php echo $this->lang->line('label_address'); ?>" value="<?php if(!empty($result['address_line2'])) echo $result['address_line2']; else echo set_value('address_line2'); ?>" maxlength="256" >
+                                    <?php //echo form_error('label_address_2'); ?>
                                  </div>
                               </div>
                               
@@ -139,6 +146,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
                                     <input type="text" class="form-control m-input" name="city" id="city" placeholder="<?php echo $this->lang->line('label_city'); ?>" value="<?php if(!empty($result['city'])) echo $result['city']; else echo set_value('city'); ?>" maxlength="64">
+                                    <?php //echo form_error('city'); ?>
                                     <div class="form-control-feedback" id="city_msg" style="display: none;">This field is required.</div>
                                  </div>
                               </div>
@@ -150,6 +158,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
                                     <input type="text" class="form-control m-input" name="state" id="state" placeholder="<?php echo $this->lang->line('label_state'); ?>" value="<?php if(!empty($result['city'])) echo set_value('state'); ?>" maxlength="64">
+                                    <?php //echo form_error('state'); ?>
                                     <div class="form-control-feedback" id="state_msg" style="display: none;">This field is required.</div>
                                  </div>
                               </div>
@@ -159,26 +168,27 @@
                                  <?php echo $this->lang->line('label_zipcode'); ?>:
                                  </label>
                                  <div class="col-md-8 col-lg-9">
-                                    <input type="text" class="form-control m-input" name="zipcode" id="zipcode" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?php echo $result['zipcode'] ? $result['zipcode'] : set_value('zipcode')?>" maxlength="32">
+                                    <input type="text" class="form-control m-input" name="zipcode" id="zipcode" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?=$result['zipcode'] ? $result['zipcode'] : set_value('zipcode')?>" maxlength="32">
+                                    <?php //echo form_error('zipcode'); ?>
                                  </div>
                               </div>
                               <div class="row mb-3">
                                  <label class="form_label col-md-4 col-lg-3 text-right">
                                  <!-- <span id="astric">*</span> --> <?php echo $this->lang->line('label_branch'); ?>:
                                  </label>
+                                 <?php //echo $current_user_branchId;?>
                                  <div class="col-md-8 col-lg-9">
                                     <select class = "form-control m-input" name="branch" id="branch">
                                        <option value = ""><?php echo $this->lang->line('select').' '.$this->lang->line('label_branch'); ?></option>
-                        
                                        <?php if(count($branch_list) > 0){
                                           foreach($branch_list as $val) {   
                                           ?>
-                                       <option value="<?php echo $val->id; ?>" <?php if($current_user_branchId == $val->id){ echo "Selected";}?>><?php echo $val->branch_name; ?></option>
-                                       <?php } } else{ ?>
+                                       <option value = "<?php echo $val->id;?>" <?php if($current_user_branchId == $val->id){ echo "Selected";}?>><?php echo $val->branch_name; ?></option>
+                                       <?php } } else{?>
                                        <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?php } ?>
+                                       <?} ?>
                                     </select>
-                                   
+                                    <?php //echo form_error('branch'); ?>
                                     <div class="form-control-feedback" id="branch_msg" style="display: none;">This field is required.</div>
                                  </div>
                               </div>
@@ -593,7 +603,7 @@
    
        
 </script>
-<script type="text/javascript">
+ <script type="text/javascript">
 	$(document).ready(function(){
 		var fname= $('#firstname').val();
 		var lname= $('#lastname').val();

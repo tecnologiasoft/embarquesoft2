@@ -25,6 +25,7 @@ input[type = 'text'],select{
         <input type = "hidden" name = "customer_id" id = "customer_id" value = "<?=$customer_id?>">
          <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="">
             <div class="row">
+              <?php //echo $customer_id;?>
                <div class="col-lg-4">
                   <div class="row mb-3">
                      <label class="form_label col-md-6 col-lg-5 text-right">
@@ -44,7 +45,7 @@ input[type = 'text'],select{
                         <input type="hidden" class="form-control m-input" name="m_amount" id="m_amount" placeholder = "<?=$this->lang->line('label_amount')?>" required>
                      </div>
                   </div>
-
+                  <!-- <input type="hidden" name="current_customer" value="<?php //echo $customer_id;?>" id="<?php //echo $customer_id;?>"> -->
                   <div class="row mb-3">
                      <label class="form_label col-md-6 col-lg-5 text-right">
                      <?=$this->lang->line('label_personal')?>*
@@ -67,6 +68,17 @@ input[type = 'text'],select{
                      </div>
                   </div>
 
+                <!-- Customer Id -->
+                  <div class="row mb-3">
+                     <label class="form_label col-md-6 col-lg-5 text-right">
+                     <?=$this->lang->line('label_customer_id')?>*
+                     </label>
+                     <div class="col-md-6 col-lg-7">
+                        <input type="text" class="form-control m-input" name="p_customer_id" id="p_customer_id" placeholder = "<?=$this->lang->line('label_customer_id')?>" value="<?php echo $customer_id;?>" required disabled>
+                     </div>
+                  </div>
+                <!-- Customer Id -->
+
 
                   <div class="row mb-3">
                      <label class="form_label col-md-6 col-lg-5 text-right">
@@ -76,7 +88,6 @@ input[type = 'text'],select{
                         <input type="text" class="form-control m-input" name="p_receipt_number" id="p_receipt_number" placeholder = "<?=$this->lang->line('label_receipt_number')?>" required>
                      </div>
                   </div>
-
                   
                   
                  
@@ -438,25 +449,7 @@ $("#btn_apply_"+idInstance).show();
 });
 
 $("select").selectpicker();
-/*$(document).on('click','#submit_btn',function(){
-   var data = $("#p_m_form_1").serialize();
-   var url = $("#p_m_form_1").attr('action');
-   ajaxCall(url,data,function(response){
-    if(response.status == ERROR_CODE){
-        getMessage(response.status,response.message);
-    }else{
-        swal({
-    title: "Wow!",
-    type: response.status,
-    text: response.message
-}).then(function() {
-    $("#p_payment_form").html('');
-    $("#another_popup").modal('hide');   
-});
-    }
-   });
-   return false;
-});*/
+
 $(document).on('change','#p_currency',function(){
     if($(this).val() == 'peso'){
         $("#p_exchange_rate").val('').prop('disabled',false);
@@ -480,11 +473,7 @@ $(document).on('change','#p_amount',function(){
        $("#p_remain_dollor").val(remain_amount);
     }else{
       alert('Amount is less than applied amount,Please remove & reapply amount from invoice');
-      /*var idInstance = $(this).data('id');
-      $("#"+idInstance).val('');
-      if($("#p_amount").val()==""){
-        return false;
-      }*/
+     
     	$("#p_remain_dollor").val(0.00);
     	$("#p_amount").val(0.00);
     	$("#p_total_dollor").val(0.00);
@@ -524,6 +513,8 @@ $(document).on('keypress keyup','#p_exchange_rate,#p_amount',function(){
                         p_driver:$("#p_driver").val(),
                         p_payment_type:$("#p_payment_type").val(),
                         p_receipt_number:$("#p_receipt_number").val(),
+                        p_customer_id:$("#p_customer_id").val(),
+                        p_remain_dollor:$("#p_remain_dollor").val(),
                         p_reffeence:$("#p_reffeence").val(),
                         p_exchange_rate:$("#p_exchange_rate").val(),
                         invoice_details:paymentsArray,

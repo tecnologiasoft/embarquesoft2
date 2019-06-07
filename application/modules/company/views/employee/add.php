@@ -151,7 +151,7 @@
                                        <option value = "<?php echo $val->id; ?>" <?php echo $val->id == $result['branch_id'] ?"selected" : ""; ?>><?php echo $val->branch_name; ?></option>
                                        <?php } } else{?>
                                        <option value = ""><?php echo $this->lang->line('label_branch').' '.$this->lang->line('not_found'); ?></option>
-                                       <?php } ?>
+                                       <?} ?>
                                     </select>
                                  </div>
                               </div>

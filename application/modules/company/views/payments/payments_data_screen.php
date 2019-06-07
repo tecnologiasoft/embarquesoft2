@@ -17,8 +17,8 @@ input[type = 'text'],select{
          </div>
          
       <?php 
-         $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'invoice_m_form_1','enctype'=>'multipart/form-data'); 
-         echo form_open('company/payments/pay_invoices/',$form_data); 
+        // $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'invoice_m_form_1','enctype'=>'multipart/form-data'); 
+         //echo form_open('company/payments/pay_invoices/',$form_data); 
          ?> 
 
       <div class="modal-body">
@@ -26,48 +26,44 @@ input[type = 'text'],select{
          <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="">
           <div class="row">
                <div class="col-lg-4">
-                  <div class="row mb-3">
-                     <label class="form_label col-md-6 col-lg-5 text-right">
-                     <?=$this->lang->line('label_amount')?>*
+                  <div class="row mb-3"> 
+                      <label class="form_label col-md-6 col-lg-5 text-right">
+                     Total Amount
                      </label>
-                     <div class="col-md-6 col-lg-7">
-                        <input type="text" class="form-control m-input" name="p_amount" id="p_amount" placeholder = "<?=$this->lang->line('label_amount')?>" required>
-                        <input type="hidden" class="form-control m-input" name="m_amount" id="m_amount" placeholder = "<?=$this->lang->line('label_amount')?>" required>
-                     </div>
-                  </div>
+                      <div class="col-md-6 col-lg-7"> 
+                       <input type="text" class="form-control m-input" name="p_amount" id="p_amount" placeholder = "" disabled>
+                       <input type="hidden" class="form-control m-input" name="m_amount" id="m_amount" placeholder = "" disabled> 
+                      </div> 
+                 </div> 
                   <div class="row mb-3">
                      <label class="form_label col-md-6 col-lg-5 text-right">
                      Remaining Amount
                      </label>
                      <div class="col-md-6 col-lg-7">
-                     
-                        <input type="text" class="form-control m-input" id = "p_remain_dollor" name = "p_remain_dollor" placeholder="Remaining Amount" value = "<?=$result['balance']?>" disabled>
+                        <input type="text" class="form-control m-input" id = "p_remain_dollor" name = "p_remain_dollor" placeholder="" value = "" disabled>
                      </div>
-                  </div>
+                  </div> 
               </div>
           </div>
-
-
-            <?php echo form_close(); ?>
-            <div class="v" id="ajax_data">
-         </div>
+        <div class="v" id="ajax_data">
+        </div>
          </div>
        
       </div>
-      <div class="row mb-3" id="submit_btns" style="margin: 10px 834px 0px;">
+      <!-- <div class="row mb-3" id="submit_btns" style="margin: 10px 834px 0px;"> -->
                   
-                     <div class="col-md-6 col-lg-7">
+      <!-- <div class="col-md-6 col-lg-7">
                   <a href="javascript:void(0);" 
                   class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" id = "submit_btn">
                                                         <span>
                                                            
                                                             <span>
-                                                            <?php echo $this->lang->line('label_submit'); ?>
+                                                            <?php //echo $this->lang->line('label_submit'); ?>
                                                             </span>
                                                         </span>
                                                     </a>
-                                                    </div>
-                  </div>
+    </div> -->
+  </div>
    
    
 <!--begin::Page Snippets -->
@@ -80,7 +76,7 @@ var t = $(".v").mDatatable({
         type: "remote",
         source: {
             read: {
-                url: "<?php echo site_url('company/invoices/ajax_list/'.$customer_id)?>",
+                url: "<?php echo site_url('company/invoices/ajax_payment_list/'.$customer_id)?>",
                 params:{}
             }
         },
@@ -112,26 +108,44 @@ var t = $(".v").mDatatable({
     //     field: "name",
     //     title: "<?php echo $this->lang->line('label_customer'); ?>",
     // }, 
+    
     {
-        field: "invoice_number",
+        field: "receipt_number",
+        title: "<?php echo 'Receipt Number'; ?>",
+    },
+    {
+        field: "transaction_id",
+        title: "<?php echo 'Transaction Id'; ?>",
+    },
+    {
+        field: "invoice_id",
         title: "<?php echo $this->lang->line('label_invoice_number'); ?>",
     }, {
-        field: "invoice_date",
-        title: "<?php echo $this->lang->line('label_date'); ?>",
+        field: "payment_date",
+        title: "<?php echo "Payment Date"; ?>",
     }, {
         field: "sub_total",
         title: "<?php echo $this->lang->line('label_amount'); ?>",
-        template: function(t) {
-            return '<span id = "p_'+t.id+'">'+t.sub_total+'</span>'
-        }
-    }, {
+    }/*, 
+     {
+        field: "final_balance",
+        title: "<?php echo 'final balance'; ?>",
+    }*/
+    , {
         field: "balance",
         title: "<?php echo $this->lang->line('label_balance'); ?>",
         template: function(t) {
             return '<input type="hidden" name="tbalance" value="'+t.balance+'" id="tbalance'+t.id+'"><span id = "sp_'+t.id+'">'+t.balance+'</span>'
         }
         
-    }
+    }/*,
+    {
+        field: "curry_dollor",
+        title: "<?php //echo 'Remaining Amt.'; ?>",
+        template: function(t) {
+            return '<input type="hidden" name="curry_dollor" value="'+t.curry_dollor+'" id="curry_dollor"><span id = "sp_'+t.id+'">'+t.curry_dollor+'</span>'
+        }
+    }*/
     //  {
     //     field: "payments",
     //     title: "Pay",
@@ -187,6 +201,7 @@ var t = $(".v").mDatatable({
 }();
 jQuery(document).ready(function() {
     DatatableRemoteAjaxDemo.init()
+    //alert($('#curry_dollor').val());
 
 });
 $(document).on('change','.partial_amount',function(){

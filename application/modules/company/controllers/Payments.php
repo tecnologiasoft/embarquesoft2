@@ -72,6 +72,8 @@ class Payments extends MYcom_Controller {
         
     }
  function pay_invoices(){
+    //print_r($this->input->post());
+    //die();
 
     if($this->input->post() && $this->input->is_ajax_request()){
 
@@ -94,9 +96,7 @@ class Payments extends MYcom_Controller {
             $res['message'] = validation_errors();
             echo json_encode($res);
             die;
-
         }
-
         $this->this_model->pay_invoices($this->input->post());
     }
     die;

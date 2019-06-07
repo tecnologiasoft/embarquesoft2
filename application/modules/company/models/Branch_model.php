@@ -152,29 +152,9 @@ class Branch_model extends My_model {
         $data['select'] = ['id','concat(id,"-",name) as branch_name'];
         $data['table'] = 'tbl_branch';
         $response = $this->selectRecords($data);
-        //var_dump($response);exit();
+        
         return $response;
         
     }
-
-
-    /*public function getBranch($data="")
-    {
-        $this->company_db->select("id,concat(id,'-',name) as branch_name");
-        $this->company_db->from('tbl_branch');
-        $query = $this->company_db->get();
-
-        if($query->num_rows() >= 1)
-        {
-            return $query->row_array();
-        }
-        else
-        {
-            return false;
-        }
-    }*/
-
-
-
 }
 ?>

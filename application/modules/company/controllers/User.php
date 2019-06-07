@@ -55,7 +55,7 @@ class User extends MYcom_Controller {
         $data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js',MAP_API_URL,'user'];
         $data['function'] = 'add';
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
         
         
         
@@ -231,7 +231,7 @@ class User extends MYcom_Controller {
 
 
     /*Add new user*/
-    function edit()
+    function edit($id="")
     {
         $data = array();
         $data['title'] = $this->lang->line('title_edit_user');
@@ -244,8 +244,15 @@ class User extends MYcom_Controller {
         $data['result'] = $this->user_model->getUserDetails($where);
         $data['result_rights'] = $this->user_model->getRights($id);
 
+        
+        
+
+        
+        
+        
+
         $this->load->model('company/branch_model');
-        $data['branch_list'] = $this->branch_model->getBranch($id);
+        $data['branch_list'] = $this->branch_model->getBranch();
         
         if(count($data['result']) != 1){
             $this->session->set_flashdata('succ_msg1', $this->lang->line('error_message'));
