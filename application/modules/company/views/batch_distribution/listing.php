@@ -83,20 +83,20 @@
                     field: "MDist_BatchNum",
                     title: "<?php echo $this->lang->line('label_batch'); ?>",
                 }, {
-                    field: "MDist_Zone",
+                    field: "zone",
                     title: "<?php echo $this->lang->line('label_zone'); ?>",
-                }, {
-                    field: "MDist_status",
-                    title: "<?php echo $this->lang->line('label_status'); ?>",
-                }, {
+                },  {
+                    field: "driver",
+                    title: "<?php echo $this->lang->line('label_driver'); ?>",
+                },{
                     field: "MDist_Date",
                     title: "<?php echo $this->lang->line('label_date'); ?>",
-                }, {
+                },{
                     field: "MDist_BType",
                     title: "<?php echo $this->lang->line('label_type'); ?>",
-                }, {
-                    field: "MDist_Driver",
-                    title: "<?php echo $this->lang->line('label_driver'); ?>",
+                },{
+                    field: "Description",
+                    title: "<?php echo $this->lang->line('label_status'); ?>",
                 },
                 {
                     field: "Actions",

@@ -8,10 +8,6 @@
                           ?> -->
   <div class="m-content">
      <!--begin::Form-->
-     <?php
-        $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data');
-        echo form_open($formAction,$form_data);
-      ?>
 
      <div class="row">
         <div class="col-xl-12">
@@ -29,13 +25,16 @@
                  </div>
               </div>
               <div class="tab-content">
+               <?php
+                $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data');
+                echo form_open($formAction,$form_data);
+              ?>
                  <div class="tab-pane active" id="m_user_profile_tab_1">
                     <div class="m-portlet__body">
                        <div class="m-form__section m-form__section--first">
                        <div class="row">
-                        <!-- <pre>
-                        <?php //var_dump($result) ?>
-                        </pre> -->
+
+
                              <div class="col-lg-6">
                                 <div class="row mb-3">
                                    <label class="form_label col-md-4 col-lg-3 text-right">
@@ -156,7 +155,7 @@
                                    <span id="astric">*</span> <?php echo $this->lang->line('label_exchange_rate'); ?>:
                                    </label>
                                    <div class="col-md-8 col-lg-9">
-                                      
+
 
                                       <input type="text" class="form-control m-input exchange_rate" name="exchange_rate" id="exchange_rate" placeholder="<?php echo $this->lang->line('label_exchange_rate'); ?>" value="<?php echo $result['MDist_Exchange_Rate']?$result['MDist_Exchange_Rate']:set_value('MDist_Exchange_Rate')?>">
                                       <div id="driver_error">
@@ -164,7 +163,7 @@
                                       </div>
                                    </div>
                                 </div>
-                                
+
                                 <div class="row mb-3">
 
                                    <label class="form_label col-md-4 col-lg-3 text-right">
@@ -345,7 +344,12 @@
                                                       </div>
                                                   </div>
 
+                               <?php
+                                 //$form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_2','enctype'=>'multipart/form-data');
+                                   // echo form_open('company/batch_distribution/addTran/',$form_data);
 
+
+                                ?>
                                                   <div class="col-md-4">
                                                       <div class="m-input-icon m-input-icon--left">
                                                           <button type="submit" class="btn btn-warning btnTran" value="update">
@@ -353,17 +357,26 @@
                                                           </button>
                                                       </div>
                                                   </div>
-                 
+
                                               </div>
                                           </div>
                                       </div>
                                   </div>
                                   <!--end: Search Form -->
 
+                                    <!-- <form method="post" role="form" id="BaschTran">
+                                    
+                                                                       <input type="text" class="form-control m-input" name="date" id="date" placeholder="<?php echo $this->lang->line('label_date'); ?>" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('date')?>">
+                                      <?php echo form_error('date'); ?>
+                                      <input type="text" name="invoice_number"  class="form-control m-input" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('invoice_number')?>" id="invoice_number" >
+                                      <input type="text" name="nameShipto" class="form-control m-input" id="nameShipto" >
+                                      <input type="text" name="balance" class="form-control m-input" id="balance" >
+                                      <input type="text" name="total_packages" class="form-control m-input" id="total_packages" > -->
                                   <!--begin: Datatable -->
                                   <div class="m_datatable"></div>
                                   <!--end: Datatable -->
-
+                                <!-- </form> -->
+                                <!-- <?php //echo form_close(); ?> -->
                               </div>
 
 
@@ -371,38 +384,29 @@
         </div>
      </div>
 
-     <form method="post" role="form" id="BaschTran">
-        <input type="text" class="form-control m-input" name="mdist_batch" id="mdist_batch" placeholder="<?php echo $this->lang->line('label_id'); ?>" value="<?php echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
 
-        <input type="text" class="form-control m-input" name="mdist_tinvnum" id="mdist_tinvnum" id="m_form_date">
-       
-        <input type="text" class="form-control m-input" name="mdist_tcustid" id="mdist_tcustid" value="<?php echo $result['customer_id']?$result['customer_id']:set_value('customer_id')?>">
-
-        <input type="text" class="form-control m-input" name="mdist_tcustid" id="mdist_tcustid" value="<?php echo $result['customer_id']?$result['customer_id']:set_value('customer_id')?>">
-
-     </form>
      <!--end::Form-->
 
   </div>
 
-<!--  <div class="col-sm-4">
-             <form method="post" role="form" id="BaschTran">
+      <!--  <div class="col-sm-4">
+                   <form method="post" role="form" id="BaschTran">
 
-                 <input type="text" name="mdist_tdate" class="form-control m-input" id="mdist_tdate" >
-                <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php //echo $this->lang->line('label_id'); ?>" value="<?php //echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
-                <input type="text" name="mdist_tinvnum" class="form-control m-input" id="mdist_tinvnum" >
-                <input type="text" name="mdist_tcustid" class="form-control m-input" id="mdist_tcustid" >
-                <input type="text" name="mdist_tbalance" class="form-control m-input" id="mdist_tbalance" >
-                <input type="text" name="mdist_tbox" class="form-control m-input" id="mdist_tbox" >
-                <input type="text" name="mdist_tpaid" class="form-control m-input" id="mdist_tpaid" >
-                <input type="text" name="mdist_delivered" class="form-control m-input" id="mdist_delivered" >
-                <input type="text" name="mdist_shipto" class="form-control m-input" id="mdist_shipto" >
-                <input type="text" name="mdist_exchange_balance" class="form-control m-input" id="mdist_exchange_balance" >
+                       <input type="text" name="mdist_tdate" class="form-control m-input" id="mdist_tdate" >
+                      <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php //echo $this->lang->line('label_id'); ?>" value="<?php //echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
+                      <input type="text" name="mdist_tinvnum" class="form-control m-input" id="mdist_tinvnum" >
+                      <input type="text" name="mdist_tcustid" class="form-control m-input" id="mdist_tcustid" >
+                      <input type="text" name="mdist_tbalance" class="form-control m-input" id="mdist_tbalance" >
+                      <input type="text" name="mdist_tbox" class="form-control m-input" id="mdist_tbox" >
+                      <input type="text" name="mdist_tpaid" class="form-control m-input" id="mdist_tpaid" >
+                      <input type="text" name="mdist_delivered" class="form-control m-input" id="mdist_delivered" >
+                      <input type="text" name="mdist_shipto" class="form-control m-input" id="mdist_shipto" >
+                      <input type="text" name="mdist_exchange_balance" class="form-control m-input" id="mdist_exchange_balance" >
 
-                <input type="hidden" id="tran" name="tran" value="" class="form-control">
+                      <input type="hidden" id="tran" name="tran" value="" class="form-control">
 
-           </form>
-</div>  -->
+                 </form>
+      </div>  -->
 
  <script type="text/javascript">
 
@@ -459,16 +463,16 @@
                     selector: false,
                     textAlign: "center",
                     width: 50,
-                    template: function(t) {                       
+                    template: function(t) {
                         return '\t\t\t\t\t\t\t\t\t\t\t<span style="width: 138px;">'+t.id+'</span>'
                     }
                 }, {
                     field: "invoice_number",
                     title: "<?php echo $this->lang->line('label_invoice'); ?>",
-                    template: function(t) {                       
-                     
+                    /*template: function(t) {
+
                         return '\t\t\t\t\t\t\t\t\t\t\t<span style="width: 138px;">'+t.invoice_number+'</span><input class="montoBalance" name="mdist_tbalance" value="'+t.invoice_number+'" id="mdist_tbalance" type="text">'
-                    }
+                    }*/
                 }, {
                     field: "name",
                     title: "<?php echo $this->lang->line('label_customer'); ?>",
@@ -486,12 +490,12 @@
                     field: "invoice_date",
                     title: "<?php echo $this->lang->line('label_date'); ?>",
                 }, {
-                    field: "MDist_Driver",
+                    field: "MDist_Exchange_Rate",
                     title: "<?php echo $this->lang->line('label_exchange_balance'); ?>",
-                    template: function() {                  
+                    /*template: function() {
                        // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
                         return '\t\t\t\t\t\t\t\t\t\t\t<span class="exbalance" style="width: 138px;"></span>'
-                    }
+                    }*/
                 },{
 
                     field: "chk_status",
@@ -600,7 +604,7 @@
                 clearButton: true
             });
 
-     $("#m_form_search").on("blur", function(e) {
+     /*$("#m_form_search").on("blur", function(e) {
        // $("#m_form_search").blur(function(event) {
         //montoBalance
           var montoBalance = $(".montoBalance").val();
@@ -610,17 +614,17 @@
      // alert(exchangeBalance);
      // var valorExchange = exchangeBalance;
       $(".exbalance").html(exchangeBalance);
-  
-      });
+
+      });*/
 
    });
 
     /*$(document).ready(function () {
-            
+
                 $("#mdist_tbalance").val();
                 var value = $(this).val();
                 $("#mdist_tbalance").val(value);
-            
+
     });*/
     /*$(document).ready(function () {
            $("#m_form_search").blur(function () {
@@ -628,14 +632,14 @@
                 var value = $("#mdist_tbalance").val();
                 alert(value);
                 $("#mdist_tbalance").val(value);
-           
+
        });
     });*/
 
 
       $(document).on('click', '.btnTran', function(e){
-      
-      //  alert("hola");
+
+        alert("hola");
       //console.log('serialized data', $("#AddDiplo").serialize());
                 $.ajax({
                 url: "<?php echo site_url('company/batch_distribution/addTran')?>",
@@ -648,35 +652,35 @@
               //console.log('data diplo', data)
               if(data.st == 0)
                 {
-                  swal({   
-                    title: "<?php echo $this->lang->line('label_are_you_sure') ?>",
-                    text: "<?php echo $this->lang->line('label_you_want_to_delete_driver') ?>",
-                    type: "warning",   
-                    showCancelButton: true,   
-                    confirmButtonColor: "#DD6B55",   
+                  swal({
+                    title: "<?php //echo $this->lang->line('label_are_you_sure') ?>",
+                    text: "<?php //echo $this->lang->line('label_you_want_to_delete_driver') ?>",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
                     //confirmButtonText: "<?php //echo $this->lang->line('label_confirm') ?>",
                 }).then(function () {
                  $('.validation-error').html(data.msg);
-                    
+
                 });
                 }
 
               if(data.st == 1)
               {
                 $('.validation-error').html(data.msg).css('color', 'green');
-                $('.validation-error').html(data.msgsuccess).css('color', 'green');      
+                $('.validation-error').html(data.msgsuccess).css('color', 'green');
                 //alert(data.msg);
                     setTimeout(function(){
                   $("#cerrar_miModal").trigger("click");
                       location.reload();
                    },1500);
-               
+
               }
 
               if(data.st == 2)
               {
                 $('.validation-error').html(data.msg);
-                $('.validation-error').html(data.msgsuccess).css('color', 'green');      
+                $('.validation-error').html(data.msgsuccess).css('color', 'green');
                //console.log(data.msg);
                     setTimeout(function(){
                   $("#cerrar_miModal").trigger("click");
