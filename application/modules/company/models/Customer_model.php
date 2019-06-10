@@ -70,6 +70,19 @@ class Customer_model extends CI_Model {
             $this->company_db->order_by(key($order), $order[key($order)]);
         }
     }
+     /* 10-JUN-2019 count invoice data of the customer */
+    function countInvoiceData($customerId)
+    {
+        $this->company_db->select("customer_id");
+        $this->company_db->from('tbl_invoice_header');
+        $this->company_db->where('customer_id',$customerId);
+        $query = $this->company_db->get();
+        if($query->num_rows() >= 1){
+            return $query->result_array();
+        }else{
+            return array();
+        }
+    }
  // invoice Models
     function _get_invoice_datatables_query()
     {
@@ -342,7 +355,7 @@ class Customer_model extends CI_Model {
     {
         $invoice_id = $this->uri->segment(4);
         $this->company_db->select("s.*");
-        $this->company_db->from('invoice_header_payment s');
+        $this->company_db->from('invoice_header_payment');
         $this->company_db->where('s.invoice_id', $invoice_id);
         $i = 0;
 
