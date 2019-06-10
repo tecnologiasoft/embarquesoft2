@@ -1,3 +1,4 @@
+
 <style>
 .form_label {
     color: #265791;
@@ -15,12 +16,6 @@ input[type = 'text'],select{
               <span aria-hidden="true">&times;</span>
           </button>
          </div>
-         
-      <?php 
-        // $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'invoice_m_form_1','enctype'=>'multipart/form-data'); 
-         //echo form_open('company/payments/pay_invoices/',$form_data); 
-         ?> 
-
       <div class="modal-body">
         <input type = "hidden" name = "customer_id" id = "customer_id" value = "<?=$customer_id?>">
          <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="">
@@ -31,16 +26,18 @@ input[type = 'text'],select{
                      Total Amount
                      </label>
                       <div class="col-md-6 col-lg-7"> 
-                       <input type="text" class="form-control m-input" name="p_amount" id="p_amount" placeholder = "" disabled>
+                        <!-- 10-jun-2019 -->
+                       <input type="text" class="form-control m-input" name="p_amount" id="p_amount" placeholder = "" value="<?php if($totalBal[0]['totalBalance'] == 0 ) echo "0.00";else echo $totalBal[0]['totalBalance'];?>" disabled>
                        <input type="hidden" class="form-control m-input" name="m_amount" id="m_amount" placeholder = "" disabled> 
                       </div> 
                  </div> 
                   <div class="row mb-3">
                      <label class="form_label col-md-6 col-lg-5 text-right">
-                     Remaining Amount
+                     Remaining Balance
                      </label>
                      <div class="col-md-6 col-lg-7">
-                        <input type="text" class="form-control m-input" id = "p_remain_dollor" name = "p_remain_dollor" placeholder="" value = "" disabled>
+                      <!-- 10-jun-2019 -->
+                        <input type="text" class="form-control m-input" id = "p_remain_dollor" name = "p_remain_dollor" placeholder="" value = "<?php if($totalAmt[0]['totalAmount'] == 0) echo "0.00"; else echo $totalAmt[0]['totalAmount'];?>" disabled>
                      </div>
                   </div> 
               </div>
@@ -50,22 +47,10 @@ input[type = 'text'],select{
          </div>
        
       </div>
-      <!-- <div class="row mb-3" id="submit_btns" style="margin: 10px 834px 0px;"> -->
-                  
-      <!-- <div class="col-md-6 col-lg-7">
-                  <a href="javascript:void(0);" 
-                  class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill" id = "submit_btn">
-                                                        <span>
-                                                           
-                                                            <span>
-                                                            <?php //echo $this->lang->line('label_submit'); ?>
-                                                            </span>
-                                                        </span>
-                                                    </a>
-    </div> -->
+     
   </div>
-   
-   
+  <!-- 10-jun-2019 count payment of the customer -->
+   <?php if(count($Countpayment) > 0){?>   
 <!--begin::Page Snippets -->
 <script type="text/javascript">
 var m_datatables = null;
@@ -103,12 +88,7 @@ var t = $(".v").mDatatable({
         width: 50,
         selector: false,
         textAlign: "center"
-    }, 
-    // {
-    //     field: "name",
-    //     title: "<?php echo $this->lang->line('label_customer'); ?>",
-    // }, 
-    
+    },    
     {
         field: "receipt_number",
         title: "<?php echo 'Receipt Number'; ?>",
@@ -126,11 +106,7 @@ var t = $(".v").mDatatable({
     }, {
         field: "sub_total",
         title: "<?php echo $this->lang->line('label_amount'); ?>",
-    }/*, 
-     {
-        field: "final_balance",
-        title: "<?php echo 'final balance'; ?>",
-    }*/
+    }
     , {
         field: "balance",
         title: "<?php echo $this->lang->line('label_balance'); ?>",
@@ -138,45 +114,7 @@ var t = $(".v").mDatatable({
             return '<input type="hidden" name="tbalance" value="'+t.balance+'" id="tbalance'+t.id+'"><span id = "sp_'+t.id+'">'+t.balance+'</span>'
         }
         
-    }/*,
-    {
-        field: "curry_dollor",
-        title: "<?php //echo 'Remaining Amt.'; ?>",
-        template: function(t) {
-            return '<input type="hidden" name="curry_dollor" value="'+t.curry_dollor+'" id="curry_dollor"><span id = "sp_'+t.id+'">'+t.curry_dollor+'</span>'
-        }
-    }*/
-    //  {
-    //     field: "payments",
-    //     title: "Pay",
-    //     class:'demo_class',
-    //     template: function(t) {
-    //         var tex_action;
-    //    if(t.balance == 0){
-    //     tex_action = '<input type = "text" class="form-control m-input partial_amount" id = "'+t.id+'" name = "total_payment[]" placeholder = "00.00" disabled>';
-    //    }else{
-    //     tex_action = '<input type = "text" class="form-control m-input partial_amount" id = "'+t.id+'" data-id="'+t.id+'" name = "total_payment[]" placeholder = "00.00">';
-    //    }
-    //         return tex_action;
-    //     }
-        
-    // }, 
-    // {
-    //     field: "Actions",
-    //     width: 155,
-    //     title: "<?php echo $this->lang->line('label_actions'); ?>",
-    //     sortable: !1,
-    //     overflow: "visible",
-    //     template: function(t) {
-    //         var action_val;
-    //         if(t.balance == 0){
-    //           action_val = '<a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill"'+t.id+'" data-id = "'+t.id+'" >Paid</a><a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop"'+t.id+'" data-id = "'+t.id+'" style="display:none;">Stop</a>';
-    //         }else{
-    //     action_val = '<a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_apply" id="btn_apply_'+t.id+'" data-btntype="apply" data-id = "'+t.id+'" >Apply</a><a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop" data-btntype="stop" id="btn_stop_'+t.id+'"  data-id = "'+t.id+'" style="display:none;">Remove</a>';
-    //         }
-    //         return action_val;
-    //     }
-    //}
+    }
     ]
 }),
         e = t.getDataSourceQuery();
@@ -321,25 +259,7 @@ $("#btn_apply_"+idInstance).show();
 });
 
 $("select").selectpicker();
-/*$(document).on('click','#submit_btn',function(){
-   var data = $("#p_m_form_1").serialize();
-   var url = $("#p_m_form_1").attr('action');
-   ajaxCall(url,data,function(response){
-    if(response.status == ERROR_CODE){
-        getMessage(response.status,response.message);
-    }else{
-        swal({
-    title: "Wow!",
-    type: response.status,
-    text: response.message
-}).then(function() {
-    $("#p_payment_form").html('');
-    $("#another_popup").modal('hide');   
-});
-    }
-   });
-   return false;
-});*/
+
 $(document).on('change','#p_currency',function(){
     if($(this).val() == 'peso'){
         $("#p_exchange_rate").val('').prop('disabled',false);
@@ -363,11 +283,7 @@ $(document).on('change','#p_amount',function(){
        $("#p_remain_dollor").val(remain_amount);
     }else{
       alert('Amount is less than applied amount,Please remove & reapply amount from invoice');
-      /*var idInstance = $(this).data('id');
-      $("#"+idInstance).val('');
-      if($("#p_amount").val()==""){
-        return false;
-      }*/
+      
       $("#p_remain_dollor").val(0.00);
       $("#p_amount").val(0.00);
       $("#p_total_dollor").val(0.00);
@@ -376,7 +292,6 @@ $(document).on('change','#p_amount',function(){
 });
 
 $(document).on('keypress keyup','#p_exchange_rate,#p_amount',function(){
-  //alert('test');
     var val  = $("#p_exchange_rate").val();
     var p_amount  = $('#p_amount').val();
     var remain_amount = $('#p_amount').val();
@@ -424,3 +339,6 @@ $(document).on('keypress keyup','#p_exchange_rate,#p_amount',function(){
                     });
 });
 </script>
+<?php }else{?>
+<span id="noFoundPayment" style="margin: 215px;font-size: 30px;"> <?php echo "No Data Founded";?></span>
+<?php }?>
