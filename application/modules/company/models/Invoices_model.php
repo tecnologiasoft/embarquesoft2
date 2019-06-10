@@ -21,19 +21,15 @@ class Invoices_model extends My_Model {
     // invoices Models
     function _get_datatables_query($customer_id = "")
     {
-        /*$this->company_db->select("ih.*");
-        $this->company_db->from('invoice_header_payment ih');
-        $this->company_db->where('ih.customer_id' ,$customer_id);*/
+        
         $this->company_db->select("ih.sub_total as sub_total,ih.id as invoices_id,ih.*, c.email,c.address_line1, CONCAT(c.tele_country_code, ' ', c.telephone_number) as telephone_number, CONCAT(c.cell_country_code , ' ', c.cellphone_number) as cellphone_number, CONCAT(c.fname, ' ', c.lname) as name, c.state, CONCAT(s.fname, ' ', s.lname) as consignee");
         $this->company_db->from('tbl_invoice_header ih');
         $this->company_db->join('tbl_customer c','ih.customer_id = c.id');
         $this->company_db->join('tbl_shipto s','ih.shipto_id = s.id');
-        //$this->company_db->join('invoice_header_payment ihp','ih.id = ihp.invoice_id');
         
         if($customer_id){
             $this->company_db->where('ih.customer_id' ,$customer_id);
         }
-        //$this->company_db->where('ih.void','No');
         $i = 0;
         
         if(isset($_REQUEST['datatable']['query']['generalSearch']) && !empty($_REQUEST['datatable']['query']['generalSearch'])) // if datatable send POST for search
@@ -87,22 +83,22 @@ class Invoices_model extends My_Model {
             $this->company_db->order_by(key($order), $order[key($order)]);
         }
     }
-/*rajesh*/
+
 
 function _get_datatables_queryss($customer_id = "")
     {
         $this->company_db->select("ih.*");
         $this->company_db->from('invoice_header_payment ih');
-        //if($customer_id){
-            $this->company_db->where('ih.invoice_id' ,$customer_id);
-            // $this->company_db->get();
-       
-        //}
-        //$this->company_db->where('ih.void','No');
+        $this->company_db->where('ih.invoice_id' ,$customer_id);
         $i = 0;
-        
-        
-
+    }
+    /*10-jun-2019 Get total count of paymen for specific customer*/
+    function _get_datatables_query_payment($customer_id = "")
+    {
+        $customer_ids = $this->uri->segment(4);
+        $this->company_db->select("ih.invoice_id");
+        $this->company_db->from('invoice_header_payment ih');
+        $this->company_db->where('ih.customer_id' ,$customer_ids);
     }
 
     /*Get invoices records pagination*/
@@ -165,10 +161,17 @@ function _get_datatables_queryss($customer_id = "")
         $query = $this->company_db->get();
         return $query->num_rows();
     }
-    /*Rajesh*/
+    
     function count_filteredss()
     {
         $this->_get_datatables_queryss();
+        $query = $this->company_db->get();
+        return $query->num_rows();
+    }
+    /*10-jun-2019 count total payment for specific customer*/
+    function count_total_filtered()
+    {
+        $this->_get_datatables_query_payment();
         $query = $this->company_db->get();
         return $query->num_rows();
     }
@@ -209,35 +212,18 @@ function _get_datatables_queryss($customer_id = "")
         }else{
             $exchange_rate = '';   
         }
-//m_amount m_amount
         $data['insert'] = ['user_id' => $this->id,'invoice_id' => $invoiceId,'exchange_rate' => $exchange_rate,
         'amount' => $post['m_amount'],'payed' => $post['p_amount'],'balance' => $balance,'currency' => $currency,'payment_type' => $post['p_payment_type'],'driver_id' => $post['p_driver'],'receipt_number' =>$post['p_receipt_number']];
         $data['table'] = 'invoice_header_payment';
         $id = $this->insertRecord($data);
         $sql = "update tbl_invoice_header set balance = balance-$p_amount, final_balance = final_balance-$p_amount where id = '$invoiceId'";
         $this->company_db->query($sql);
-        
-        /*$this->company_db->select("payments");
-        $this->company_db->from('tbl_invoice_header');
-        $this->company_db->where('id', $invoiceId);    
-        $query = $this->db->get()->row()->payments;
-        $tot_payment = $query + $p_amount;
-        */
-
         $sql1 = "update tbl_invoice_header set payments = payments+$p_amount where id = '$invoiceId'";
         $this->company_db->query($sql1);
 
         $res['status'] = SUCCESS_CODE;
         $res['message'] = $this->lang->line('payment_has_done_successfully');
-
         echo json_encode($res);
-        
-
-
-
-
-        //$sql = "update tbl_invoice_header set reffeence = '$p_reffeence' AND currency = '$currency',balance = ";
-
 
     }
 
@@ -327,6 +313,58 @@ function _get_datatables_queryss($customer_id = "")
         }
         else
         {
+            return array();
+        }
+    }
+    /* 10-JUN-2019 count payment of the customer */
+    function countPayment($customerId)
+    {
+        $this->company_db->select("*");
+        $this->company_db->from('invoice_header_payment');
+        $this->company_db->where('customer_id',$customerId);
+        $query = $this->company_db->get();
+        if($query->num_rows() >= 1){
+            return $query->result_array();
+        }else{
+            return array();
+        }
+    }
+    /* 10-JUN-2019 Get Invoice details based on invoice id */
+    function invoiceDetail($invoiceId)
+    {
+        $this->company_db->select("*");
+        $this->company_db->from('invoice_header_payment');
+        $this->company_db->where('invoice_id',$invoiceId);
+        $query = $this->company_db->get();
+        if($query->num_rows() >= 1){
+            return $query->result_array();
+        }else{
+            return array();
+        }
+    }
+    /* 10-JUN-2019 Get Total Amt of customer */
+    function countTotalAmt($customeId)
+    {
+        $this->company_db->select("sum(final_balance) as totalAmount");
+        $this->company_db->from('tbl_invoice_header');
+        $this->company_db->where('customer_id',$customeId);
+        $query = $this->company_db->get();
+        if($query->num_rows() >= 1){
+            return $query->result_array();
+        }else{
+            return array();
+        }
+    }
+    /* 10-JUN-2019 Get Total Balance of customer */
+    function countTotalBal($customeId)
+    {
+        $this->company_db->select("sum(sub_total) as totalBalance");
+        $this->company_db->from('tbl_invoice_header');
+        $this->company_db->where('customer_id',$customeId);
+        $query = $this->company_db->get();
+        if($query->num_rows() >= 1){
+            return $query->result_array();
+        }else{
             return array();
         }
     }
