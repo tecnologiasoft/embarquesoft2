@@ -12,9 +12,9 @@ input[type = 'text'],select{
 <div class="modal-content">
           <div class="modal-header modal_header">
             <h5 class="modal-title" id="exampleModalLabel"><?php echo $this->lang->line('label_payment'); ?></h5>
-          <button type="button" class="close"  onclick = "$('#another_popup').modal('hide');">
+          <!-- <button type="button" class="close"  onclick = "$('#another_popup').modal('hide');">
               <span aria-hidden="true">&times;</span>
-          </button>
+          </button> -->
          </div>
       <div class="modal-body">
         <input type = "hidden" name = "customer_id" id = "customer_id" value = "<?=$customer_id?>">
