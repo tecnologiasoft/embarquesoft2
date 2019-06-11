@@ -2,8 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Payments extends MYcom_Controller {
 
-	private $view_folder = 'company/payments/';
-	function __construct()
+    private $view_folder = 'company/payments/';
+    function __construct()
     {
         parent::__construct();
         $this->load->model('company/payments_model','this_model');
