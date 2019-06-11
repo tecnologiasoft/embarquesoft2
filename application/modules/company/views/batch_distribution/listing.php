@@ -83,20 +83,20 @@
                     field: "MDist_BatchNum",
                     title: "<?php echo $this->lang->line('label_batch'); ?>",
                 }, {
-                    field: "MDist_Zone",
+                    field: "zone",
                     title: "<?php echo $this->lang->line('label_zone'); ?>",
-                }, {
-                    field: "MDist_status",
-                    title: "<?php echo $this->lang->line('label_status'); ?>",
-                }, {
+                },  {
+                    field: "driver",
+                    title: "<?php echo $this->lang->line('label_driver'); ?>",
+                },{
                     field: "MDist_Date",
                     title: "<?php echo $this->lang->line('label_date'); ?>",
-                }, {
+                },{
                     field: "MDist_BType",
                     title: "<?php echo $this->lang->line('label_type'); ?>",
-                }, {
-                    field: "MDist_Driver",
-                    title: "<?php echo $this->lang->line('label_driver'); ?>",
+                },{
+                    field: "Description",
+                    title: "<?php echo $this->lang->line('label_status'); ?>",
                 },
                 {
                     field: "Actions",
@@ -105,8 +105,8 @@
                     sortable: !1,
                     overflow: "visible",
                     template: function(t) {
-                        /* \t\t\t\t\t\t<a href="<?php echo base_url()."company/driver/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a> */
-                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/driver/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_driver('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
+                        /* \t\t\t\t\t\t<a href="<?php //echo base_url()."company/driver/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a> */
+                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/batch_distribution/edit/";?>'+t.MDist_BatchNum+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_driver('+t.MDist_BatchNum+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
                     }
                 }]
             }),
@@ -144,7 +144,7 @@
                     confirmButtonText: "<?php echo $this->lang->line('label_confirm') ?>",
                 }).then(function () {
                     $.ajax({
-                        url:  "<?php echo base_url(); ?>company/driver/delete/"+id,
+                        url:  "<?php echo base_url(); ?>company/batch_distribution/delete/"+id,
                         type: "GET",
                         success: function(data)
                         {
