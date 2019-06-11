@@ -355,8 +355,30 @@
          </div>
       </div>
    </div>
+<<<<<<< HEAD
   
       <div class="modal fade mm" id="another_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+=======
+   <!-- <div class="row">
+      <div class="col-md-12">
+          <div class="m-portlet__foot m-portlet__foot--fit">
+              <div class="m-form__actions m-form__actions">
+                  <div class="row">
+                      <div class="col-lg-7 ml-lg-auto m-form__actions">
+                          <button type="submit" class="btn btn-success" value="update">
+                              Submit
+                          </button>
+                          <button type="reset" class="btn btn-secondary">
+                              Reset
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </div> -->
+           <div class="modal fade mm" id="another_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+>>>>>>> branch_milestone_2
     <div class="modal-dialog modal-lg modal-dialog-centered " role="document" id = "pay_invoice_model">
 
     </div>
@@ -872,7 +894,13 @@
                         return payment;
                         <?php } ?>
                     }
+<<<<<<< HEAD
                    
+=======
+                   /*template: function(t) {
+                       return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/customer/invoice_detail_ajax_list/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>'
+                   }*/
+>>>>>>> branch_milestone_2
                }]
       }),
       e = tt.getDataSourceQuery();
@@ -897,21 +925,37 @@
    jQuery(document).ready(function() {
       console.log("test1");
       DatatableRemoteAjaxDemo.init()
+<<<<<<< HEAD
       
+=======
+      console.log("test");
+      
+   });
+>>>>>>> branch_milestone_2
    $(document).on('click','.invoice_pay_dtl',function(){
             var url  = SITE_URL+'company/customer/paymentDetails';
             var ids = $(this).data('id');
             var data = {id:ids};
             ajaxCall(url,data,function(response){
 
+<<<<<<< HEAD
                 if(response.status==SUCCESS_CODE){
+=======
+               // if(response.status==SUCCESS_CODE){
+>>>>>>> branch_milestone_2
                 $("#pay_invoice_model").html('');
                 $("#pay_invoice_model").html(response.data);
                 $("#another_popup").modal('show');
 
+<<<<<<< HEAD
                 }else{
                     alert(response.message);
                 }
+=======
+                //}else{
+                //    alert(response.message);
+                //}
+>>>>>>> branch_milestone_2
 
             });
         });
