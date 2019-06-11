@@ -360,7 +360,7 @@ body.m-brand--minimize .menu-fixed{
                      </a>
                   </li> -->
                   <li class="m-menu__item <?php echo $this->common->get_menu('warehouse'); ?>" aria-haspopup="true" >
-                     <a  href="#<?php echo base_url('company/warehouse'); ?>" class="m-menu__link ">
+                     <a  href="<?php echo base_url('company/warehouse'); ?>" class="m-menu__link ">
                      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                      <span></span>
                      </i>
@@ -400,7 +400,7 @@ body.m-brand--minimize .menu-fixed{
                      </a>
                   </li>
                   <li class="m-menu__item <?php echo $this->common->get_menu('zone_validation'); ?>" aria-haspopup="true" >
-                     <a  href="#<?php //echo base_url('company/zone_validation'); ?>" class="m-menu__link ">
+                     <a  href="<?php echo base_url('company/zone_validation'); ?>" class="m-menu__link ">
                      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
                      <span></span>
                      </i>
