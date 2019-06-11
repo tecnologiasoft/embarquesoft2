@@ -25,6 +25,8 @@
                  </div>
               </div>
               <div class="tab-content">
+
+              	
                <?php
                 $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data');
                 echo form_open($formAction,$form_data);
