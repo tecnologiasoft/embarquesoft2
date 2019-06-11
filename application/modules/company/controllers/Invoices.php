@@ -7,9 +7,6 @@ class Invoices extends MYcom_Controller {
     function __construct()
     {
         parent::__construct();
-        
-        
-        
         $this->load->model('company/invoices_model');
     }
 
@@ -27,7 +24,6 @@ class Invoices extends MYcom_Controller {
         $data['username'] = $this->username;
         $data['driver_list'] = $this->invoices_model->get_driver_list();
         $data['agent_list'] = $this->invoices_model->get_agent_list();
-        
         $data['next_shipto_id'] = $this->invoices_model->get_next_shipto_id();
         $data['title'] = $this->lang->line('title_invoices_list');
         $data['js'] = [MAP_API_URL,'invoice', base_url().'assets/demo/default/custom/components/parsley/dist/parsley.min.js'];
@@ -41,11 +37,8 @@ class Invoices extends MYcom_Controller {
         $data['customer_list'] = $this->invoices_model->get_customer_list();
         $data['driver_list'] = $this->invoices_model->get_driver_list();
         $data['next_shipto_id'] = $this->invoices_model->get_next_shipto_id();
-        
         $this->load->view($this->view_folder.'invoice', $data);
     }
-
-    
 
     /**
      * ajax_list
@@ -57,10 +50,8 @@ class Invoices extends MYcom_Controller {
     function ajax_list($customer_id = '')
     {
         $AllPostData = $this->input->post();
-        
         $list = $this->invoices_model->get_datatables($customer_id);
         $data = array();
-
         $output = array(
                     "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->invoices_model->count_filtered(),'sort'=>'asc','field'=>'company_id'),
                     "data" => $list,
@@ -68,18 +59,14 @@ class Invoices extends MYcom_Controller {
         //output to json format
         echo json_encode($output);
     } 
-    // customer
-    // customer edit payment screen 
+    // customer edit payment screen & update on 10-jun-2019
     function ajax_payment_list($customer_id = '')
     {
         $AllPostData = $this->input->post();
-        
         $list = $this->invoices_model->get_payment_datatables($customer_id);
-        //print_r($list);
-        //die();
         $data = array();
         $output = array(
-                    "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->invoices_model->count_filtered(),'sort'=>'asc','field'=>'company_id'),
+                    "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->invoices_model->count_total_filtered($customer_id),'sort'=>'desc','field'=>'company_id'),
                     "data" => $list,
                 );
         //output to json format
@@ -89,10 +76,8 @@ class Invoices extends MYcom_Controller {
 function ajax_listss($customer_id = '')
     {
         $AllPostData = $this->input->post();
-        
         $list = $this->invoices_model->get_datatablesss($customer_id);
         $data = array();
-
         $output = array(
                     "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->invoices_model->count_filteredss(),'sort'=>'asc','field'=>'company_id'),
                     "data" => $list,
@@ -103,9 +88,7 @@ function ajax_listss($customer_id = '')
     /*Add new invoices*/
     function add()
     {
-        /*print_r($this->input->post()); die;*/
         $message = array();
-        
         $this->form_validation->set_rules('date',$this->lang->line('field_date'),'required|trim');
         $this->form_validation->set_rules('due_date',$this->lang->line('field_due_date'),'trim');
         $this->form_validation->set_rules('user',$this->lang->line('field_user'),'trim');
@@ -138,7 +121,6 @@ function ajax_listss($customer_id = '')
            
             $customer_id = $this->input->post('text_customer_id');
             $shipto_id = $this->input->post('shipto_id');
-            
             $has_insrance = (!empty($this->input->post('final_insurance')))? "Yes" : "No";
 
             /* internal invoice number */
@@ -208,8 +190,6 @@ function ajax_listss($customer_id = '')
             $message['data_item'] = ['id' => $header_last_id];
             $message['message'] = $this->lang->line('text_invoices_add_success');
         }
-        
-
         header('Content-Type: application/json');
         echo json_encode($message);
     }
@@ -250,7 +230,6 @@ function ajax_listss($customer_id = '')
             redirect('company/invoices/listing','refresh');
         }
         $data = array();
-        
         $data['result'] = $this->invoices_model->get_invoices_data($this->uri->segment(4));
         $data['items_list'] = $this->invoices_model->get_invoices_items($this->uri->segment(4));
         $data['customer_data'] = $this->invoices_model->get_customer_data($data['result']['customer_id']);
@@ -261,21 +240,16 @@ function ajax_listss($customer_id = '')
     public function pay_invoice(){
 
         if($this->input->post() && $this->input->is_ajax_request()){
-              
             $this->form_validation->set_rules('p_invoice_id', $this->lang->line('label_invoice_hash'), 'required|trim');
             $this->form_validation->set_rules('p_currency', $this->lang->line('label_currency'), 'required|trim');
             $this->form_validation->set_rules('p_amount', $this->lang->line('label_amount'), 'required|trim|numeric');
             $this->form_validation->set_rules('p_payment_type', $this->lang->line('label_payment_type'), 'required|trim|numeric');
             $this->form_validation->set_rules('p_driver', $this->lang->line('label_driver'), 'required|trim|numeric');
-            
             if ($this->input->post('p_currency') == 'peso') {
-    
                 $this->form_validation->set_rules('p_exchange_rate', $this->lang->line('field_exchange_rate'), 'required|trim|numeric');
-                //$this->form_validation->set_rules('p_total_peso', $this->lang->line('label_total_peso'), 'required|trim|numeric');
             }
     
             if ($this->form_validation->run() == false) {
-    
                 $res['status'] = ERROR_CODE;
                 $res['data'] = '';
                 $res['message'] = validation_errors();
@@ -283,9 +257,7 @@ function ajax_listss($customer_id = '')
                 die;
     
             }
-
             $this->invoices_model->pay_invoice($this->input->post());
-
         }
     }
     /* get customer list by ajax */
@@ -296,35 +268,22 @@ function ajax_listss($customer_id = '')
     } 
 
     function get_payment_form(){
-
         $data['result'] = $this->invoices_model->get_invoices_data($this->uri->segment(4));
         $data['driver_list'] = $this->invoices_model->get_driver_list();
         $data['payment_type'] = $this->Main_model->getType('payment');
         $data['customer_id'] = $this->input->post('id');
         echo $this->load->view($this->view_folder.'payment_screen',$data,true);
-        
-
     }
-
 
     function get_claim_form(){
-        
         $data['result'] = $this->invoices_model->get_claim_data($this->uri->segment(4));
-        
-        
         echo $this->load->view($this->view_folder.'claim_screen',$data,true);
-        
-
     }
  function add_claim(){
-
     if($this->input->post() && $this->input->is_ajax_request()){
-              
         $this->form_validation->set_rules('claim', $this->lang->line('label_invoice_hash'), 'required|trim');
         $this->form_validation->set_rules('claim_invoice_number', $this->lang->line('label_invoice_number'), 'required|trim');
-        
         if ($this->form_validation->run() == false) {
-
             $res['status'] = ERROR_CODE;
             $res['data'] = '';
             $res['message'] = validation_errors();
@@ -334,14 +293,11 @@ function ajax_listss($customer_id = '')
         }
 
         $res = $this->invoices_model->add_claim($this->input->post());
-
         echo json_encode($res);
         die;
-
     }
  }
     function get_mail_form(){
-        
         $string = $this->load->view($this->view_folder.'mail_screen','',true);
         echo $string;
         die;
@@ -367,7 +323,6 @@ function ajax_listss($customer_id = '')
     /* get shipto list data by ajax */
     function get_customer_shipto($customer_id ="")
     {
-        
         if(!empty($customer_id)){
             $output = $this->invoices_model->get_customer_shipto($customer_id);
         }
@@ -381,7 +336,6 @@ function ajax_listss($customer_id = '')
         $output = array('result'=>'');
         if(!empty($shipto_id)){
             $output['result'] = $this->invoices_model->get_shipto_data($shipto_id);
-            
         }
         echo json_encode($output);
         die;
@@ -392,16 +346,9 @@ function ajax_listss($customer_id = '')
     /* send email pdf */
     function send_invoice_email()
     {
-        
         if($this->input->post() && $this->input->is_ajax_request()){
-
-        
-
         $AllPostData=$this->input->post();
-
         $this->form_validation->set_rules('email',$this->lang->line('field_email'),'required|trim|valid_email');
-        
-
         if ($this->form_validation->run() == FALSE)
         {
             $res['status'] = ERROR_CODE;
@@ -411,43 +358,31 @@ function ajax_listss($customer_id = '')
         } 
         else 
         {
-
-                
-
             $data = array();
             $email=$AllPostData['email'];
             $invoice_id=$AllPostData['invoice_id'];
-
             $data['result'] = $this->invoices_model->get_invoices_data($invoice_id);
             $data['items_list'] = $this->invoices_model->get_invoices_items($invoice_id);
             $data['customer_data'] = $this->invoices_model->get_customer_data($data['result']['customer_id']);
             $data['shipto_data'] = $this->invoices_model->get_shipto_data($data['result']['shipto_id']);
             $html=$this->load->view($this->view_folder.'invoice_pdf_generate', $data,true);
-
             $pdfFilePath="assets/upload/invoice_pdf/";
             $pdfFilePath.="invoice_".date("d-m-Y")."_".time().".pdf";
-
             //load mPDF library
             $this->load->library('m_pdf');
-         
             //generate the PDF from the given html
             $this->m_pdf->pdf->WriteHTML($html);
-         
-            
             $this->m_pdf->pdf->Output($pdfFilePath); 
-
             $cname=$this->session->userdata('company_name');
             $cemail=$this->session->userdata('company_email');
             $subject="Invoice Email";
             $message="Hello,<br/>Please find invoice attachment.<br/>Thanks,<br/>$cname";
-            
             $mail_arr= array('to' =>$email ,
                 "from"=>$cemail,
                 "from_name"=>$cname,
                 "subject"=>$subject,
                 "message"=>$message,
                 "attachment"=>$pdfFilePath);
-            
             if($this->common->send_email_pdf($mail_arr))
             {
                 $res['status'] = SUCCESS_CODE;
@@ -466,32 +401,20 @@ function ajax_listss($customer_id = '')
      }
     } 
 public function payment_get_invoice_list(){
-
         if($this->input->post() && $this->input->is_ajax_request()){
-
         $data = array();
         $this->load->model('company/invoices_model');
         $data['driver_list'] = $this->invoices_model->get_driver_list();
-        //print_r($data);
-        //die;
         $data['payment_type'] = $this->Main_model->getType('payment');
         $data['customer_id'] = $this->input->post('id');
         $string =  $this->load->view($this->payment_view_folder.'payment_screen',$data,true);
-
         $res['status'] = SUCCESS_CODE;
         $res['data'] = $string;
         $res['message'] = '';
         echo json_encode($res);
         die;
-        
-        
-
         }else{
-
         }
-        
-
-        
     }
     /* This function is used for load invoice details in ajax */
     function get_invoice_details_ajax($id)
@@ -503,18 +426,11 @@ public function payment_get_invoice_list(){
         $data['agent_list'] = $this->invoices_model->get_agent_list();
         $data['result'] = $this->invoices_model->get_invoices_data($id);
         $data['result']['customer_data']=$this->invoices_model->get_customer_data($data['result']['customer_id']);
-        
         $data['result']['shipto_data']=$this->invoices_model->get_shipto_data($data['result']['shipto_id']);
-        
         $data['result']['invoice_items']=$this->invoices_model->get_invoices_items($id);
         $inv_count=count($data['result']['invoice_items']);
         $data['invoice_item_count']=$inv_count;
         $data['edit_invoice_id']=$id;
-
-        
-   /*     echo "<pre>";
-        print_r($data);
-        die;*/
         $html=$this->load->view($this->view_folder.'edit_invoice_content', $data,true);
         print_r($html); die;
     }
@@ -522,9 +438,7 @@ public function payment_get_invoice_list(){
     /*Add new invoices*/
     function edit()
     {
-        /*print_r($this->input->post()); die;*/
         $message = array();
-        
         if($this->input->post('edit_text_customer_id') == ''){
             $message['code'] = "0";
             $res['message'] = $this->lang->line('please_add_a_customer_before_add_shipto');
@@ -535,14 +449,12 @@ public function payment_get_invoice_list(){
         
         $this->form_validation->set_rules('edit_shipto_fname', $this->lang->line('label_shipto_details').' '.$this->lang->line('field_first_name'), 'required|trim');
         $this->form_validation->set_rules('edit_shipto_lname', $this->lang->line('label_shipto_details').' '.$this->lang->line('field_last_name'), 'required|trim');
-        
         $this->form_validation->set_rules('edit_shipto_address', $this->lang->line('label_shipto_details').' '.$this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('edit_shipto_address_1', $this->lang->line('label_shipto_details').' '.$this->lang->line('field_address_line_1'), 'required|trim');
         $this->form_validation->set_rules('edit_shipto_address_2', $this->lang->line('label_shipto_details').' '.$this->lang->line('field_address_line_2'), 'trim|required');
       
         $this->form_validation->set_rules('edit_shipto_province', $this->lang->line('label_shipto_details').' '.$this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('edit_shipto_sector', $this->lang->line('label_shipto_details').' '.$this->lang->line('label_sector'), 'required|trim');
-
         if (($this->input->post('edit_shipto_telephone_number') == '') && ($this->input->post('edit_shipto_cellphone_number') == '')) {
 
             $this->form_validation->set_rules('edit_shipto_telephone_number', $this->lang->line('label_shipto_details').' '.$this->lang->line('field_telephone_number'), 'required|trim');
@@ -612,13 +524,7 @@ public function payment_get_invoice_list(){
                     'lic_id' => $this->input->post('edit_customer_lic')
                     
                 );
-               
-
                 $this->invoices_model->update_customer($customer_id,$params);
-
-            
-
-            
                 $shipto_id = $this->input->post('edit_shipto_id');
                 $params = array(
                     'user_id' => $this->id,
@@ -636,15 +542,11 @@ public function payment_get_invoice_list(){
                     'telephone_number' => $this->input->post('edit_shipto_telephone_number'),
                     'cellphone_number' => $this->input->post('edit_shipto_cellphone_number')
                 );
-                
-
                 $this->invoices_model->update_shipto($shipto_id, $params);
-            
                 $has_insrance = (!empty($this->input->post('edit_final_insurance')))? "Yes" : "No";
 
             /* internal invoice number */
             /* branch_id-nextinvoice_id_of_branch */
-
             $params = array(
                 'customer_id' => $customer_id,
                 'shipto_id' => $shipto_id,

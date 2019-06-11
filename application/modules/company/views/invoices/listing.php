@@ -370,7 +370,9 @@ input#customer_id, #div_shipto_id > .select2-container--default .select2-selecti
 
                             return false;
                         });
+                        $(document).on('keypress','#customer_telephone_number',function(){
 
+                        });
                         $(document).on('keypress paste change','#customer_telephone_number',function(){
                            var $this = $(this);
                             var data = {customer_telephone_number:$this.val()};
@@ -567,7 +569,12 @@ input#customer_id, #div_shipto_id > .select2-container--default .select2-selecti
                                 <script>
                                $(document).ready(function(){
                    
-                                
+                             $("#customer_id").on("keyup", function(e) {
+                                console.log($("#customer_id").val());
+                                if($("#customer_id").val() == ""){
+                                   clear_form();  
+                                }
+                            });   
                    
                    $("#date").datepicker({
                     
@@ -1359,8 +1366,10 @@ function get_shipto_data(id){
         }
     }); // END OF AJAX CALL
 }
-var x = 1; //initialize counter for text box          
+var x = 1; //initialize counter for text box 
+// Updated on 11-jun         
 $(document).on('click','.addMore',function(){
+    console.log("test");
     var string = add_more_button();
     $('.childRemove').remove();
     $("#invoice_multiple_items").append(string[0]);

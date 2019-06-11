@@ -75,15 +75,9 @@ class Customer extends MYcom_Controller
         $this->load->model('company/branch_model');
         $data['branch_list'] = $this->branch_model->getBranch();
         $data['current_user_branchId'] = $this->customer_model->get_cur_branchId($this->id);
-        //print_r($data);
-        //die();
         $this->loadView($this->view_folder . 'add', $data);
     }
-/*View details of invoice in customer edit page*/
-/*public function view(){
-
-}
-  */  /*Add new Customer*/
+  /*Add new Customer*/
     public function save()
     {
 
@@ -98,53 +92,18 @@ class Customer extends MYcom_Controller
         $this->load->model('company/branch_model');
         $data['branch_list'] = $this->branch_model->getBranch();
 
-        //$this->form_validation->set_rules('company_name',$this->lang->line('field_company_name'),'trim');
-        //$this->form_validation->set_rules('user_name',$this->lang->line('field_user_name'),'trim');
         $this->form_validation->set_rules('fname', $this->lang->line('field_first_name'), 'required|trim');
         $this->form_validation->set_rules('lname', $this->lang->line('field_last_name'), 'required|trim');
-        //$this->form_validation->set_rules('email', $this->lang->line('field_email'), 'required|trim|valid_email');
-        //$this->form_validation->set_rules('website',$this->lang->line('field_website'),'trim');
-        //$this->form_validation->set_rules('password',$this->lang->line('field_password'),'trim|min_length[4]');
-        //$this->form_validation->set_rules('confirmpassword', $this->lang->line('field_confirm_password'), 'trim|matches[password]');
-
-        //$this->form_validation->set_rules('address',$this->lang->line('field_address'),'required|trim');
        $this->form_validation->set_rules('address_line1', $this->lang->line('field_address_line_1'), 'trim');
-        //$this->form_validation->set_rules('address_line_2', $this->lang->line('field_address_line_2'), 'trim');
         $this->form_validation->set_rules('city', $this->lang->line('field_city'), 'required|trim');
-        // $this->form_validation->set_rules('borough',$this->lang->line('field_borough'),'required|trim');
         $this->form_validation->set_rules('state', $this->lang->line('field_state'), 'required|trim');
-        //$this->form_validation->set_rules('branch', $this->lang->line('label_branch'), 'required|trim');
-        // $this->form_validation->set_rules('country',$this->lang->line('field_country'),'required|trim');
-        //$this->form_validation->set_rules('zipcode',$this->lang->line('field_zipcode'),'required|trim');
-
-        //$this->form_validation->set_rules('tele_country_code',$this->lang->line('field_tele_country_code'),'required|trim');
-        //$this->form_validation->set_rules('office_country_code',$this->lang->line('field_office_country_code'),'required|trim');
-        //$this->form_validation->set_rules('cell_country_code',$this->lang->line('field_cell_country_code'),'required|trim');
-        // if(empty($this->input->post('cellphone_number')) && empty($this->input->post('office_phone_number'))){
-        //     $this->form_validation->set_rules('telephone_number',$this->lang->line('field_telephone_number'),'required|trim');
-        // }
-        // if(empty($this->input->post('telephone_number')) && empty($this->input->post('office_phone_number'))){
-        //     $this->form_validation->set_rules('cellphone_number',$this->lang->line('field_cellphone_number'),'required|trim');
-        // }
-       
+        
         if (($this->input->post('cellphone_number') != '') && ($this->input->post('telephone_number') != '')) {
 
             $this->form_validation->set_rules('telephone_number', $this->lang->line('field_telephone_number'), 'required|trim');
             $this->form_validation->set_rules('cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim');
         }
-
-
-        //$this->form_validation->set_rules('fax_number',$this->lang->line('field_fax_number'),'trim');
-
-        //$this->form_validation->set_rules('lic_id',$this->lang->line('field_lic_id'),'trim');
         $this->form_validation->set_rules('language',$this->lang->line('field_language'),'trim|required|in_list[English,Spanish]');
-        //$this->form_validation->set_rules('price_code',$this->lang->line('field_price_code'),'trim');
-        //$this->form_validation->set_rules('agent_code',$this->lang->line('field_agent_code'),'trim');
-        //$this->form_validation->set_rules('disable_pickup',$this->lang->line('field_disable_pickup'),'trim');
-        //$this->form_validation->set_rules('notes',$this->lang->line('field_notes'),'trim');
-        //$this->form_validation->set_rules('has_pickup',$this->lang->line('field_has_pickup'),'trim|required|in_list[Yes,No]');
-        //$this->form_validation->set_rules('additional_pickup',$this->lang->line('field_additional_pickup'),'trim|required|in_list[Yes,No]');
-
         $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
         if ($this->form_validation->run() == false) {
             //die(validation_errors());
@@ -175,10 +134,7 @@ class Customer extends MYcom_Controller
                     $this->session->set_flashdata('err_msg1', $this->upload->display_errors('', ''));
                     $this->loadView($this->view_folder . 'add', $data);return;
                 }
-            } /*else{
-            $this->session->set_flashdata('err_msg1', sprintf($this->lang->line('label_please_select'),$this->lan->line('field_lic_picture')));
-            $this->load->view($this->view_folder.'add', $data); return;
-            }*/
+            } 
 
             $params = array(
                 'fname' => $this->input->post('fname'),
@@ -301,12 +257,8 @@ public function invoiceview()
         $data['css'] = ['custom'];
         $data['function'] = 'edit';
         $data = array();
-
         $data['result'] = $this->customer_model->get_invoice_data($this->uri->segment(4));
         $this->load->view($this->view_folder . 'view_invoice', $data);
-        //redirect('company/customer/view/', 'refresh');
-        //$this->load->model('company/customer_model');
-        //$this->loadView($this->view_folder . 'view', $data);
     }
     /*Load user profile details*/
     public function edit()
@@ -329,9 +281,10 @@ public function invoiceview()
             $data['tab_id'] = "1";
         }
 
-        //$id = $this->uri->segment(4); 
         $data['invoice'] =  $this->customer_model->get_invoice_data($this->uri->segment(4));
         $data['result'] = $this->customer_model->get_customer_data($this->uri->segment(4));
+        /*10-jan-2019 count the invoice of the customer*/
+        $data['countInvoice'] = $this->customer_model->countInvoiceData($this->uri->segment(4));
         if (!empty($data['result'])) {
             $this->loadView($this->view_folder . 'edit', $data);
         } else {
@@ -344,7 +297,6 @@ public function invoiceview()
 
         if($this->input->is_ajax_request() && $this->input->post()){
             $customer_id  = $this->input->post('customer_id');
-           // $this->form_validation->set_rules('company_name', $this->lang->line('label_company'), 'required|trim');
             $this->form_validation->set_rules('customer_fname', $this->lang->line('label_first_name'), 'required|trim');
             $this->form_validation->set_rules('customer_lname', $this->lang->line('customer_lname'), 'required|trim');
             $this->form_validation->set_rules('customer_address_line_1', $this->lang->line('label_address_1'), 'required|trim');
@@ -392,28 +344,19 @@ public function invoiceview()
 
     }
 
-
-
     public function create_invoice_customer(){
-
         if($this->input->is_ajax_request() && $this->input->post()){
-            
-           // $this->form_validation->set_rules('company_name', $this->lang->line('label_company'), 'required|trim');
             $this->form_validation->set_rules('customer_fname', $this->lang->line('label_first_name'), 'required|trim');
             $this->form_validation->set_rules('customer_lname', $this->lang->line('label_last_name'), 'required|trim');
             $this->form_validation->set_rules('customer_address_line_1', $this->lang->line('label_address_1'), 'required|trim');
             $this->form_validation->set_rules('customer_city', $this->lang->line('label_city'), 'required|trim');
             $this->form_validation->set_rules('customer_state', $this->lang->line('label_state'), 'required|trim');
-            //$this->form_validation->set_rules('customer_balance', $this->lang->line('label_balance'), 'required|trim');
             $this->form_validation->set_rules('customer_zipcode', $this->lang->line('label_zipcode'), 'required|trim');
-            
             if (($this->input->post('customer_telephone_number') == '') && ($this->input->post('customer_cellphone_number') == '')) {
 
                 $this->form_validation->set_rules('customer_telephone_number', $this->lang->line('field_telephone_number'), 'required|trim|max_length[12]');
                 $this->form_validation->set_rules('customer_cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim|max_length[12]');
             }
-            //$this->form_validation->set_rules('customer_language',$this->lang->line('field_language'),'trim|required|in_list[English,Spanish]');
-
             if ($this->form_validation->run() == false) {
                 $res['status'] = ERROR_CODE;
                 $res['data'] = '';
@@ -452,8 +395,6 @@ public function invoiceview()
     }
 
     function customer_check_phone(){
-        
-         
         $response = $this->customer_model->check_dupicate_customer();
         if($response == false){
             echo json_encode(['status' => ERROR_CODE,'message' => $this->lang->line('telephone_number_is_already_exist')]);
@@ -462,17 +403,13 @@ public function invoiceview()
     /*Update user details*/
     public function update()
     {
-        
-        
         $user_id = $this->input->post('id');
         $data = array();
-
         if (!empty($this->input->cookie('tab_id', true))) {
             $data['tab_id'] = $this->input->cookie('tab_id', true);
         } else {
             $data['tab_id'] = "1";
         }
-
         $data['result'] = $this->customer_model->get_customer_data($user_id);
         
         
@@ -480,58 +417,19 @@ public function invoiceview()
             redirect('company/customer/listing', 'refresh');
         }
         
-        
-        //$this->form_validation->set_rules('company_name',$this->lang->line('field_company_name'),'trim');
-        //$this->form_validation->set_rules('user_name',$this->lang->line('field_user_name'),'trim');
         $this->form_validation->set_rules('fname', $this->lang->line('field_first_name'), 'required|trim');
         $this->form_validation->set_rules('lname', $this->lang->line('field_last_name'), 'required|trim');
-        //$this->form_validation->set_rules('email', $this->lang->line('field_email'), 'required|trim|valid_email');
-        //$this->form_validation->set_rules('website',$this->lang->line('field_website'),'trim');
-
         $this->form_validation->set_rules('address_line1', $this->lang->line('address_line1'), 'required|trim');
-        //$this->form_validation->set_rules('address_line_1',$this->lang->line('field_address_line_1'),'trim');
-        //$this->form_validation->set_rules('address_line_2',$this->lang->line('field_address_line_2'),'trim');
-        //$this->form_validation->set_rules('lic_id',$this->lang->line('field_lic_id'),'trim');
         $this->form_validation->set_rules('city', $this->lang->line('field_city'), 'required|trim');
         $this->form_validation->set_rules('state', $this->lang->line('field_state'), 'required|trim');
         $this->form_validation->set_rules('branch', $this->lang->line('label_branch'), 'required|trim');
-        //$this->form_validation->set_rules('country',$this->lang->line('field_country'),'required|trim');
-        //$this->form_validation->set_rules('zipcode',$this->lang->line('field_zipcode'),'required|trim');
-        //$this->form_validation->set_rules('password',$this->lang->line('field_password'),'required|trim|min_length[4]');
-        // if(!empty($this->input->post('password'))){
-        //     $this->form_validation->set_rules('password',$this->lang->line('field_password'),'required|trim|min_length[4]');
-        //     $this->form_validation->set_rules('confirmpassword', $this->lang->line('field_confirm_password'), 'required|trim|matches[password]');
-        // }
-
-        //$this->form_validation->set_rules('tele_country_code',$this->lang->line('field_tele_country_code'),'required|trim');
-        //$this->form_validation->set_rules('office_country_code',$this->lang->line('field_office_country_code'),'required|trim');
-        //$this->form_validation->set_rules('cell_country_code',$this->lang->line('field_cell_country_code'),'required|trim');
-
-        // if(empty($this->input->post('cellphone_number')) && empty($this->input->post('office_phone_number'))){
-        //     $this->form_validation->set_rules('telephone_number',$this->lang->line('field_telephone_number'),'required|trim');
-        // }
-        // if(empty($this->input->post('telephone_number')) && empty($this->input->post('office_phone_number'))){
-        //     $this->form_validation->set_rules('cellphone_number',$this->lang->line('field_cellphone_number'),'required|trim');
-        // }
 
         if (($this->input->post('cellphone_number') != '') && ($this->input->post('telephone_number') != '')) {
 
             $this->form_validation->set_rules('telephone_number', $this->lang->line('field_telephone_number'), 'required|trim');
             $this->form_validation->set_rules('cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim');
         }
-
-      
-        //$this->form_validation->set_rules('fax_number',$this->lang->line('field_fax_number'),'trim');
-
-        //$this->form_validation->set_rules('lic_id',$this->lang->line('field_lic_id'),'trim');
-         $this->form_validation->set_rules('language',$this->lang->line('field_language'),'trim|required|in_list[English,Spanish]');
-        // $this->form_validation->set_rules('price_code',$this->lang->line('field_price_code'),'trim');
-        // $this->form_validation->set_rules('agent_code',$this->lang->line('field_agent_code'),'trim');
-        // $this->form_validation->set_rules('disable_pickup',$this->lang->line('field_disable_pickup'),'trim');
-        // $this->form_validation->set_rules('notes',$this->lang->line('field_notes'),'trim');
-        //$this->form_validation->set_rules('has_pickup',$this->lang->line('field_has_pickup'),'trim|required|in_list[Yes,No]');
-        //$this->form_validation->set_rules('additional_pickup',$this->lang->line('field_additional_pickup'),'trim|required|in_list[Yes,No]');
-
+        $this->form_validation->set_rules('language',$this->lang->line('field_language'),'trim|required|in_list[English,Spanish]');
         $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
         if ($this->form_validation->run() == false) {
             
@@ -563,7 +461,6 @@ public function invoiceview()
                     redirect(base_url('company/customer/edit/') . $user_id, 'refresh');
                 }
             }
-
             $params = array(
                             'branch_id' => $this->input->post('branch'),
                             'fname' => $this->input->post('fname'),
@@ -650,10 +547,8 @@ public function invoiceview()
             } else {
                 $params['notes'] = "";
             }
-
             // Update customer details
             $this->customer_model->update_customer($user_id, $params);
-
             $this->session->set_flashdata('succ_msg1', $this->lang->line('text_customer_update_success'));
             redirect('company/customer/listing/', 'refresh');
         }
@@ -684,7 +579,6 @@ public function invoiceview()
         $ID = $this->uri->segment(4);
         $state = $this->uri->segment(5);
         $this->customer_model->user_state($ID, $state);
-
         echo json_encode();
     }
 
@@ -694,7 +588,6 @@ public function invoiceview()
         $AllPostData = $this->input->post();
         $list = $this->customer_model->get_shipto_datatables();
         $data = array();
-
         $output = array(
             "meta" => array('page' => $AllPostData['datatable']['pagination']['page'], 'pages' => $AllPostData['datatable']['pagination']['pages'], 'perpage' => $AllPostData['datatable']['pagination']['perpage'], 'total' => $this->customer_model->shipto_count_filtered(), 'sort' => 'asc', 'field' => 'company_id'),
             "data" => $list,
@@ -708,7 +601,6 @@ public function invoiceview()
         $AllPostData = $this->input->post();
         $list = $this->customer_model->get_invoice_details_datatables();
         $data = array();
-
         $output = array(
             "meta" => array('page' => $AllPostData['datatable']['pagination']['page'], 'pages' => $AllPostData['datatable']['pagination']['pages'], 'perpage' => $AllPostData['datatable']['pagination']['perpage'], 'total' => $this->customer_model->invoice_details_count_filtered(), 'sort' => 'asc', 'field' => 'company_id'),
             "data" => $list,
@@ -717,9 +609,7 @@ public function invoiceview()
         $this->load->view($this->view_folder . 'view_invoice', $data);
         
     }
-
     public function create_invoice_shipto(){
-
         if($this->input->post('customer_id') == ''){
             $res['status'] = ERROR_CODE;
             $res['data'] = '';
@@ -727,26 +617,18 @@ public function invoiceview()
             echo json_encode($res);
             die;
         }
-        
-        
         $this->form_validation->set_rules('shipto_fname', $this->lang->line('field_first_name'), 'required|trim');
         $this->form_validation->set_rules('shipto_lname', $this->lang->line('field_last_name'), 'required|trim');
-        
         $this->form_validation->set_rules('shipto_address', $this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('shipto_address_1', $this->lang->line('field_address_line_1'), 'required|trim');
         $this->form_validation->set_rules('shipto_address_2', $this->lang->line('field_address_line_2'), 'trim|required');
-      
         $this->form_validation->set_rules('shipto_province', $this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('shipto_sector', $this->lang->line('label_sector'), 'required|trim');
-
         if (($this->input->post('shipto_telephone_number') == '') && ($this->input->post('shipto_cellphone_number') == '')) {
-
             $this->form_validation->set_rules('shipto_telephone_number', $this->lang->line('field_telephone_number'), 'required|trim');
             $this->form_validation->set_rules('shipto_cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim');
         }
-
         if ($this->form_validation->run() == false) {
-
             $res['status'] = ERROR_CODE;
             $res['data'] = '';
             $res['message'] = validation_errors();
@@ -754,7 +636,6 @@ public function invoiceview()
             die;
 
         } else {
-
             $params = array(
                 'user_id' => $this->id,
                 'customer_id' => $this->input->post('customer_id'),
@@ -771,29 +652,23 @@ public function invoiceview()
                 'telephone_number' => $this->input->post('shipto_telephone_number'),
                 'cellphone_number' => $this->input->post('shipto_cellphone_number')
             );
-
             $id = $this->customer_model->add_shipto($params);
-
             $this->Main_model->updateCompanyRefIds('shipto_id', $id);
-
             $res['status'] = SUCCESS_CODE;
             $res['data'] = ['id' => $id];
             $res['message'] = $this->lang->line('text_shipto_add_success');
             echo json_encode($res);
             die;
-
         }
 
                 
     }
-
     /*Add new shipto*/
     public function add_shipto($customer_id = "")
     {
         if (empty($customer_id)) {
             redirect(base_url("company/customer"), "refresh");
         }
-        
         $data = array();
         $data['title'] = $this->lang->line('title_add_new_shipto');
         $data['second_title'] = $this->lang->line('title_edit_customer');
@@ -802,37 +677,26 @@ public function invoiceview()
         $data['function'] = 'add_shipto';
         $data['user_result'] = $this->customer_model->get_customer_data($customer_id);
         $data['next_id'] = $this->customer_model->get_next_shipto_id();
-        
         if(($_SERVER['HTTP_REFERER'] == SITE_URL.'company/pickup/add') || 
         ($_SERVER['HTTP_REFERER'] == $this->session->userdata('redirect_url'))){
-         
-
             $this->session->set_userdata('pickup_redirect',$_SERVER['HTTP_REFERER']);
-
         }
-        
-        
         $this->form_validation->set_rules('company_name', $this->lang->line('field_company_name'), 'trim');
         $this->form_validation->set_rules('fname', $this->lang->line('field_first_name'), 'required|trim');
         $this->form_validation->set_rules('lname', $this->lang->line('field_last_name'), 'required|trim');
         if($this->input->post('email') != '')
         $this->form_validation->set_rules('email', $this->lang->line('field_email'), 'trim|valid_email');
-
         $this->form_validation->set_rules('address', $this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('address_line_1', $this->lang->line('field_address_line_1'), 'trim');
         $this->form_validation->set_rules('address_line_2', $this->lang->line('field_address_line_2'), 'trim');
-        
         $this->form_validation->set_rules('country', $this->lang->line('field_country'), 'required|trim');
-       
         $this->form_validation->set_rules('province', $this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('sector', $this->lang->line('label_sector'), 'required|trim');
-
         if (($this->input->post('cellphone_number') != '') && ($this->input->post('telephone') != '')) {
 
             $this->form_validation->set_rules('telephone', $this->lang->line('field_telephone_number'), 'required|trim');
             $this->form_validation->set_rules('cellphone_number', $this->lang->line('field_cellphone_number'), 'required|trim');
         }
-        
         $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
         if ($this->form_validation->run() == false) {
 
@@ -947,7 +811,6 @@ public function invoiceview()
             redirect('company/customer/listing', 'refresh');
         }
         $data = array();
-
         $data['result'] = $this->customer_model->get_shipto_data($this->uri->segment(4));
         $this->load->view($this->view_folder . 'view_shipto', $data);
     }
@@ -956,11 +819,8 @@ public function invoiceview()
     public function edit_shipto()
     {
         $shipto_id = $this->uri->segment(4);
-
         $data = array();
         $data['result'] = $this->customer_model->get_shipto_data($shipto_id);
-        
-
         if (empty($data['result'])) {
             if ($this->agent->is_referral()) {
                 redirect($this->agent->referrer(), 'refresh');
@@ -999,16 +859,9 @@ public function invoiceview()
 
         $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
         if ($this->form_validation->run() == false) {
-
-            
-
             $this->loadView($this->view_folder . 'edit_shipto', $data);
         } else {
-
-           
-
             $lic_picture = $data['result']['lic_picture'];
-            //$this->lang->line('text_customer_email_exist')
             if (!empty($_FILES['lic_picture']) && $_FILES['lic_picture']['size'] > 0) {
 
                 $lic_picture = $this->common->image_upload($field = 'lic_picture', $path = './' . SHIPT_TO_IMAGES);
@@ -1036,17 +889,11 @@ public function invoiceview()
                 'lic_id' => $this->input->post('lic_id'),
                 'province' => $this->input->post('province'),
                 'sector' => $this->input->post('sector')
-                
-
             );
 
             if ($this->input->post('zipcode') != '') {
                 $params['zipcode'] = $this->input->post('zipcode');
             }
-
-            // if (!empty($this->input->post('borough'))) {
-            //     $params['borough'] = $this->input->post('borough');
-            // }
             if ($this->input->post('company_name') != '') {
                 $params['company_name'] = $this->input->post('company_name');
             }
@@ -1119,18 +966,13 @@ public function invoiceview()
         echo json_encode($output);
     }
     public function payment_get_invoice_list(){
-
         if($this->input->post() && $this->input->is_ajax_request()){
-
         $data = array();
         $this->load->model('company/invoices_model');
         $data['driver_list'] = $this->invoices_model->get_driver_list();
-        //print_r($data);
-        //die;
         $data['payment_type'] = $this->Main_model->getType('payment');
         $data['customer_id'] = $this->input->post('id');
         $string =  $this->load->view($this->payment_view_folder.'payment_screen',$data,true);
-
         $res['status'] = SUCCESS_CODE;
         $res['data'] = $string;
         $res['message'] = '';
@@ -1140,16 +982,37 @@ public function invoiceview()
 
         }        
     }
-    // customer edit payment screen abhishek
+    // Payment full Details 10-Jun-2019
+    public function paymentDetails(){
+        if($this->input->post() && $this->input->is_ajax_request()){
+        $data = array();
+        $this->load->model('company/invoices_model');
+        $data['invoiceId'] = $this->input->post('id');
+        $data['invoiceList'] = $this->invoices_model->invoiceDetail($this->input->post('id'));
+        $string =  $this->load->view($this->view_folder.'view_invoice',$data,true);
+        $res['status'] = SUCCESS_CODE;
+        $res['data'] = $string;
+        $res['message'] = '';
+        echo json_encode($res);
+        die;   
+        }else{
+        }        
+    }
+    // customer edit payment screen
     public function payment_data_list(){
 
         if($this->input->post() && $this->input->is_ajax_request()){
         $data = array();
         $this->load->model('company/invoices_model');
+        $data['customer_id'] = $this->input->post('id');
         $data['driver_list'] = $this->invoices_model->get_driver_list();
+        /*10-JUN-2019*/
+        $data['totalAmt'] = $this->invoices_model->countTotalAmt($this->input->post('id'));
+        $data['totalBal'] = $this->invoices_model->countTotalBal($this->input->post('id'));
        
         $data['payment_type'] = $this->Main_model->getType('payment');
-        $data['customer_id'] = $this->input->post('id');
+        //10-jan-2019 count the total payment of the customer
+        $data['Countpayment'] = $this->invoices_model->countPayment($this->input->post('id'));
         $string =  $this->load->view($this->payment_view_folder.'payments_data_screen',$data,true);
         $res['status'] = SUCCESS_CODE;
         $res['data'] = $string;
