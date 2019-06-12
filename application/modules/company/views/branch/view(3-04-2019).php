@@ -117,7 +117,7 @@
 	                                            
 												<div class="form-group m-form__group row">
 	                                                <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-														<?php echo $this->lang->line('label_address'); ?> :
+														* <?php echo $this->lang->line('label_address'); ?> :
 													</label>
 	                                                <label class="col-xl-9 col-lg-9 col-form-label text-left">
 	                                                	<?php echo $result['address'];?>
@@ -133,7 +133,7 @@
 												</div>
 												<div class="form-group m-form__group row">
 	                                                <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-														<?php echo $this->lang->line('label_city'); ?> :
+														* <?php echo $this->lang->line('label_city'); ?> :
 													</label>
 	                                                <label class="col-xl-9 col-lg-9 col-form-label text-left">
 	                                                	<?php echo $result['city'];?>
@@ -141,7 +141,7 @@
 												</div>
 												<div class="form-group m-form__group row">
 	                                                <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-														<?php echo $this->lang->line('label_state'); ?> :
+														* <?php echo $this->lang->line('label_state'); ?> :
 													</label>
 	                                                <label class="col-xl-9 col-lg-9 col-form-label text-left">
 	                                                	<?php echo $result['state'];?>
@@ -149,7 +149,7 @@
 												</div>
 												<div class="form-group m-form__group row">
 	                                                <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-														<?php echo $this->lang->line('label_zipcode'); ?> :
+														* <?php echo $this->lang->line('label_zipcode'); ?> :
 													</label>
 	                                                <label class="col-xl-9 col-lg-9 col-form-label text-left">
 	                                                	<?php echo $result['zipcode'];?>
@@ -157,7 +157,7 @@
 												</div> 
 												<div class="form-group m-form__group row">
 	                                                <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-														<?php echo $this->lang->line('label_country'); ?> :
+														* <?php echo $this->lang->line('label_country'); ?> :
 													</label>
 	                                                <label class="col-xl-9 col-lg-9 col-form-label text-left">
 	                                                	<?php echo $result['country'];?>
@@ -198,7 +198,7 @@
 												</div> 
 												<div class="form-group m-form__group row">
 	                                                <label class="col-xl-3 col-lg-3 col-form-label col-form-label-right">
-														<?php echo $this->lang->line('label_email'); ?> :
+														* <?php echo $this->lang->line('label_email'); ?> :
 													</label>
 	                                                <label class="col-xl-9 col-lg-9 col-form-label text-left">
 														<a href="mailto:<?php echo $result['email'];?>"><?php echo $result['email'];?></a>

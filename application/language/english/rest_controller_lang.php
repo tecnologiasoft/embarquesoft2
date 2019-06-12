@@ -808,9 +808,17 @@ $lang['balance_must_be_grater_than_00_00'] = 'Blance must be greater than 00.00'
 $lang['menu_distribucion'] = 'Back Office';
 $lang['menu_batch_distribution'] = 'Manual Distribution';
 $lang['title_batch_list'] = 'Manual Distribucion';
+$lang['title_edit_batch_list'] = 'Edit Manual Distribution';
 $lang['title_add_new_batch'] = 'Agregar new Route';
 
 $lang['label_batch'] = 'Batch';
+$lang['label_boxes'] = 'Boxes';
+$lang['label_exchange_balance'] = 'Exchange Balance';
+$lang['label_exchange_rate'] = 'Exchange Rate';
+$lang['label_label_delivered'] = 'Delivery';
+
+
+
 
 
 

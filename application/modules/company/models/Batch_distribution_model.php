@@ -21,16 +21,11 @@ class Batch_distribution_model extends My_model {
     // driver Models
     function _get_datatables_query()
     {
-<<<<<<< HEAD
-        $this->company_db->select("d.MDist_BatchNum, d.MDist_Zone, d.MDist_status, d.MDist_Date, d.MDist_BType, d.MDist_Driver");
-        $this->company_db->from('tbl_MDist_Batch d');
-=======
         $this->company_db->select("d.MDist_BatchNum, d.MDist_Zone, pz.zone, d.MDist_status,st.Description, d.MDist_Date, d.MDist_BType, d.MDist_Exchange_Rate,  d.MDist_Comment, d.MDist_Driver, CONCAT(dr.fname, ' ', dr.lname) as driver");
         $this->company_db->from('tbl_MDist_Batch d');
         $this->company_db->join('tbl_pickup_zone pz', 'd.MDist_Zone = pz.id');
         $this->company_db->join('tbl_driver dr', 'd.MDist_Driver = dr.id');
         $this->company_db->join('tbl_packagestatus st', 'd.MDist_status = st.Status_ID');
->>>>>>> branch_milestone_2
         //$this->company_db->where('d.void','No');
         $i = 0;
 
@@ -80,7 +75,7 @@ class Batch_distribution_model extends My_model {
     function _get_datatables_query_invoice()
     {
 
-        $this->company_db->select("ih.id, ih.customer_id,ih.invoice_number, CONCAT(c.fname, ' ', c.lname) as name, CONCAT(sh.fname, ' ', sh.lname) as nameShipto,ih.invoice_date, ih.balance, total_packages");
+        $this->company_db->select("ih.id, ih.customer_id, sh.id as ShiptoId,ih.invoice_number,c.id as customer_id, CONCAT(c.fname, ' ', c.lname) as name, CONCAT(sh.fname, ' ', sh.lname) as nameShipto,ih.invoice_date, ih.balance, total_packages");
         $this->company_db->from('tbl_invoice_header ih');
         $this->company_db->join('tbl_customer c', 'ih.customer_id = c.id');
         $this->company_db->join('tbl_shipto sh', 'ih.shipto_id = sh.id');
@@ -178,13 +173,9 @@ class Batch_distribution_model extends My_model {
         if($_REQUEST['datatable']['pagination']['perpage'] != -1)
         $this->company_db->limit($_REQUEST['datatable']['pagination']['perpage'], $offset);
         $query = $this->company_db->get();
-<<<<<<< HEAD
-        /*echo "<pre>";
-=======
         /*$this->_get_datatables_query();
         $query2 = $this->company_db->get();*/
        /* echo "<pre>";
->>>>>>> branch_milestone_2
         var_dump($query);exit;
         echo "</pre>";*/
 
@@ -195,18 +186,11 @@ class Batch_distribution_model extends My_model {
         {
             foreach ($query->result() as $row)
             {
-<<<<<<< HEAD
-=======
               //var_dump($row);exit;
->>>>>>> branch_milestone_2
                 //$balance = $row->balance;
 
                 //var_dump($balance);exit;
 
-<<<<<<< HEAD
-                $now = strtotime(str_replace('/', '-', $_REQUEST['datatable']['pickup_date'])); // or your date as well
-                $your_date = strtotime($row->pickup_date);
-=======
               /*if ($query2->num_rows() > 0) {
                   foreach ($query2->result() as $row2) {
                     //var_dump($row2);exit;
@@ -219,28 +203,21 @@ class Batch_distribution_model extends My_model {
 
               //  $now = strtotime(str_replace('/', '-', $_REQUEST['datatable']['pickup_date'])); // or your date as well
 
-                $row->invoice_number = "<span class='exbalance'>$row->invoice_number</span><input type='text' id='invoice_number_$row->invoice_number' value = '$row->invoice_number' name='invoice_number[]' data-id ='$row->invoice_number'>
-                                    <span></span>
-                                    ";
-                $row->name = "<span>$row->name</span><input type='text' id='name_$row->name' value = '$row->name' class = 'name' name='invoice_number[]' data-id ='$row->name'>
-                                    <span></span></label>
-                                    ";
-                $row->nameShipto = "<span>$row->nameShipto</span><input type='text' id='nameShipto_$row->nameShipto' value = '$row->nameShipto' name='nameShipto[]' data-id ='$row->nameShipto'>
-                                    <span></span></label>
-                                    ";
-                $row->total_packages = "<span>$row->total_packages</span><input type='text' id='nameShipto_$row->total_packages' value = '$row->total_packages'  name='total_packages[]' data-id ='$row->total_packages'>
-                                    <span></span></label>
-                                    ";
-                $row->balance = "<span>$row->balance</span><input type='text' id='balance_$row->balance' value = '$row->balance' name='balance[]' data-id ='$row->balance'>
-                                    <span></span></label>
-                                    ";
-                $row->invoice_date = "<span>$row->invoice_date</span><input type='text' id='invoice_date_$row->invoice_date' value = '$row->invoice_date' name='balance[]' data-id ='$row->invoice_date'>
-                                    <span></span></label>
+                $row->invoice_number = "<span class='invoice'>$row->invoice_number</span>
+                                    <span></span>";
+                $row->name = "<div style='display:none' class='customer'>$row->customer_id</div><span>$row->name</span>";
+
+                $row->nameShipto = "<div style='display:none' class='nameShipto'>$row->ShiptoId</div><span>$row->nameShipto</span>";
+
+                $row->total_packages = "<span class='total_packages'>$row->total_packages</span><span></span>";
+
+                $row->balance = "<span class='balance'>$row->balance</span><span></span>";
+
+                $row->invoice_date = "<span class='invoice_date'>$row->invoice_date</span><span></span>
                                     ";
               // var_dump($row);exit;
 
                 /*$your_date = strtotime($row->pickup_date);
->>>>>>> branch_milestone_2
                 $datediff = $now - $your_date;
 
                 $days = round($datediff / (60 * 60 * 24));
@@ -249,11 +226,7 @@ class Batch_distribution_model extends My_model {
                 else if($days > 1)
                     $row->pickup_date = "<label class='text-warning'>".date("m/d/Y", strtotime($row->pickup_date))."</label>";
                 else
-<<<<<<< HEAD
-                    $row->pickup_date = date("m/d/Y", strtotime($row->pickup_date));
-=======
                     $row->pickup_date = date("m/d/Y", strtotime($row->pickup_date));*/
->>>>>>> branch_milestone_2
 
                 if($row->status != "Done"){
                     $row->chk_status = "<label class='m-checkbox m-checkbox--solid m-checkbox--brand'><input type='checkbox' id='chk_status_$row->id' value = '$row->id' class = 'chk_status' name='chk_status[]' data-id ='$row->id'>
@@ -427,6 +400,18 @@ class Batch_distribution_model extends My_model {
         $this->company_db->set('data_update', 'NOW()', FALSE);
         $this->company_db->where('MDist_BatchNum',$id);
         $this->company_db->update('tbl_mdist_batch',$params);
+    }
+
+
+    function batch_ck($batch, $invoice){    
+     $this->company_db->where('MDist_Batch', $batch);
+     $this->company_db->where('MDist_TInvNUm', $invoice);
+     $query=$this->company_db->get('tbl_mdist_tran');
+        if($query->num_rows()>0){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
     }
 
 
