@@ -792,10 +792,14 @@ $lang['label_paid'] = 'Pagado';
 $lang['menu_distribucion'] = 'Oficina';
 $lang['menu_batch_distribution'] = 'Distribucion Manual';
 $lang['title_batch_list'] = 'Manual Distribución';
+$lang['title_edit_batch_list'] = 'Editar Manual Distribución';
 $lang['title_add_new_batch'] = 'Agregar nueva Ruta';
 
 $lang['label_batch'] = 'Lotes';
-
+$lang['label_boxes'] = 'Cajas';
+$lang['label_exchange_balance'] = 'Cambio Balance';
+$lang['label_exchange_rate'] = 'Exchange Rate';
+$lang['label_label_delivered'] = 'Entregado';
 
 
 

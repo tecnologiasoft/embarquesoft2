@@ -25,8 +25,6 @@
                  </div>
               </div>
               <div class="tab-content">
-
-              	
                <?php
                 $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data');
                 echo form_open($formAction,$form_data);
@@ -213,7 +211,6 @@
                              <div class="col-md-12">
                              <select class = "form-control" id = "module_selector">
                                 <option value = ""><?php echo $this->lang->line('label_select_module'); ?></option>
-
                              <?php foreach($arr as $key => $value) {
 
 
@@ -224,15 +221,7 @@
                              <?php } ?>
                              </select>
 
-
-                             <?php foreach($arr as $key => $value) { ?>
-
-
-                                  <option value = "<?php echo $key ?>"><?php echo $this->lang->line($key); ?></option>
-                             <?php } ?>
-                             </select>
-
-                           <?php   foreach($arr as $key => $value) {
+                              <?php   foreach($arr as $key => $value) {
 
                                  $assingId = strtolower(str_replace(" ","_",$key));
 
@@ -375,19 +364,9 @@
                                   </div>
                                   <!--end: Search Form -->
 
-                                    <!-- <form method="post" role="form" id="BaschTran">
-                                    
-                                                                       <input type="text" class="form-control m-input" name="date" id="date" placeholder="<?php echo $this->lang->line('label_date'); ?>" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('date')?>">
-                                      <?php echo form_error('date'); ?>
-                                      <input type="text" name="invoice_number"  class="form-control m-input" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('invoice_number')?>" id="invoice_number" >
-                                      <input type="text" name="nameShipto" class="form-control m-input" id="nameShipto" >
-                                      <input type="text" name="balance" class="form-control m-input" id="balance" >
-                                      <input type="text" name="total_packages" class="form-control m-input" id="total_packages" > -->
-                                  <!--begin: Datatable -->
                                   <div class="m_datatable"></div>
                                   <!--end: Datatable -->
-                                <!-- </form> -->
-                                <!-- <?php //echo form_close(); ?> -->
+                              
                               </div>
 
 
@@ -400,24 +379,7 @@
 
   </div>
 
-      <!--  <div class="col-sm-4">
-                   <form method="post" role="form" id="BaschTran">
 
-                       <input type="text" name="mdist_tdate" class="form-control m-input" id="mdist_tdate" >
-                      <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php //echo $this->lang->line('label_id'); ?>" value="<?php //echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
-                      <input type="text" name="mdist_tinvnum" class="form-control m-input" id="mdist_tinvnum" >
-                      <input type="text" name="mdist_tcustid" class="form-control m-input" id="mdist_tcustid" >
-                      <input type="text" name="mdist_tbalance" class="form-control m-input" id="mdist_tbalance" >
-                      <input type="text" name="mdist_tbox" class="form-control m-input" id="mdist_tbox" >
-                      <input type="text" name="mdist_tpaid" class="form-control m-input" id="mdist_tpaid" >
-                      <input type="text" name="mdist_delivered" class="form-control m-input" id="mdist_delivered" >
-                      <input type="text" name="mdist_shipto" class="form-control m-input" id="mdist_shipto" >
-                      <input type="text" name="mdist_exchange_balance" class="form-control m-input" id="mdist_exchange_balance" >
-
-                      <input type="hidden" id="tran" name="tran" value="" class="form-control">
-
-                 </form>
-      </div>  -->
 
  <script type="text/javascript">
 
@@ -503,10 +465,10 @@
                 }, {
                     field: "MDist_Exchange_Rate",
                     title: "<?php echo $this->lang->line('label_exchange_balance'); ?>",
-                    /*template: function() {
+                    template: function() {
                        // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
-                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="exbalance" style="width: 138px;"></span>'
-                    }*/
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="exchange_balance" style="width: 138px;"></span>'
+                    }
                 },{
 
                     field: "chk_status",
@@ -615,18 +577,30 @@
                 clearButton: true
             });
 
-     /*$("#m_form_search").on("blur", function(e) {
+     $("#m_form_search").on("keyup", function(e) {
        // $("#m_form_search").blur(function(event) {
         //montoBalance
-          var montoBalance = $(".montoBalance").val();
-          var exchange_rate = $(".exchange_rate").val();
-          var exchangeBalance = parseFloat($('.montoBalance').val()) + parseFloat($('.exchange_rate').val());
+          // var montoBalance = $(".montoBalance").val();
+          // var exchange_rate = $(".exchange_rate").val();
+          // var exchangeBalance = parseFloat($('.montoBalance').val()) + parseFloat($('.exchange_rate').val());
      // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
      // alert(exchangeBalance);
      // var valorExchange = exchangeBalance;
-      $(".exbalance").html(exchangeBalance);
+      // $(".exbalance").html(exchangeBalance);
+        setTimeout(function(){
+                    // var montoBalance = $(".montoBalance").val();
+          var montoBalance = $("span.balance").text();//ahi?si prueba a verokok
 
-      });*/
+          var exchange_rate = $(".exchange_rate").val();
+          var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+
+ /*         console.log('montoBalance', montoBalance);
+          console.log('exchange_rate', exchange_rate);*/
+     // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+          $('span.exchange_balance').text(exchangeBalance);
+        }, 1500);
+
+      });
 
    });
 
@@ -650,58 +624,24 @@
 
       $(document).on('click', '.btnTran', function(e){
 
-        alert("hola");
-      //console.log('serialized data', $("#AddDiplo").serialize());
-                $.ajax({
-                url: "<?php echo site_url('company/batch_distribution/addTran')?>",
-                data: $("#BaschTran").serialize(),
-                type: 'POST',
-                dataType: 'json'
+        // console.log('id', $('#m_form_1 input#id').val());
+        // console.log('invoice', $('span.exbalance').text());
+        // console.log('customer', $('span.customer').text());
 
-              }).done(function(data) {
+        var data = {
+          id: $('#m_form_1 input#id').val(),
+          invoice: $('span.exbalance').text(),
+          customer: $('span.customer').text(),
+        };
 
-              //console.log('data diplo', data)
-              if(data.st == 0)
-                {
-                  swal({
-                    title: "<?php //echo $this->lang->line('label_are_you_sure') ?>",
-                    text: "<?php //echo $this->lang->line('label_you_want_to_delete_driver') ?>",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    //confirmButtonText: "<?php //echo $this->lang->line('label_confirm') ?>",
-                }).then(function () {
-                 $('.validation-error').html(data.msg);
 
-                });
-                }
+        $.post( "<?php echo site_url('company/batch_distribution/addTran')?>", data, function( result ) {
+          console.log('result', result);
 
-              if(data.st == 1)
-              {
-                $('.validation-error').html(data.msg).css('color', 'green');
-                $('.validation-error').html(data.msgsuccess).css('color', 'green');
-                //alert(data.msg);
-                    setTimeout(function(){
-                  $("#cerrar_miModal").trigger("click");
-                      location.reload();
-                   },1500);
+        }, "json");
 
-              }
-
-              if(data.st == 2)
-              {
-                $('.validation-error').html(data.msg);
-                $('.validation-error').html(data.msgsuccess).css('color', 'green');
-               //console.log(data.msg);
-                    setTimeout(function(){
-                  $("#cerrar_miModal").trigger("click");
-                      location.reload();
-                   },1500);
-              }
-
-              });
-            event.preventDefault();
-        });
+        event.preventDefault();
+      });
 
 </script>
 

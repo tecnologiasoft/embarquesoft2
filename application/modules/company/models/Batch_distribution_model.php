@@ -212,13 +212,11 @@ class Batch_distribution_model extends My_model {
                 $row->nameShipto = "<span class='nameShipto'>$row->nameShipto</span>
                                     <span></span>
                                     ";
-                $row->total_packages = "<span>$row->total_packages</span><input type='text' id='nameShipto_$row->total_packages' value = '$row->total_packages'  name='total_packages[]' data-id ='$row->total_packages'>
-                                    <span></span></label>
+                $row->total_packages = "<span class='total_packages'>$row->total_packages</span><span></span></label>
                                     ";
-                $row->balance = "<span class='balance'>$row->balance</span>
-                                    <span></span>
+                $row->balance = "<span class='balance'>$row->balance</span><span></span>
                                     ";
-                $row->invoice_date = "<span>$row->invoice_date</span><input type='text' id='invoice_date_$row->invoice_date' value = '$row->invoice_date' name='balance[]' data-id ='$row->invoice_date'>
+                $row->invoice_date = "<span class='invoice_date'>$row->invoice_date</span>
                                     <span></span></label>
                                     ";
               // var_dump($row);exit;
