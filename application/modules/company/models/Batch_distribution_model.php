@@ -75,7 +75,7 @@ class Batch_distribution_model extends My_model {
     function _get_datatables_query_invoice()
     {
 
-        $this->company_db->select("ih.id, ih.customer_id,ih.invoice_number, CONCAT(c.fname, ' ', c.lname) as name, CONCAT(sh.fname, ' ', sh.lname) as nameShipto,ih.invoice_date, ih.balance, total_packages");
+        $this->company_db->select("ih.id, ih.customer_id, sh.id as ShiptoId,ih.invoice_number,c.id as customer_id, CONCAT(c.fname, ' ', c.lname) as name, CONCAT(sh.fname, ' ', sh.lname) as nameShipto,ih.invoice_date, ih.balance, total_packages");
         $this->company_db->from('tbl_invoice_header ih');
         $this->company_db->join('tbl_customer c', 'ih.customer_id = c.id');
         $this->company_db->join('tbl_shipto sh', 'ih.shipto_id = sh.id');
@@ -203,11 +203,11 @@ class Batch_distribution_model extends My_model {
 
               //  $now = strtotime(str_replace('/', '-', $_REQUEST['datatable']['pickup_date'])); // or your date as well
 
-                $row->invoice_number = "<span class='exbalance'>$row->invoice_number</span>
+                $row->invoice_number = "<span class='invoice'>$row->invoice_number</span>
                                     <span></span>";
-                $row->name = "<span class='customer'>$row->name</span><span></span>";
+                $row->name = "<div style='display:none' class='customer'>$row->customer_id</div><span>$row->name</span>";
 
-                $row->nameShipto = "<span class='nameShipto'>$row->nameShipto</span><span></span>";
+                $row->nameShipto = "<div style='display:none' class='nameShipto'>$row->ShiptoId</div><span>$row->nameShipto</span>";
 
                 $row->total_packages = "<span class='total_packages'>$row->total_packages</span><span></span>";
 
@@ -400,6 +400,18 @@ class Batch_distribution_model extends My_model {
         $this->company_db->set('data_update', 'NOW()', FALSE);
         $this->company_db->where('MDist_BatchNum',$id);
         $this->company_db->update('tbl_mdist_batch',$params);
+    }
+
+
+    function batch_ck($batch, $invoice){    
+     $this->company_db->where('MDist_Batch', $batch);
+     $this->company_db->where('MDist_TInvNUm', $invoice);
+     $query=$this->company_db->get('tbl_mdist_tran');
+        if($query->num_rows()>0){
+            return FALSE;
+        }else{
+            return TRUE;
+        }
     }
 
 

@@ -1,6 +1,9 @@
 <style>
    .vertical-a-t .m-checkbox{ vertical-align: top; margin-left: 5px; }
    .inner-checkbox-list{ margin-top: 10px; }
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+     padding: 0.7rem!important; 
+}
 </style>
                           <!-- <?php //echo "<pre>";
                           //print_r($result);
@@ -467,30 +470,31 @@
                     title: "<?php echo $this->lang->line('label_exchange_balance'); ?>",
                     template: function() {
                        // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
-                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="exchange_balance" style="width: 138px;"></span>'
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="simboloMoneda" style="width: 138px;"></span><span class="exchange_balance" style="width: 138px;"></span>'
                     }
                 },{
 
                     field: "chk_status",
-                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_done'); ?><span></span></label>",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_label_delivered'); ?><span></span></label>",
 
                 },{
 
                     field: "chk_status",
-                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_done'); ?><span></span></label>",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_paid'); ?><span></span></label>",
 
                 },
-                {
+                /*{
                     field: "Actions",
                     width: 110,
-                    title: "<?php echo $this->lang->line('label_actions'); ?>",
+                    title: "<?php //echo $this->lang->line('label_actions'); ?>",
                     sortable: !1,
                     overflow: "visible",
                     template: function(t) {
-                        /*\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
-                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_pickup('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
+                        /*\t\t\t\t\t\t<a href="<?php //echo base_url()."company/pickup/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
+                       /* return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php //echo base_url()."company/pickup/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_pickup('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
                     }
-                }]
+                }*/
+                ]
             }),
                     e = t.getDataSourceQuery();
                     m_datatables = t;
@@ -590,15 +594,16 @@
         setTimeout(function(){
                     // var montoBalance = $(".montoBalance").val();
           var montoBalance = $("span.balance").text();
+          var simboloMoneda = $("span.simboloMoneda").text("$ ");
 
           var exchange_rate = $(".exchange_rate").val();
           //alert(exchange_rate);
-          var exchangeBalance = "$ " + parseFloat(montoBalance) * parseFloat(exchange_rate);
+          var exchangeBalance =  parseFloat(montoBalance) * parseFloat(exchange_rate);
 
  /*         console.log('montoBalance', montoBalance);
           console.log('exchange_rate', exchange_rate);*/
      // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
-          $('span.exchange_balance').text(exchangeBalance);
+          $('span.exchange_balance').text( exchangeBalance);
         }, 1500);
 
       });
@@ -623,31 +628,86 @@
     });*/
 
 
+    
+
+
       $(document).on('click', '.btnTran', function(e){
+       
+         var data = {
+                  id: $('#m_form_1 input#id').val(),
+                  invoice: $('span.invoice').text(),
+                  customer: $('.customer').text(),
+                  nameShipto: $('.nameShipto').text(),
+                  total_packages: $('span.total_packages').text(),
+                  balance: $('span.balance').text(),
+                  invoice_date: $('span.invoice_date').text(),
+                  exchange_balance: $('span.exchange_balance').text(),
+                };
+               //console.log('serialized data', $("#AddDiplo").serialize());
+                $.ajax({
+                url: '<?php echo site_url('company/batch_distribution/addTran')?>',
+                data: data,
+                type: 'POST',
+                dataType: 'json',
+       
+  
 
-        // console.log('id', $('#m_form_1 input#id').val());
-        // console.log('invoice', $('span.exbalance').text());
-        // console.log('customer', $('span.customer').text());
+              }).done(function(data) {
 
-        var data = {
-          id: $('#m_form_1 input#id').val(),
-          invoice: $('span.exbalance').text(),
-          customer: $('span.customer').text(),
-          nameShipto: $('span.nameShipto').text(),
-          total_packages: $('span.total_packages').text(),
-          balance: $('span.balance').text(),
-          invoice_date: $('span.invoice_date').text(),
-          exchange_balance: $('span.exchange_balance').text(),
-        };
+             // console.log('data', data)
+              if(data.st == 0)
+                {
+                  //alert(data.msg);
+                  //alert('st 0');
+                // $('.validation-error').html(data.msg);
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: data.msg,
+          //footer: '<a href>Why do I have this issue?</a>'
+        })
+                }
 
+              if(data.st == 1)
+              {
+                /*$('.validation-error').html(data.msg).css('color', 'green');
+                $('.validation-error').html(data.msgsuccess).css('color', 'green');
+                //alert(data.msg);
+                    setTimeout(function(){
+                  $("#cerrar_miModal").trigger("click");
+                      location.reload();
+                   },1500);*/
 
-        $.post( "<?php echo site_url('company/batch_distribution/addTran')?>", data, function( result ) {
-          console.log('result', result);
+        Swal.fire({
+          type: 'success',
+          title: 'Oops...',
+          text: data.msg,
+          //footer: '<a href>Why do I have this issue?</a>'
+        })
+                  setTimeout(function(){
+                    location.reload();
+                 },1500);
+              }
 
-        }, "json");
+              if(data.st == 2)
+              {
+                $('.validation-error').html(data.msg);
+                $('.validation-error').html(data.msgsuccess).css('color', 'green');
+               //console.log(data.msg);
+                 Swal.fire({
+          type: 'success',
+          title: 'Oops...',
+          text: data.msg,
+          //footer: '<a href>Why do I have this issue?</a>'
+        })
+                  setTimeout(function(){
+                   // location.reload();
+                 },1500);
+              }
 
-        event.preventDefault();
-      });
+              });
+            event.preventDefault();
+        });
 
 </script>
 

@@ -345,7 +345,10 @@ class Batch_distribution extends MYcom_Controller {
                //echo "hola";
                 
                //  $this->form_validation->set_rules('uid_usuario', 'Asignar Roles', 'required');            
-                 $this->form_validation->set_rules('id', 'id', 'required');            
+                 $this->form_validation->set_rules('id', 'id', 'Required|callback_batch_check');  
+                 $this->form_validation->set_rules('invoice', 'invoice', 'Required');  
+
+                 $this->form_validation->set_message('batch_check','Esta Factura ya esta asignada a este batch');          
                 
 
 
@@ -359,23 +362,23 @@ class Batch_distribution extends MYcom_Controller {
                      
                        $params = 
                         array(
-                           //$this->input->post('InfoEscuela'),
-                           $this->input->post('id'),
-                           $this->input->post('invoice'),
-                           $this->input->post('customer'),
-                           $this->input->post('nameShipto'),
-                           $this->input->post('total_packages'),
-                           $this->input->post('balance'),
-                           $this->input->post('invoice_date'),
-                           $this->input->post('exchange_balance')
+ 
+                          'MDist_Batch'               => $this->input->post('id'),
+                          'MDist_TInvNUm'             => $this->input->post('invoice'),
+                          'MDist_TCustID'             => $this->input->post('customer'),
+                          'MDist_ShipTo'              => $this->input->post('nameShipto'),
+                          'MDist_TBox'                => $this->input->post('total_packages'),
+                          'MDist_TBalance'            => $this->input->post('balance'),
+                          'MDist_TDate'               => $this->input->post('invoice_date'),
+                          'MDist_Exchange_Balance'    => $this->input->post('exchange_balance')
          
                         );   
 
-            echo "<pre>";
-            var_dump($params);exit;
-            echo "</pre>";
+                        /*echo "<pre>";
+                        var_dump($params);exit;
+                        echo "</pre>";*/
                         $this->Batch_distribution_model->add_Tran($params);
-                       echo json_encode(array('st'=>2, 'msg' => '<div class="alert alert-dismissable alert-success">Rol Editado</div>'));
+                       echo json_encode(array('st'=>1, 'msg' => '<div class="alert alert-dismissable alert-success">Creado</div>'));
 
                 
                 }
@@ -383,7 +386,13 @@ class Batch_distribution extends MYcom_Controller {
             }
         }
 
- 
+    function batch_check(){
+        $batch = $this->input->post('id');        
+        $invoice = $this->input->post('invoice');        
+
+         return $this->Batch_distribution_model->batch_ck($batch, $invoice);
+         echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));
+     }
 
 
 }
