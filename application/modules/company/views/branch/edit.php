@@ -1,243 +1,677 @@
-   <div class="m-content">
-      <!--begin::Form-->
-      <?php 
-         $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data'); 
-         echo form_open($formAction,$form_data); 
-         ?>
-      <div class="row">
-         <div class="col-xl-12">
-            <div class="m-portlet m-portlet--full-height m-portlet--tabs">
-               <div class="m-portlet__head">
-                  <div class="m-portlet__head-tools">
-                     <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--4x m-tabs-line--left m-tabs-line--primary" role="tablist">
-                        <li class="nav-item m-tabs__item">
-                           <a class="nav-link m-tabs__link active " data-toggle="tab" href="#m_user_profile_tab_1 " role="tab" data-tab_id="1">
-                           <i class="flaticon-share m--hide"></i>
-                           <?php echo $this->lang->line('label_branch'); ?>
-                           </a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="tab-content">
-                  <div class="tab-pane active" id="m_user_profile_tab_1">
-                     <div class="m-portlet__body">
-                        <div class="m-form__section m-form__section--first">
-                           <div class="m-form__section m-form__section--first">
-                              <div class="form-group m-form__group row">
-                                
-                              <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       <?php echo $this->lang->line('label_branch_id').'#'; ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="branch_id" id="branch_id" placeholder="<?php echo $this->lang->line('label_branch_id'); ?>" value="<?=$result['id']?>" disabled = "disabled">
-                                    <input type="hidden" name="branch_id_hdn" id="branch_id_hdn" value="<?php echo $max_value; ?>">
-                                    <?php echo form_error('item_number'); ?>
-                                       </div>
-                                    </div>
-                                 </div>
+<style>
+   .vertical-a-t .m-checkbox{ vertical-align: top; margin-left: 5px; }
+   .inner-checkbox-list{ margin-top: 10px; }
+</style>
+                          <!-- <?php //echo "<pre>";
+                          //print_r($result);
+                          //echo "</pre>";
+                          ?> -->
+  <div class="m-content">
+     <!--begin::Form-->
+
+     <div class="row">
+        <div class="col-xl-12">
+           <div class="m-portlet m-portlet--full-height m-portlet--tabs">
+              <div class="m-portlet__head">
+                 <div class="m-portlet__head-tools">
+                    <ul class="nav nav-tabs m-tabs m-tabs-line m-tabs-line--4x m-tabs-line--left m-tabs-line--primary" role="tablist">
+                       <li class="nav-item m-tabs__item">
+                          <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab" data-tab_id="1">
+                          <i class="flaticon-share m--hide"></i>
+                          <?php echo $this->lang->line('title_batch_list'); ?>
+                          </a>
+                       </li>
+                    </ul>
+                 </div>
+              </div>
+              <div class="tab-content">
+               <?php
+                $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data');
+                echo form_open($formAction,$form_data);
+              ?>
+                 <div class="tab-pane active" id="m_user_profile_tab_1">
+                    <div class="m-portlet__body">
+                       <div class="m-form__section m-form__section--first">
+                       <div class="row">
 
 
-                                 <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_branch').' '.$this->lang->line('label_name'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="name" id="name" placeholder="<?php echo $this->lang->line('label_name'); ?>" value="<?=$result['name']?$result['name']:set_value('name')?>" maxlength="128" >
-                                    <?php echo form_error('name'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
-                            
-                                  
+                             <div class="col-lg-6">
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <?php echo $this->lang->line('label_date'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
+                                      <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php echo $this->lang->line('label_id'); ?>" value="<?php echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
+                                      <?php echo form_error('date'); ?>
+                                   </div>
+                                </div>
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <span id="astric">*</span> <?php echo $this->lang->line('label_zone'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
+                                      <select class="form-control m-input" name="zone" id="zone" placeholder="<?php echo $this->lang->line('label_zone'); ?>"  data-parsley-trigger="focusin focusout" data-parsley-errors-container="#driver_error">
+                                          <option value=""><?php echo $this->lang->line('label_zone'); ?></option>
+
+                                          <?php
+                                          if(!empty($zone_list)){
+                                              foreach ($zone_list as $key => $value) {
+                                                  ?>
+                                                  <option value="<?php echo $value['id']; ?>" <?php echo $value['id']==$result['MDist_Zone'] ? "selected":"";?>><?php echo $value['zone']; ?></option>
+                                                  <?php
+                                                   }
+                                                }
+                                          ?>
+                                      </select>
+
+                                      <div id="driver_error">
+                                          <?php echo form_error('zone'); ?>
+                                      </div>
+                                   </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <span id="astric">*</span> <?php echo $this->lang->line('label_status'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
+                                      <select class="form-control m-input" name="status" id="status" placeholder="<?php echo $this->lang->line('label_status'); ?>"  data-parsley-trigger="focusin focusout" data-parsley-errors-container="#driver_error">
+                                          <option value=""><?php echo $this->lang->line('label_status'); ?></option>
+
+                                          <?php
+                                          if(!empty($status_list)){
+                                              foreach ($status_list as $key => $value) {
+                                                  ?>
+                                                  <option value="<?php echo $value['Status_ID']; ?>" <?php echo $value['Status_ID']==$result['MDist_Driver'] ? "selected":"";?>><?php echo $value['Description']; ?></option>
+                                                  <?php
+                                                   }
+                                                }
+                                          ?>
+                                      </select>
+                                      <div id="driver_error">
+                                          <?php echo form_error('zone'); ?>
+                                      </div>
+                                   </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <span id="astric">*</span> <?php echo $this->lang->line('label_driver'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
+                                      <select class="form-control m-input" name="driver" id="driver" placeholder="<?php echo $this->lang->line('label_driver'); ?>"  data-parsley-trigger="focusin focusout" data-parsley-errors-container="#driver_error">
+                                          <option value=""><?php echo $this->lang->line('label_driver'); ?></option>
+
+                                          <?php
+                                          if(!empty($driver_list)){
+                                              foreach ($driver_list as $key => $value) {
+                                                  ?>
+                                                  <option value="<?php echo $value['id']; ?>" <?php echo $value['id']==$result['MDist_Driver'] ? "selected":"";?>><?php echo $value['name']; ?></option>
+                                                  <?php
+                                                   }
+                                                }
+                                          ?>
+                                      </select>
+                                      <div id="driver_error">
+                                          <?php echo form_error('zone'); ?>
+                                      </div>
+                                   </div>
+                                </div>
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <?php echo $this->lang->line('label_date'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
+                                      <input type="text" class="form-control m-input" name="date" id="date" placeholder="<?php echo $this->lang->line('label_date'); ?>" value="<?php echo $result['MDist_Date']?$result['MDist_Date']:set_value('date')?>">
+                                      <?php echo form_error('date'); ?>
+                                   </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <span id="astric">*</span> <?php echo $this->lang->line('label_type'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
 
 
-                                 
+                                      <select class="form-control m-input" name="type" id="type" placeholder="<?php echo $this->lang->line('label_type'); ?>"  data-parsley-trigger="focusin focusout" data-parsley-errors-container="#driver_error">
 
-                              </div>
-                              <div class="form-group m-form__group row">
+                                          <option value = ""><?php echo $this->lang->line('label_select').' '.$this->lang->line('label_type')?></option>
 
-                                 
-                                 <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_address_1'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="address_line_1" id="address_line_1" placeholder="<?php echo $this->lang->line('label_address_1'); ?>" value="<?=$result['address_line1']?$result['address_line1']:set_value('address_line1')?>" maxlength="256">
-                                    <?php echo form_error('address_line_1'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
+                                           <option value = "Invoice" <?php echo $result['MDist_BType'] == 'Invoice'?"selected":""; ?>><?php echo $this->lang->line('label_invoice'); ?></option>
+
+                                           <option value = "Container" <?php echo $result['MDist_BType'] == 'Container'?"selected":""; ?>><?php echo $this->lang->line('label_container'); ?></option>
+
+                                      </select>
+                                      <div id="driver_error">
+                                          <?php echo form_error('type'); ?>
+                                      </div>
+                                   </div>
+                                </div>
 
 
-                                 <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_address_2'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="address_line_2" id="address_line_2" placeholder="<?php echo $this->lang->line('label_address_2'); ?>" value="<?=$result['address_line2']?$result['address_line2']:set_value('address_line2')?>" maxlength="256">
-                                    <?php echo form_error('address_line_2'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
-
-                            
-
-                              </div>
-                              <div class="form-group m-form__group row">
-
-                                 <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_city'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="city" id="locality" placeholder="<?php echo $this->lang->line('label_city'); ?>" value="<?=$result['city']?$result['city']:set_value('city')?>" maxlength="64">
-                                    <?php echo form_error('city'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
+                                <div class="row mb-3">
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                   <span id="astric">*</span> <?php echo $this->lang->line('label_exchange_rate'); ?>:
+                                   </label>
+                                   <div class="col-md-8 col-lg-9">
 
 
-                                 <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_state'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="state" id="administrative_area_level_1" placeholder="<?php echo $this->lang->line('label_state'); ?>" value="<?=$result['state']?$result['state']:set_value('state')?>" maxlength="64">
-                                    <?php echo form_error('state'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
+                                      <input type="text" class="form-control m-input exchange_rate" name="exchange_rate" id="exchange_rate" placeholder="<?php echo $this->lang->line('label_exchange_rate'); ?>" value="<?php echo $result['MDist_Exchange_Rate']?$result['MDist_Exchange_Rate']:set_value('MDist_Exchange_Rate')?>">
+                                      <div id="driver_error">
+                                          <?php echo form_error('type'); ?>
+                                      </div>
+                                   </div>
+                                </div>
 
+                                <div class="row mb-3">
 
-                                 
-                                 
-                              </div>
-                              <div class="form-group m-form__group row">
-
-                                    <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       <?php echo $this->lang->line('label_zipcode'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="zipcode" id="postal_code" placeholder="<?php echo $this->lang->line('label_zipcode'); ?>" value="<?=$result['zipcode']?$result['zipcode']:set_value('zipcode')?>" maxlength="32">
-                                    <?php echo form_error('zipcode'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
-
-
-
-                                    <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_telephone_number'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="telephone_number1" id="telephone_number1" placeholder="<?php echo $this->lang->line('label_telephone_number'); ?>" value="<?=$result['telephone_number1']?$result['telephone_number1']:set_value('telephone_number1')?>" maxlength="16">
-                                    <?php echo form_error('telephone_number1'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
-
-
-                                 
-                                 
-                              </div>
-                              <div class="form-group m-form__group row">
-                                  
-                                     <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_telephone_number'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="telephone_number2" id="telephone_number2" placeholder="<?php echo $this->lang->line('label_telephone_number'); ?>" value="<?=$result['telephone_number2']?$result['telephone_number2']:set_value('telephone_number2')?>" maxlength="16">
-                                    <?php echo form_error('telephone_number2'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
-
-                                     <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_country'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <input type="text" class="form-control m-input" name="country" id="country" placeholder="<?php echo $this->lang->line('label_country'); ?>" value="<?=$result['country']?$result['country']:set_value('country')?>">
-                                    <?php echo form_error('country'); ?>
-                                    
-                                       </div>
-                                    </div>
-                                 </div>
-
-                                 
-                                 
-                              </div>
-                           </div>
-                           <div class="form-group m-form__group row">
-                             
-                           <div class="col-md-12 col-lg-6">
-                                    <div class="row">
-                                       <label class="form_label col-md-4 col-lg-3 text-right">
-                                       * <?php echo $this->lang->line('label_print'); ?>:
-                                       </label>
-                                       <div class="col-md-8 col-lg-9">
-                                       <div class="m-radio-inline">
-                                    <label class="m-radio">
-                                    <input name="print" value="Yes" type="radio" <?=$result['print']=='Yes'?"checked":''?>>
-                                    <?php echo $this->lang->line('label_yes'); ?>
-                                    <span></span>
+                                   <label class="form_label col-md-4 col-lg-3 text-right">
+                                        <?php echo $this->lang->line('label_comment'); ?>:
                                     </label>
-                                    <label class="m-radio">
-                                    <input name="print" value="No" type="radio"<?=$result['print']=='No'?"checked":''?>>
-                                    <?php echo $this->lang->line('label_no'); ?>
-                                    <span></span>
-                                    </label>
-                                 </div>
-                                 <?php echo form_error('print'); ?>
-                              </div>
-                                    
-                                       </div>
+                                    <div class="col-md-8 col-lg-9">
+                                        <textarea class="form-control m-input" rows="2" name="comment" id="comment" placeholder="<?php echo $this->lang->line('label_comment'); ?>"><?php if(!empty($result['MDist_Comment'])) echo $result['MDist_Comment']; else echo set_value('MDist_Comment'); ?></textarea>
+                                        <?php echo form_error('comment'); ?>
                                     </div>
-                                 </div>
+                                </div>
 
-                              
-                           </div>
-                           <div class="form-group m-form__group row">
-                              <div class="col-lg-9 ml-lg-auto m-form__actions">
-                                 <button type="submit" class="btn btn-success" value="update">
-                                 <?php echo $this->lang->line('label_submit'); ?>
-                                 </button>
-                                 <a href="<?php echo base_url('company/branch'); ?>" class="btn btn-secondary">
-                                 <?php echo $this->lang->line('label_back'); ?>
-                                 </a>
+                            </div>
+
+                          </div>
+                          <div class="form-group m-form__group row">
+                             <div class="col-lg-9 ml-lg-auto m-form__actions">
+                                <button type="submit" class="btn btn-success" value="update">
+                                <?php echo $this->lang->line('label_submit'); ?>
+                                </button>
+                                <a href="<?php echo base_url('company/driver'); ?>" class="btn btn-secondary">
+                                <?php echo $this->lang->line('label_back'); ?>
+                                </a>
+                             </div>
+                          </div>
+                       <?php echo form_close(); ?>
+                       </div>
+                    </div>
+                 </div>
+                 <?php
+                 $arr = $this->rights->rightsArray();
+                 ?>
+
+                 <div class="tab-pane <?php echo $this->session->userdata('tab') == 'true'?"active":""; ?>" id="m_user_profile_tab_2">
+                 <?php if($this->session->userdata('tab') == 'true') {
+
+                          $this->session->set_userdata('tab','false');
+
+
+
+                    ?>
+                    <div class="m-portlet__body">
+                       <div class="m-form__section m-form__section--first">
+
+                       <div class="form-group m-form__group row">
+                             <div class="col-md-12">
+                             <select class = "form-control" id = "module_selector">
+                                <option value = ""><?php echo $this->lang->line('label_select_module'); ?></option>
+                             <?php foreach($arr as $key => $value) {
+
+
+                                ?>
+
+
+                                  <option value = "<?php echo $key ?>"><?php echo $this->lang->line($key); ?></option>
+                             <?php } ?>
+                             </select>
+
+                              <?php   foreach($arr as $key => $value) {
+
+                                 $assingId = strtolower(str_replace(" ","_",$key));
+
+                                $dataOld = "no";
+
+
+                                 ?>
+                              <div id = "parent_<?php echo $assingId; ?>" data-module = "<?php echo $key; ?>" class = "moduler" style = "display:none" data-old = "<?php echo $dataOld; ?>">
+                                <div class="inner-checkbox-list"  id = "checklist_<?php echo $assingId; ?>" data-child = "<?php echo $key; ?>">
+                                   <div class="row vertical-a-t">
+                                      <label class="form_label col-md-4 col-lg-2 text-right">
+                                      <?php echo $this->lang->line($key); ?>
+                                         <label class="m-checkbox ">
+                                            <input type="checkbox" checked id = "<?php echo $assingId; ?>" class = "chk_module">
+                                            <span></span>
+                                         </label>
+                                      </label>
+                                      <div class="col-md-10 col-lg-10">
+                                         <div class="vertical-a-t">
+                                            <div class="m-checkbox-inline">
+                                            <?php if(is_array($value)) {
+                                               foreach($value as $newVal ) {
+
+
+
+
+                                                     $checked = '';
+
+
+
+                                               ?>
+                                               <label class="form_label">
+                                                     <?php echo $this->lang->line($newVal['name']); ?>
+                                                  <label class="m-checkbox ">
+                                                     <input name="rights[<?php echo $key; ?>][][url]" value="<?php echo $newVal['url']; ?>" type="checkbox" <?php echo $checked;  ?>>
+                                                     <span></span>
+                                                  </label>
+                                               </label>
+
+                                            <?php }} else{ ?>
+
+                                               <input name="rights[<?php echo $key; ?>]" value="<?php echo $value; ?>" type="hidden">
+                                            <?php } ?>
+
+
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </div>
+                                   <hr>
+                                </div>
                               </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </form>
-   <!--end::Form-->
-</div>
+
+
+                              <?php } ?>
+                              <div id = "getter">
+
+                              <?php echo form_open("company/user/addrights","id = 'frm'"); ?>
+                              <span id = "containFormData">
+                              </span>
+                              <input type = "hidden" name = "master_user" value = "<?php echo $master_user_id; ?>">
+
+                              <div class="form-group m-form__group row"  id = "action_selector" style = "display:none;">
+                                <div class="col-lg-9 ml-lg-auto m-form__actions">
+                                   <button type="submit" class="btn btn-success" value="update">
+                                   <?php echo $this->lang->line('label_submit'); ?>
+                                   </button>
+                                   <a href="<?php echo base_url('company/user'); ?>" class="btn btn-secondary">
+                                   <?php echo $this->lang->line('label_back'); ?>
+                                   </a>
+                                </div>
+                              </div>
+                              <?php echo form_close(); ?>
+
+
+
+
+                          </div>
+
+
+
+                             </div>
+                          </div>
+                       </div>
+
+                    </div>
+                                            <?php  } ?>
+
+                 </div>
+
+
+              </div>
+
+
+
+                              <div class="m-portlet__body">
+                                  <!--begin: Search Form -->
+                                  <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+                                      <div class="row align-items-center">
+                                          <div class="col-xl-8 order-2 order-xl-1">
+                                              <div class="form-group m-form__group row align-items-center">
+                                                  <div class="col-md-4">
+                                                      <div class="m-input-icon m-input-icon--left">
+                                                          <input type="text" class="form-control m-input" placeholder="<?php echo $this->lang->line('label_search'); ?>" id="m_form_search">
+                                                          <span class="m-input-icon__icon m-input-icon__icon--left">
+                                                              <span>
+                                                                  <i class="la la-search"></i>
+                                                              </span>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                                  <div class="col-md-4">
+                                                      <div class="m-input-icon m-input-icon--left">
+                                                          <input type="text" class="form-control m-input" placeholder="<?php echo $this->lang->line('label_invoice_date'); ?>" id="m_form_date">
+                                                           <span class="m-input-icon__icon m-input-icon__icon--left">
+                                                              <span>
+                                                                  <i class="la la-calendar"></i>
+                                                              </span>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+
+                               <?php
+                                 //$form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_2','enctype'=>'multipart/form-data');
+                                   // echo form_open('company/batch_distribution/addTran/',$form_data);
+
+
+                                ?>
+                                                  <div class="col-md-4">
+                                                      <div class="m-input-icon m-input-icon--left">
+                                                          <button type="submit" class="btn btn-warning btnTran" value="update">
+                                                            <?php echo $this->lang->line('label_submit'); ?>
+                                                          </button>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <!--end: Search Form -->
+
+
+
+                                     <!-- <form method="post" role="form" id="BaschTran">
+
+                                      <input type="text" class="form-control m-input" name="date" id="date" placeholder="<?php echo $this->lang->line('label_date'); ?>" value="<?php echo $list['invoice_number']?$list['invoice_number']:set_value('invoice_number')?>">
+                                      <?php echo form_error('date'); ?>
+                                      <input type="text" name="invoice_number"  class="form-control m-input" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('invoice_number')?>" id="invoice_number" >
+                                      <input type="text" name="nameShipto" class="form-control m-input" id="nameShipto" >
+                                      <input type="text" name="balance" class="form-control m-input" id="balance" >
+                                      <input type="text" name="total_packages" class="form-control m-input" id="total_packages" > -->
+                                  <!--begin: Datatable -->
+                                  <div class="m_datatable"></div>
+                                  <!--end: Datatable -->
+                                <!-- </form> -->
+                                <!-- <?php //echo form_close(); ?> -->
+                              </div>
+
+
+           </div>
+        </div>
+     </div>
+
+
+     <!--end::Form-->
+
+  </div>
+
+       <div class="col-sm-4">
+                   <form method="post" role="form" id="BaschTran">
+
+                       <input type="text" name="mdist_tdate" class="form-control m-input" id="mdist_tdate" >
+                      <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php echo $this->lang->line('label_id'); ?>" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('invoice_number')?>">
+                      <input type="text" name="mdist_tinvnum" class="form-control m-input" id="mdist_tinvnum" >
+                      <input type="text" name="mdist_tcustid" class="form-control m-input" id="mdist_tcustid" >
+                      <input type="text" name="mdist_tbalance" class="form-control m-input" id="mdist_tbalance" >
+                      <input type="text" name="mdist_tbox" class="form-control m-input" id="mdist_tbox" >
+                      <input type="text" name="mdist_tpaid" class="form-control m-input" id="mdist_tpaid" >
+                      <input type="text" name="mdist_delivered" class="form-control m-input" id="mdist_delivered" >
+                      <input type="text" name="mdist_shipto" class="form-control m-input" id="mdist_shipto" >
+                      <input type="text" name="mdist_exchange_balance" class="form-control m-input" id="mdist_exchange_balance" >
+
+                      <input type="hidden" id="tran" name="tran" value="" class="form-control">
+
+                 </form>
+             </div>
+
+ <script type="text/javascript">
+
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+
+            var yyyy = today.getFullYear();
+            if(dd<10){
+
+                dd='0'+dd;
+            }
+            if(mm<10){
+                mm='0'+mm;
+            }
+            var today = mm+'/'+dd+'/'+yyyy;
+
+            var m_datatables = null;
+            var DatatableRemoteAjaxDemo = function() {
+            var t = function() {
+            var t = $(".m_datatable").mDatatable({
+                data: {
+                    type: "remote",
+                    source: {
+                        read: {
+                            url: "<?php echo site_url('company/batch_distribution/ajax_list_invoice')?>",
+                            method: 'GET',
+                            params: {
+                                invoice_date: today
+                            }
+                        }
+                    },
+                    pageSize: 10,
+                    saveState: {
+                        cookie: false,
+                        webstorage: false
+                    },
+                    serverPaging: true,
+                    serverFiltering: true,
+                    serverSorting: true
+                },
+                layout: {
+                    theme: "default",
+                    class: "",
+                    scroll: false,
+                    footer: false
+                },
+                sortable: true,
+                pagination: true,
+                columns: [{
+                    field: "id",
+                    title: "#",
+                    //sortable: !1,
+                    selector: false,
+                    textAlign: "center",
+                    width: 50,
+                    template: function(t) {
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span style="width: 138px;">'+t.id+'</span>'
+                    }
+                }, {
+                    field: "invoice_number",
+                    title: "<?php echo $this->lang->line('label_invoice'); ?>",
+                    /*template: function(t) {
+
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span style="width: 138px;">'+t.invoice_number+'</span><input class="montoBalance" name="mdist_tbalance" value="'+t.invoice_number+'" id="mdist_tbalance" type="text">'
+                    }*/
+                }, {
+                    field: "name",
+                    title: "<?php echo $this->lang->line('label_customer'); ?>",
+                }, {
+                    field: "nameShipto",
+                    title: "<?php echo $this->lang->line('label_consignee'); ?>",
+                }, {
+                    field: "total_packages",
+                    title: "<?php echo $this->lang->line('label_boxes'); ?>",
+                }, {
+                    field: "balance",
+                    title: "<?php echo $this->lang->line('label_balance'); ?>",
+
+                },{
+                    field: "invoice_date",
+                    title: "<?php echo $this->lang->line('label_date'); ?>",
+                }, {
+                    field: "MDist_Exchange_Rate",
+                    title: "<?php echo $this->lang->line('label_exchange_balance'); ?>",
+                    template: function() {
+                       // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="exchange_balance" style="width: 138px;">AA</span>'
+                    }
+                },{
+
+                    field: "chk_status",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_done'); ?><span></span></label>",
+
+                },{
+
+                    field: "chk_status",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_done'); ?><span></span></label>",
+
+                },
+                {
+                    field: "Actions",
+                    width: 110,
+                    title: "<?php echo $this->lang->line('label_actions'); ?>",
+                    sortable: !1,
+                    overflow: "visible",
+                    template: function(t) {
+                        /*\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
+                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_pickup('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
+                    }
+                }]
+            }),
+                    e = t.getDataSourceQuery();
+                    m_datatables = t;
+                    $("#m_form_search").on("keyup", function(e) {
+                        var a = t.getDataSourceQuery();
+                        a.generalSearch = $(this).val().toLowerCase(), t.setDataSourceQuery(a), t.load()
+                    }).val(e.generalSearch),
+
+                    /*$("#m_form_status").on("change", function() {
+                        var e = t.getDataSourceQuery();
+                        e.Status = $(this).val().toLowerCase(), t.setDataSourceQuery(e), t.load()
+                    }).val(void 0 !== e.Status ? e.Status : ""), */
+
+                    $("#m_form_date").on("change", function() {
+                        var e = t.getDataSourceQuery();
+                        e.invoice_date = $(this).val().toLowerCase(), t.setDataSourceQuery(e), t.load()
+                    }).val(void 0 !== e.invoice_date ? e.invoice_date : today)
+
+                    /*$("#m_form_type").on("change", function() {
+                        var e = t.getDataSourceQuery();
+                        e.Type = $(this).val().toLowerCase(), t.setDataSourceQuery(e), t.load()
+                    }).val(void 0 !== e.Type ? e.Type : ""), */
+
+                   // $("#m_form_status, #m_form_type").selectpicker()
+                };
+                return {
+                    init: function() {
+                        t()
+                    }
+                }
+            }();
+            jQuery(document).ready(function() {
+                DatatableRemoteAjaxDemo.init()
+            });
+
+            /* date picker */
+            var BootstrapDatepicker = function() {
+                var t = function() {
+                    $("#m_form_date").datepicker({
+                        todayHighlight: !0,
+                        orientation: "bottom left",
+                        templates: {
+                            leftArrow: '<i class="la la-angle-left"></i>',
+                            rightArrow: '<i class="la la-angle-right"></i>'
+                        },
+                        autoclose: true,
+                        /*format: "yyyy-mm-dd"*/
+                        format: "mm/dd/yyyy",
+                        setDate: new Date()
+                    })
+                };
+                return {
+                    init: function() {
+                        t()
+                    }
+                }
+            }();
+            jQuery(document).ready(function() {
+                BootstrapDatepicker.init()
+            });
+
+
+            /* select 2 */
+            var Select2 = {
+                init: function() {
+                    $("#zone").select2();
+                    $("#status").select2();
+                    $("#driver").select2();
+                    $("#type").select2();
+                 /*   $("#driver_id").select2();
+                    $("#zone").select2();
+                    $("#model_branch_id").select2();*/
+                }
+            };
+            jQuery(document).ready(function() {
+                Select2.init()
+            });
+
+
+   $(document).ready(function(){
+
+            $('#date').datepicker({
+                time: false,
+                clearButton: true
+            });
+
+     $("#m_form_search").on("keyup", function(e) {
+       // $("#m_form_search").blur(function(event) {
+        //montoBalance
+          // var montoBalance = $(".montoBalance").val();
+          // var exchange_rate = $(".exchange_rate").val();
+          // var exchangeBalance = parseFloat($('.montoBalance').val()) + parseFloat($('.exchange_rate').val());
+     // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+     // alert(exchangeBalance);
+     // var valorExchange = exchangeBalance;
+      // $(".exbalance").html(exchangeBalance);
+        setTimeout(function(){
+                    // var montoBalance = $(".montoBalance").val();
+          var montoBalance = $("span.balance").text();//ahi?si prueba a verokok
+
+          var exchange_rate = $(".exchange_rate").val();
+          var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+
+ /*         console.log('montoBalance', montoBalance);
+          console.log('exchange_rate', exchange_rate);*/
+     // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+          $('span.exchange_balance').text(exchangeBalance);
+        }, 1500);
+
+      });
+
+   });
+
+    /*$(document).ready(function () {
+
+                $("#mdist_tbalance").val();
+                var value = $(this).val();
+                $("#mdist_tbalance").val(value);
+
+    });*/
+    /*$(document).ready(function () {
+           $("#m_form_search").blur(function () {
+            $('#mdist_tbalance').clone().val();
+                var value = $("#mdist_tbalance").val();
+                alert(value);
+                $("#mdist_tbalance").val(value);
+
+       });
+    });*/
+
+
+      $(document).on('click', '.btnTran', function(e){
+
+        // console.log('id', $('#m_form_1 input#id').val());
+        // console.log('invoice', $('span.exbalance').text());
+        // console.log('customer', $('span.customer').text());
+
+        var data = {
+          id: $('#m_form_1 input#id').val(),
+          invoice: $('span.exbalance').text(),
+          customer: $('span.customer').text(),
+        };
+
+
+        $.post( "<?php echo site_url('company/batch_distribution/addTran')?>", data, function( result ) {
+          console.log('result', result);
+
+        }, "json");
+
+        event.preventDefault();
+      });
+
+</script>
+
+

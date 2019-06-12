@@ -135,10 +135,7 @@
                                    </label>
                                    <div class="col-md-8 col-lg-9">
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch_milestone_2
                                       <select class="form-control m-input" name="type" id="type" placeholder="<?php echo $this->lang->line('label_type'); ?>"  data-parsley-trigger="focusin focusout" data-parsley-errors-container="#driver_error">
 
                                           <option value = ""><?php echo $this->lang->line('label_select').' '.$this->lang->line('label_type')?></option>
@@ -154,10 +151,7 @@
                                    </div>
                                 </div>
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch_milestone_2
                                 <div class="row mb-3">
                                    <label class="form_label col-md-4 col-lg-3 text-right">
                                    <span id="astric">*</span> <?php echo $this->lang->line('label_exchange_rate'); ?>:
@@ -219,7 +213,7 @@
                              <div class="col-md-12">
                              <select class = "form-control" id = "module_selector">
                                 <option value = ""><?php echo $this->lang->line('label_select_module'); ?></option>
-<<<<<<< HEAD
+
                              <?php foreach($arr as $key => $value) {
 
 
@@ -230,7 +224,7 @@
                              <?php } ?>
                              </select>
 
-=======
+
                              <?php foreach($arr as $key => $value) { ?>
 
 
@@ -238,17 +232,13 @@
                              <?php } ?>
                              </select>
 
->>>>>>> branch_milestone_2
-                              <?php   foreach($arr as $key => $value) {
+                           <?php   foreach($arr as $key => $value) {
 
                                  $assingId = strtolower(str_replace(" ","_",$key));
 
                                 $dataOld = "no";
 
-<<<<<<< HEAD
 
-=======
->>>>>>> branch_milestone_2
                                  ?>
                               <div id = "parent_<?php echo $assingId; ?>" data-module = "<?php echo $key; ?>" class = "moduler" style = "display:none" data-old = "<?php echo $dataOld; ?>">
                                 <div class="inner-checkbox-list"  id = "checklist_<?php echo $assingId; ?>" data-child = "<?php echo $key; ?>">
