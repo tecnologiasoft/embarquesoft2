@@ -168,7 +168,7 @@ input[type = 'text'],select{
                      </label>
                      <div class="col-md-6 col-lg-7">
                     
-                        <input type="text" class="form-control m-input" id = "p_total_dollor" name = "p_total_dollor" placeholder = "<?=$this->lang->line('label_total_dollor')?>" value = "<?=$result['balance']?>" disabled>
+                        <input type="text" class="form-control m-input" id = "p_total_dollor" name = "p_total_dollor" placeholder = "<?php echo "Total Amount"?>" value = "<?=$result['balance']?>" disabled>
                      </div>
                   </div>
                   <div class="row mb-3">
