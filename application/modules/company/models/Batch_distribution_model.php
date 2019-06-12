@@ -204,20 +204,16 @@ class Batch_distribution_model extends My_model {
               //  $now = strtotime(str_replace('/', '-', $_REQUEST['datatable']['pickup_date'])); // or your date as well
 
                 $row->invoice_number = "<span class='exbalance'>$row->invoice_number</span>
-                                    <span></span>
-                                    ";
-                $row->name = "<span class='customer'>$row->name</span>
-                                    <span></span>
-                                    ";
-                $row->nameShipto = "<span class='nameShipto'>$row->nameShipto</span>
-                                    <span></span>
-                                    ";
-                $row->total_packages = "<span class='total_packages'>$row->total_packages</span><span></span></label>
-                                    ";
-                $row->balance = "<span class='balance'>$row->balance</span><span></span>
-                                    ";
-                $row->invoice_date = "<span class='invoice_date'>$row->invoice_date</span>
-                                    <span></span></label>
+                                    <span></span>";
+                $row->name = "<span class='customer'>$row->name</span><span></span>";
+
+                $row->nameShipto = "<span class='nameShipto'>$row->nameShipto</span><span></span>";
+
+                $row->total_packages = "<span class='total_packages'>$row->total_packages</span><span></span>";
+
+                $row->balance = "<span class='balance'>$row->balance</span><span></span>";
+
+                $row->invoice_date = "<span class='invoice_date'>$row->invoice_date</span><span></span>
                                     ";
               // var_dump($row);exit;
 

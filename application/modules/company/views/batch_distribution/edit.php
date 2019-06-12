@@ -589,10 +589,11 @@
       // $(".exbalance").html(exchangeBalance);
         setTimeout(function(){
                     // var montoBalance = $(".montoBalance").val();
-          var montoBalance = $("span.balance").text();//ahi?si prueba a verokok
+          var montoBalance = $("span.balance").text();
 
           var exchange_rate = $(".exchange_rate").val();
-          var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+          //alert(exchange_rate);
+          var exchangeBalance = "$ " + parseFloat(montoBalance) * parseFloat(exchange_rate);
 
  /*         console.log('montoBalance', montoBalance);
           console.log('exchange_rate', exchange_rate);*/
@@ -632,6 +633,11 @@
           id: $('#m_form_1 input#id').val(),
           invoice: $('span.exbalance').text(),
           customer: $('span.customer').text(),
+          nameShipto: $('span.nameShipto').text(),
+          total_packages: $('span.total_packages').text(),
+          balance: $('span.balance').text(),
+          invoice_date: $('span.invoice_date').text(),
+          exchange_balance: $('span.exchange_balance').text(),
         };
 
 

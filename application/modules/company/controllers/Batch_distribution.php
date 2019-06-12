@@ -333,86 +333,57 @@ class Batch_distribution extends MYcom_Controller {
 
 
 
-    /*Add new driver*/
-    function addTran()
-    {
-        /* echo "<pre>";
-         var_dump($_POST);exit;
-         echo "</pre>";*/
 
-        $id = $_POST["id"];
-        $invoice = $_POST["invoice"];
-        $customer = $_POST["customer"];
-
-
-
-/*
-            $id = $this->Batch_distribution_model->add_Tran($params);
-            //$this->Main_model->updateCompanyRefIds('batch_id',$id);
-            // Update driver details
-            //$this->driver_model->update_driver($id, array('driver_code' => $id));
-
-            $this->session->set_flashdata('succ_msg1', $this->lang->line('text_driver_add_success'));
-            redirect('company/batch_distribution/','refresh');
-        }*/
-    }
-
-
-
-    /* Validacion CARRERA ASIGN*/
-   /* public function addTran()
-    { //return print_r($_POST);
-      //valida que viene por ajax,
-            if (!$this->input->is_ajax_request())
-        {
-            redirect('404');
-        }else
+            public function addTran()
         {
 
-            //$this->form_validation->set_rules('diplo_codigo', 'Código', 'required');
-            //$this->form_validation->set_rules('diplo_cod', 'Codigo Diplomado', 'required');
-            //$this->form_validation->set_rules('mdist_tbalance',$this->lang->line('label_zone'),'required|trim');
-            $this->form_validation->set_rules('invoice_number', 'invoice_number', 'required');
-
-
-
-            if ($this->form_validation->run()== false)
+             if (!$this->input->is_ajax_request())
             {
-             /* $error = json_encode(validation_errors());
-                 $error = str_replace('"',"", $error);
-                 $error = str_replace('<\/p>\n',"", $error);
-                 echo $error;  */
-
-           /*   echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));
-            }
-            else
+                redirect('404');
+            }else
             {
-                 $datos =
-                    array(
-                       // 'MDist_TDate' => $this->input->post('mdist_tdate'),
-                        'MDist_Batch' => $this->input->post('mdist_batch'),
-                        'MDist_TInvNUm' => $this->input->post('invoice_number'),
-                        'MDist_TCustID' => date("Y-m-d", strtotime($this->input->post('mdist_tcustid'))),
-                        'MDist_TBalance' => $this->input->post('mdist_tbalance'),
-                        'MDist_TBox' => $this->input->post('mdist_tbox'),
-                        'MDist_TPaid' => $this->input->post('mdist_tpaid'),
-                        'MDist_Delivered' => $this->input->post('mdist_delivered'),
-                        'MDist_ShipTo' => $this->input->post('mdist_shipto'),
-                        'MDist_Exchange_Balance' => $this->input->post('mdist_exchange_balance'),
-                    );
-           //     return print_r($datos);
-
-                  echo "<PRE>";
-                     print_r($datos);exit;
-                  echo "</PRE>";
-                   $this->Batch_distribution_model->add_Tran($datos);
-                   echo json_encode(array('st'=>1, 'msg' => '<div class="alert alert-dismissable alert-success">Asignatura Actualizada </div>'));
+               //echo "hola";
+                
+               //  $this->form_validation->set_rules('uid_usuario', 'Asignar Roles', 'required');            
+                 $this->form_validation->set_rules('id', 'id', 'required');            
+                
 
 
+                if ($this->form_validation->run()== false) 
+                {
+                     
+                     echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));         
+                }
+
+                else{
+                     
+                       $params = 
+                        array(
+                           //$this->input->post('InfoEscuela'),
+                           $this->input->post('id'),
+                           $this->input->post('invoice'),
+                           $this->input->post('customer'),
+                           $this->input->post('nameShipto'),
+                           $this->input->post('total_packages'),
+                           $this->input->post('balance'),
+                           $this->input->post('invoice_date'),
+                           $this->input->post('exchange_balance')
+         
+                        );   
+
+            echo "<pre>";
+            var_dump($params);exit;
+            echo "</pre>";
+                        $this->Batch_distribution_model->add_Tran($params);
+                       echo json_encode(array('st'=>2, 'msg' => '<div class="alert alert-dismissable alert-success">Rol Editado</div>'));
+
+                
+                }
+            
             }
-
         }
-    }*/
+
+ 
 
 
 }
