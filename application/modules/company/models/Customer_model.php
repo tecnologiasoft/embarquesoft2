@@ -83,6 +83,19 @@ class Customer_model extends CI_Model {
             return array();
         }
     }
+     /* 12-JUN-2019 count ShipTo data of the customer */
+    function countShipToData($customerId)
+    {
+        $this->company_db->select("customer_id");
+        $this->company_db->from('tbl_shipto');
+        $this->company_db->where('customer_id',$customerId);
+        $query = $this->company_db->get();
+        if($query->num_rows() >= 1){
+            return $query->result_array();
+        }else{
+            return array();
+        }
+    }
  // invoice Models
     function _get_invoice_datatables_query()
     {
@@ -276,9 +289,9 @@ class Customer_model extends CI_Model {
     // Ship to Models
     function _get_shipto_datatables_query()
     {
-        $this->company_db->select("s.id as shipto_id,ihp.receipt_number as receiptnumber,s.*, CONCAT(s.tele_country_code, ' ', s.telephone_number) as telephone_number, CONCAT(s.cell_country_code , ' ', s.cellphone_number) as cellphone_number, CONCAT(s.fname, ' ', s.lname) as name");
+        $this->company_db->select("s.id as shipto_id,s.*, CONCAT(s.tele_country_code, ' ', s.telephone_number) as telephone_number, CONCAT(s.cell_country_code , ' ', s.cellphone_number) as cellphone_number, CONCAT(s.fname, ' ', s.lname) as name");
         $this->company_db->from('tbl_shipto s');
-        $this->company_db->from('invoice_header_payment ihp');
+        //$this->company_db->from('invoice_header_payment ihp');
         $this->company_db->where('s.void','No');
         $this->company_db->where('s.customer_id', $_REQUEST['datatable']['customer_id']);
         $i = 0;

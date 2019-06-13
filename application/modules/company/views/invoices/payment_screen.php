@@ -76,7 +76,8 @@
                <div class="col-md-6 col-lg-7">
                   <select class  = "form-control m-input" id = "p_currency" name = "p_currency" style = "height:30px;" required>
                      <option value=""><?php echo $this->lang->line('label_currency'); ?></option>
-                     <option value = "dollor"><?=$this->lang->line('label_dollor')?></option>
+                     <!-- Updated 13-jun-2019 -->
+                     <option value = "dollor" selected>Dollar</option>
                      1
                      <option value = "peso"><?=$this->lang->line('label_peso')?></option>
                   </select>
@@ -123,11 +124,12 @@
                </div>
             </div>
             <div class="row mb-3">
+              <!-- update 13-Jun-2019 -->
                <label class="form_label col-md-6 col-lg-5 text-right">
-               <?=$this->lang->line('label_total_dollor')?>
+               Total Amount
                </label>
                <div class="col-md-6 col-lg-7">
-                  <input type="text" class="form-control m-input" id = "p_total_dollor" name = "p_total_dollor" placeholder = "<?=$this->lang->line('label_total_dollor')?>" value = "<?=$result['balance']?>" disabled>
+                  <input type="text" class="form-control m-input" id = "p_total_dollor" name = "p_total_dollor" placeholder = "<?php echo "total amount";?>" value = "<?=$result['balance']?>" disabled>
                </div>
             </div>
             <div class="row mb-3">
@@ -264,11 +266,10 @@
          }).then(function() {
          $("#p_payment_form").html('');
          $("#another_popup").modal('hide');
-         //$('.modal-dialog modal-lg').modal('hide');
          });
-         // getMessage(response.status,response.message,SITE_URL+'company/invoices');
-         location.reload();
-         //$('.modal-dialog modal-lg').modal('hide');
+         
+         /*Updated 13-jun-2019(comment the code location.reload())*/
+         //location.reload();
        }
      });
      return false;

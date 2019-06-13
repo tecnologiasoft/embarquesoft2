@@ -1,9 +1,9 @@
-
 <!-- END: Subheader git code -->
 <div class="m-content">
    <!--begin::Form-->
    <?php
-
+   //echo count($countShipTo);
+   //print_r($countShipTo);//$countShipTo;
       $form_data = array('class' => 'm-form m-form--fit m-form--label-align-right','id' => 'm_form_1','enctype'=>'multipart/form-data'); 
       echo form_open('company/customer/update/',$form_data); 
       ?>
@@ -45,7 +45,9 @@
                         <div class = "row">
                            <div class="col-lg-6">
                               <div class="row mb-3">
-                                 
+                                 <?php 
+                                 //print_r($result);
+                                 //echo $result['agent_code'];?>
                                  <label class="form_label col-md-4 col-lg-3 text-right">
                                  *
                                  <?php echo $this->lang->line('label_customer_id'); ?>:
@@ -248,6 +250,7 @@
                                  </label>
                                  <div class="col-md-8 col-lg-9">
 
+                                    <!-- <input type="text" class="form-control m-input" name="agent_code" id="agent_code" placeholder="<?php //echo $this->lang->line('label_agent_code'); ?>" value="<?php //if(!empty($result['agent_code'])) echo $result['agent_code']; else //echo set_value('agent_code'); ?>" maxlength="16"> -->
                                     <input  class="form-control m-input" name="agent_code" placeholder="<?php echo $this->lang->line('label_agent_code'); ?>" id="agent_code" readonly type="text" maxlength="16" onfocus="if (this.hasAttribute('readonly')) { this.removeAttribute('readonly');this.blur();this.focus();}" value="<?php if(!empty($result['agent_code'])) echo $result['agent_code']; else //echo set_value('agent_code'); ?>"/>
 
                                     <?php echo form_error('agent_code'); ?>
@@ -305,7 +308,81 @@
                   </div>
                </div>
                <div class="tab-pane" id="m_user_profile_tab_3">
+                  <?php 
+                     /*$tot = count($invoice);
+                     echo $tot;
+                     echo "<pre>";
+                     print_r($invoice); 
+                     echo "</pre>";*/ 
+                  ?>
                   <div class="mm_datatable" id="ajax_data"></div>
+
+                  <!-- <div class="v m-datatable m-datatable--default m-datatable--loaded" id="ajax_data" style="">
+                     <table class="m-datatable__table" id="m-datatable" style="display: block; height: auto; overflow-x: auto;">
+                        <thead class="m-datatable__head">
+                           <tr class="m-datatable__row" style="height: 40px;">
+                           <th data-field="id" class="m-datatable__cell--center m-datatable__cell m-datatable__cell--sort">
+                           <span style="width: 50px;">#</span></th>
+                           <th data-field="name" class="m-datatable__cell m-datatable__cell--sort">
+                              <span style="width: 116px;">Customer</span>
+                           </th>
+                           <th data-field="invoice_number" class="m-datatable__cell m-datatable__cell--sort">
+                              <span style="width: 116px;">Invoice Number</span>
+                           </th>
+                           <th data-field="invoice_date" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 116px;">Date</span></th>
+                           <th data-field="sub_total" class="m-datatable__cell m-datatable__cell--sort">
+                              <span style="width: 116px;">Amount</span>
+                           </th>
+                           <th data-field="balance" class="m-datatable__cell m-datatable__cell--sort">
+                              <span style="width: 116px;">Balance</span>
+                           </th>
+                           <th data-field="payments" class="m-datatable__cell m-datatable__cell--sort">
+                              <span style="width: 116px;">Pay</span>
+                           </th>
+                           <th data-field="Actions" class="m-datatable__cell m-datatable__cell--sort">
+                              <span style="width: 155px;">Actions</span>
+                           </th>
+                           </tr>
+                        </thead>
+                        <tbody class="m-datatable__body" style="">
+
+                           <tr data-row="0" class="m-datatable__row m-datatable__row--even" style="height: 49px;">
+                              <td data-field="id" class="m-datatable__cell--center m-datatable__cell">
+                                 <span style="width: 50px;">49</span>
+                              </td>
+                              <td data-field="name" class="m-datatable__cell">
+                                 <span style="width: 116px;">codingtest codingtest</span>
+                              </td>
+                              <td data-field="invoice_number" class="m-datatable__cell">
+                                 <span style="width: 116px;">111</span>
+                              </td>
+                              <td data-field="invoice_date" class="m-datatable__cell">
+                                 <span style="width: 116px;">2019-02-04</span>
+                              </td>
+                              <td data-field="sub_total" class="m-datatable__cell"><span style="width: 116px;">
+                                 <span id="p_49">1132.00</span></span>
+                              </td>
+                              <td data-field="balance" class="m-datatable__cell">
+                                 <span style="width: 116px;">
+                                    <input type="hidden" name="tbalance" value="972.00" id="tbalance49">
+                                    <span id="sp_49">972.00</span>
+                                 </span>
+                              </td>
+                              <td data-field="payments" class="m-datatable__cell">
+                                 <span style="width: 116px;">
+                                    <input type="text" class="form-control m-input partial_amount" id="49" data-id="49" name="total_payment[]" placeholder="00.00">
+                                 </span>
+                              </td>
+                              <td data-field="Actions" class="m-datatable__cell">
+                                 <span style="overflow: visible; width: 155px;">
+                                    <a href="javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_apply" id="btn_apply_49" data-btntype="apply" data-id="49">Apply</a>
+                                    <a href="javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop" data-btntype="stop" id="btn_stop_49" data-id="49" style="display:none;">Remove</a>
+                                 </span>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>   
+                  </div> -->
                </div>
                <div class="tab-pane" id="m_user_profile_tab_4">
                </div>
@@ -355,10 +432,6 @@
          </div>
       </div>
    </div>
-<<<<<<< HEAD
-  
-      <div class="modal fade mm" id="another_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-=======
    <!-- <div class="row">
       <div class="col-md-12">
           <div class="m-portlet__foot m-portlet__foot--fit">
@@ -378,7 +451,6 @@
       </div>
       </div> -->
            <div class="modal fade mm" id="another_popup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
->>>>>>> branch_milestone_2
     <div class="modal-dialog modal-lg modal-dialog-centered " role="document" id = "pay_invoice_model">
 
     </div>
@@ -391,6 +463,7 @@
 <!-- end:: Page -->
 <!-- script file for File input -->
 <!-- initialization of file upload and date picker -->
+<?php if(count($countShipTo) > 0){?>
 <script type="text/javascript">
    /* Ship to table */
    var m_datatables = null;
@@ -453,6 +526,7 @@
                    sortable: !1,
                    overflow: "visible",
                    template: function(t) {
+                       /*\t\t\t\t\t\t<a href="<?php echo base_url()."company/customer/view_shipto/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/customer/edit_shipto/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_shipto('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
                    }
                }]
@@ -477,21 +551,83 @@
            }
        }
    }();
+</script>
+<!-- 12-jan-2019 Start Show No found message if no data founded-->
+    <?php }else{?>
+    <div class="modal-content" id="shipToNoFound" style="width: 100%;margin-top: -59px;padding-bottom: 100px;">
+      <div class="modal-body">
+         <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="">
+             <div class="row">
+                  <div class="col-lg-4">
+                     <center><span id="noFoundShipTo" style="margin: 50px;font-size: 30px;"> No Data Founded</span></center>
+                      
+                 </div>
+             </div>
+            </div>
+      </div>
+   </div>
+   <?php }?>
+<!-- 12-jan-2019 End Show No found message if no data founded-->
+<script>
+
    jQuery(document).ready(function() {
-      console.log("test2");
-      $('#payment_list').click(function(){
-         $('#noFoundInvoice').hide();
-         $('.modal-content').hide();
+      /*12-jan-2019 start Tab show hide*/
+      $('#invoiceNoFound').hide();
+      $('#shipToNoFound').hide();
+      $('#tab1').click(function(){
+         $('#m_user_profile_tab_3').removeClass('active');
+         //$('#m_user_profile_tab_4').removeClass('active');
+         $('#m_user_profile_tab_7').removeClass('active');
+         $('#payment_list').removeClass('active');
+         $('#invoiceNoFound').hide();
+         $('#shipToNoFound').hide();
       });
       $('#tab3').click(function(){
-         $('.modal-content').show();
-         $('#noFoundInvoice').show();
+         //console.log("in payment list first");
+          $('#m_user_profile_tab_7').removeClass('active');
+          $('#m_user_profile_tab_4').removeClass('active');
+          $('#m_user_profile_tab_3').removeClass('active');
+          $('#invoiceNoFound').show();
       });
-       DatatableRemoteAjaxDemo.init()
+      $('#tab7').click(function(){
+         $('#m_user_profile_tab_3').removeClass('active');
+         $('#m_user_profile_tab_4').removeClass('active');
+         $('#payment_list').removeClass('active');
+         $('#shipToNoFound').show();
+      });
+     
+      $('#payment_list').click(function(){
+         //console.log("in payment list");
+         $('#m_user_profile_tab_3').removeClass('active');
+         $('#m_user_profile_tab_4').removeClass('active');
+         $('#m_user_profile_tab_7').removeClass('active');
+         $('#m_user_profile_tab_3').removeClass('active');
+         $('#invoiceNoFound').hide();
+         $('#shipToNoFound').hide();
+
+      });
+       $('tab4').click(function(){
+         $('#m_user_profile_tab_3').removeClass('active');
+         $('#m_user_profile_tab_7').removeClass('active');
+         $('#payment_list').removeClass('active');
+      });
+       $('#m_user_profile_tab_4').click(function(){
+         $('#m_user_profile_tab_3').removeClass('active');
+         $('#m_user_profile_tab_7').removeClass('active');
+         $('#payment_list').removeClass('active');
+      });
+      /*12-jan-2019 End*/
+      DatatableRemoteAjaxDemo.init()
       DatatableRemoteAjaxDemo1.init()
    });
    
-
+   /*$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+       var tab_id = $(e.target).data("tab_id") // activated tab
+   $('')
+       document.cookie = "tab-pane="+tab_id; 
+       $('.tab-pane').not(this).removeClass('active');
+       $('#m_user_profile_tab_'+tab_id).toggleClass('active');
+   })*/
 
    $(document).on('click','#payment_list',function(){
          var id = "<?=$this->uri->segment(4);?>";
@@ -524,7 +660,9 @@
                type: "GET",
                success: function(data)
                {
-                   
+                   //$('#user_table').bootstrapTable('refresh');
+                   //$(".m_datatable").mDatatable().ajax.reload();
+                   //DatatableRemoteAjaxDemo.init();
                    m_datatables.reload();
                },
                    error: function(jqXHR, textStatus, errorThrown){                
@@ -625,7 +763,7 @@
        }
    }();
    jQuery(document).ready(function() {
-      console.log("test");
+      //console.log("test");
       $('a.m-tabs__link').click(function() { 
          alert(id);
       });
@@ -636,6 +774,7 @@
          $('#payment_list').removeClass('active');
       });
       $('#tab3').click(function(){
+         //console.log("in payment list first");
           $('#m_user_profile_tab_7').removeClass('active');
           $('#m_user_profile_tab_4').removeClass('active');
           $('#m_user_profile_tab_3').removeClass('active');
@@ -647,31 +786,29 @@
       });
      
       $('#payment_list').click(function(){
+        // console.log("in payment list");
          $('#m_user_profile_tab_3').removeClass('active');
          $('#m_user_profile_tab_4').removeClass('active');
          $('#m_user_profile_tab_7').removeClass('active');
          $('#m_user_profile_tab_3').removeClass('active');
-         $('.tab-pane').removeClass('active');
-         $('#m_user_profile_tab_3').addClass('rajesh');
-         $('#noFoundPayment').hide();
-         
+         $('#invoiceNoFound').hide();
+
       });
        $('tab4').click(function(){
          $('#m_user_profile_tab_3').removeClass('active');
          $('#m_user_profile_tab_7').removeClass('active');
          $('#payment_list').removeClass('active');
       });
-      $('#m_user_profile_tab_4').click(function(){
+       $('#m_user_profile_tab_4').click(function(){
          $('#m_user_profile_tab_3').removeClass('active');
          $('#m_user_profile_tab_7').removeClass('active');
          $('#payment_list').removeClass('active');
       });
-      $('.nav-item .m-tabs__item .tab4').click(function(){
-         $('.tab-pane').removeClass('active');
-         $('#m_user_profile_tab_3').removeClass('active');
-      });
       
-      
+      //$("#fname").css("color", "red");
+      //$('#branch').attr('style', 'pointer-events: all !important');
+      /*$( "#branch" ).addClass( "pointerchange yourClass" );
+      $("#branch").removeAttr("style");*/
       var fname= $('#fname').val();
       var lname= $('#lname').val();
       var address_line1= $('#address_line1').val();
@@ -717,10 +854,19 @@
                return true;
             }
       });
-      
+      /*$("#branch").change(function() {
+           var fname = $('#branch').val();
+           if(fname != ''){
+               jQuery('#branch_msg').hide();
+               return true;
+            }
+      });*/
       $("#cellphone_number").change(function() {
+         //alert("test");          //var fname = $('input#cellphone_number').val();
            var celno  =jQuery('input#cellphone_number').val();
+         
            var nolength = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(celno);
+      
            if(nolength == false){
                jQuery('#cellphone_number_msg').show();
                $(this).focus();
@@ -731,26 +877,34 @@
             }
       });
       $("#telephone_number").change(function() {
+         //alert("test");
+           //var fname = $('input#telephone_number').val();
            var telno  =jQuery('input#telephone_number').val();
            var tellength = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(telno);
            if(tellength == false ){
+            //alert("false");
                jQuery('#telphone_number_msg').show();
                $(this).focus();
                return false;
             }else{
+               //alert("true");
                jQuery('#telphone_number_msg').hide();
                return true;
             }
       });
+      //alert("test");
       jQuery('button.btn.btn-success').click(function(){
+         //alert("test");
          var fname= $('#fname').val();
          var lname= $('#lname').val();
          var address_line1= $('#address_line1').val();
          var city= $('#city').val();
          var state= $('#state').val();
+         //var branch= $('#branch').val();
          var celno  =jQuery('input#cellphone_number').val();
          var telno  =jQuery('input#telephone_number').val();
          var nolength = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(celno);
+         //var tellength = /^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(telno);
 
          if(fname == '' && lname == '' && address_line1 == '' && city == '' && state == '' && nolength== false ){
             jQuery('#fname_msg').show();
@@ -758,6 +912,7 @@
             jQuery('#address_line1_msg').show();
             jQuery('#city_msg').show();
             jQuery('#state_msg').show();
+            //jQuery('#branch_msg').show();
             jQuery('#telphone_number_msg').show();
             jQuery('#cellphone_number_msg').show();
             return false;
@@ -793,13 +948,25 @@
                jQuery('#address_line1_msg').hide();
                jQuery('#city_msg').hide();
                jQuery('#state_msg').hide();
-            }else if( nolength== false){
+               //jQuery('#branch_msg').show();
+               //return false;
+            }/*else if(tellength == false){
                jQuery('#fname_msg').hide();
                jQuery('#lname_msg').hide();
                jQuery('#address_line1_msg').hide();
                jQuery('#city_msg').hide();
                jQuery('#state_msg').hide();
                jQuery('#branch_msg').hide();
+               jQuery('#telphone_number_msg').show();
+               return false;
+            }*/else if( nolength== false){
+               jQuery('#fname_msg').hide();
+               jQuery('#lname_msg').hide();
+               jQuery('#address_line1_msg').hide();
+               jQuery('#city_msg').hide();
+               jQuery('#state_msg').hide();
+               jQuery('#branch_msg').hide();
+               //jQuery('#telphone_number_msg').hide();
                jQuery('#cellphone_number_msg').show();
                return false;
             }
@@ -813,9 +980,11 @@
        GetPickupDdatatables.init()
    });
 </script>
-<!-- 10-jun-2019 count invoice of the customer -->
- <?php if(count($countInvoice) > 0){?> 
+<!-- 12-jan-2019 Start Check to count of invoice-->
+<?php if(count($countInvoice) > 0){?>
+<!-- 12-jan-2019 Start Check to count of invoice-->
 <script type="text/javascript">
+   
    var mm_datatables = null;
    var DatatableRemoteAjaxDemo1 = function() {
       var tt = function() {
@@ -894,13 +1063,9 @@
                         return payment;
                         <?php } ?>
                     }
-<<<<<<< HEAD
-                   
-=======
                    /*template: function(t) {
                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/customer/invoice_detail_ajax_list/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>'
                    }*/
->>>>>>> branch_milestone_2
                }]
       }),
       e = tt.getDataSourceQuery();
@@ -922,51 +1087,45 @@
         }
       }
    }();
+  
    jQuery(document).ready(function() {
-      console.log("test1");
       DatatableRemoteAjaxDemo.init()
-<<<<<<< HEAD
-      
-=======
-      console.log("test");
+      //console.log("test");
       
    });
->>>>>>> branch_milestone_2
+   </script> 
+   <!-- 12-jan-2019 Start Show No found message if no data founded-->
+   <?php }else{?>
+      <div class="modal-content" id="invoiceNoFound" style="width: 100%;margin-top: -59px;padding-bottom: 100px;">
+         <div class="modal-body">
+            <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-max-height="">
+                <div class="row">
+                     <div class="col-lg-4">
+                        <center><span id="noFoundInvoice" style="margin: 50px;font-size: 30px;"> No Data Founded</span></center>
+                         
+                    </div>
+                </div>
+               </div>
+         </div>
+      </div>
+   <?php }?>
+   <!-- 12-jan-2019 End Show No found message if no data founded-->
+   <script> 
    $(document).on('click','.invoice_pay_dtl',function(){
             var url  = SITE_URL+'company/customer/paymentDetails';
             var ids = $(this).data('id');
             var data = {id:ids};
             ajaxCall(url,data,function(response){
 
-<<<<<<< HEAD
-                if(response.status==SUCCESS_CODE){
-=======
                // if(response.status==SUCCESS_CODE){
->>>>>>> branch_milestone_2
                 $("#pay_invoice_model").html('');
                 $("#pay_invoice_model").html(response.data);
                 $("#another_popup").modal('show');
 
-<<<<<<< HEAD
-                }else{
-                    alert(response.message);
-                }
-=======
                 //}else{
                 //    alert(response.message);
                 //}
->>>>>>> branch_milestone_2
 
             });
         });
 </script> 
-<?php }else{?>
-<div class="modal-content">
-          <div class="modal-header modal_header">
-            
-         </div>
-      <div class="modal-body">
-<span id="noFoundInvoice" style="margin: 215px;font-size: 30px;"> <?php echo "No Data Founded";?></span>
-</div>
-</div>
-<?php }?>

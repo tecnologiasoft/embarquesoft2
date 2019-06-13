@@ -285,6 +285,8 @@ public function invoiceview()
         $data['result'] = $this->customer_model->get_customer_data($this->uri->segment(4));
         /*10-jan-2019 count the invoice of the customer*/
         $data['countInvoice'] = $this->customer_model->countInvoiceData($this->uri->segment(4));
+        /*12-jan-2019 count the shipTo of the customer*/
+        $data['countShipTo'] = $this->customer_model->countShipToData($this->uri->segment(4));
         if (!empty($data['result'])) {
             $this->loadView($this->view_folder . 'edit', $data);
         } else {
