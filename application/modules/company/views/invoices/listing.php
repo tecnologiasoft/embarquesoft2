@@ -140,15 +140,15 @@ input#customer_id, #div_shipto_id > .select2-container--default .select2-selecti
 
 
 #edit_invoice_model .modal-header{
-	display: block;
+    display: block;
 }
 
 #edit_invoice_model .modal-header .modal-title{
-	display: inline-block;
+    display: inline-block;
 }
 
 #edit_invoice_model .modal-header  .close{
-	margin: 20px 20px 0px 0px;
+    margin: 20px 20px 0px 0px;
 }
 
 </style>
@@ -1366,19 +1366,36 @@ function get_shipto_data(id){
         }
     }); // END OF AJAX CALL
 }
-var x = 1; //initialize counter for text box 
-// Updated on 11-jun         
+//initialize counter for text box 
+var x = 1; 
+
+/**** Update 13-Jun-2019 ***/
+// method name: click on action on addMore class
+// created: Jun 13, 2019 06:23PM
+// description: Check Current row is empty or not if empty so add button will not work otherwise will work
+// Author: Rajesh kumar Gupta
+// Revisions: None
+//            
+var i=0;
 $(document).on('click','.addMore',function(){
-    console.log("test");
-    var string = add_more_button();
-    $('.childRemove').remove();
-    $("#invoice_multiple_items").append(string[0]);
-    item_popup(string[1]);
-    x++;
-    $(this).removeClass('addMore btn-success').addClass('removeMore btn-danger').html('<i class="fa fa-minus"></i>');
-
-    
-
+    /*console.log("test");
+    console.log('#item_'+i);
+    console.log($('#item_'+i).length);
+    console.log($('#item_'+i).val);
+    console.log(i);*/
+    if($('#item_'+i).val().length == 0 ){
+        console.log("Empty");
+        return false;
+    }else{
+        console.log("Not Empty");
+        var string = add_more_button();
+        $('.childRemove').remove();
+        $("#invoice_multiple_items").append(string[0]);
+        item_popup(string[1]);
+        x++;
+        $(this).removeClass('addMore btn-success').addClass('removeMore btn-danger').html('<i class="fa fa-minus"></i>');
+    }
+    i++;
 });
 
 

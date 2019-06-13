@@ -103,7 +103,8 @@ input[type = 'text'],select{
                      <div class="col-md-6 col-lg-7">
                         <select class  = "form-control m-input" id = "p_currency" name = "p_currency" style = "height:30px;" required>
                            <option value=""><?php echo $this->lang->line('label_currency'); ?></option>
-                           <option value = "dollor"><?=$this->lang->line('label_dollor')?></option>
+                           <!-- <option value = "dollor"><?=$this->lang->line('label_dollor')?></option> -->
+                           <option value = "dollar" selected>Dollar</option>
                            
                            <option value = "peso"><?=$this->lang->line('label_peso')?></option>
                         </select>
@@ -281,11 +282,11 @@ var t = $(".v").mDatatable({
         class:'demo_class',
         template: function(t) {
             var tex_action;
-			 if(t.balance == 0){
-			 	tex_action = '<input type = "text" class="form-control m-input partial_amount" id = "'+t.id+'" name = "total_payment[]" placeholder = "00.00" disabled>';
-			 }else{
-				tex_action = '<input type = "text" class="form-control m-input partial_amount" id = "'+t.id+'" data-id="'+t.id+'" name = "total_payment[]" placeholder = "00.00">';
-			 }
+       if(t.balance == 0){
+        tex_action = '<input type = "text" class="form-control m-input partial_amount" id = "'+t.id+'" name = "total_payment[]" placeholder = "00.00" disabled>';
+       }else{
+        tex_action = '<input type = "text" class="form-control m-input partial_amount" id = "'+t.id+'" data-id="'+t.id+'" name = "total_payment[]" placeholder = "00.00">';
+       }
             return tex_action;
         }
         
@@ -299,9 +300,9 @@ var t = $(".v").mDatatable({
         template: function(t) {
             var action_val;
             if(t.balance == 0){
-            	action_val = '<a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill"'+t.id+'" data-id = "'+t.id+'" >Paid</a><a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop"'+t.id+'" data-id = "'+t.id+'" style="display:none;">Stop</a>';
+              action_val = '<a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill"'+t.id+'" data-id = "'+t.id+'" >Paid</a><a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop"'+t.id+'" data-id = "'+t.id+'" style="display:none;">Stop</a>';
             }else{
-				action_val = '<a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_apply" id="btn_apply_'+t.id+'" data-btntype="apply" data-id = "'+t.id+'" >Apply</a><a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop" data-btntype="stop" id="btn_stop_'+t.id+'"  data-id = "'+t.id+'" style="display:none;">Remove</a>';
+        action_val = '<a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_apply" id="btn_apply_'+t.id+'" data-btntype="apply" data-id = "'+t.id+'" >Apply</a><a href = "javascript:void(0);" class="btn btn-info m-btn m-btn--custom m-btn--icon m-btn--air m-btn--pill btn_stop" data-btntype="stop" id="btn_stop_'+t.id+'"  data-id = "'+t.id+'" style="display:none;">Remove</a>';
             }
             return action_val;
         }
@@ -364,42 +365,42 @@ $(document).on('change','.partial_amount',function(){
 });
 
 $(document).on('click','.btn_apply',function(){
-	var idInstance = $(this).data('id');
-	if($("#p_amount").val()==""){
-		return false;
-	}
-	var total_value = 0;
-	var invoice_amount = parseFloat($("#p_amount").val());
-	var balance = parseFloat($("#sp_"+idInstance).text());
-	var amount = parseFloat($("#p_"+idInstance).text());
-	$('.partial_amount').each(function () {
-		if ($(this).val().trim() != "") {
-			total_value = total_value + Math.abs(parseFloat($(this).val()));
-		}
-	});		
-	if(invoice_amount > total_value){
-		var remain_amount = parseFloat(invoice_amount - total_value).toFixed(2);
-		
-		if(remain_amount >= balance){			
-			$("#"+idInstance).val(balance);
-			remain_amount = parseFloat(remain_amount - balance).toFixed(2);
-			$('#p_remain_dollor').val(remain_amount);
-		}else{
-			$("#"+idInstance).val(remain_amount);
-			$('#p_remain_dollor').val(0);
-		}
-	}else{
-		$('#p_remain_dollor').val(0);
-		return false;
-	}
-	var btntype = $(this).data('btntype');
-	if(btntype == "apply"){
-		$('#btn_apply_'+idInstance).hide();
-		$('#btn_stop_'+idInstance).show();
-	}else{
-		$('#btn_apply_'+idInstance).show();
-		$('#btn_stop_'+idInstance).hide();
-	}
+  var idInstance = $(this).data('id');
+  if($("#p_amount").val()==""){
+    return false;
+  }
+  var total_value = 0;
+  var invoice_amount = parseFloat($("#p_amount").val());
+  var balance = parseFloat($("#sp_"+idInstance).text());
+  var amount = parseFloat($("#p_"+idInstance).text());
+  $('.partial_amount').each(function () {
+    if ($(this).val().trim() != "") {
+      total_value = total_value + Math.abs(parseFloat($(this).val()));
+    }
+  });   
+  if(invoice_amount > total_value){
+    var remain_amount = parseFloat(invoice_amount - total_value).toFixed(2);
+    
+    if(remain_amount >= balance){     
+      $("#"+idInstance).val(balance);
+      remain_amount = parseFloat(remain_amount - balance).toFixed(2);
+      $('#p_remain_dollor').val(remain_amount);
+    }else{
+      $("#"+idInstance).val(remain_amount);
+      $('#p_remain_dollor').val(0);
+    }
+  }else{
+    $('#p_remain_dollor').val(0);
+    return false;
+  }
+  var btntype = $(this).data('btntype');
+  if(btntype == "apply"){
+    $('#btn_apply_'+idInstance).hide();
+    $('#btn_stop_'+idInstance).show();
+  }else{
+    $('#btn_apply_'+idInstance).show();
+    $('#btn_stop_'+idInstance).hide();
+  }
 });
 $(document).on('click','.btn_stop',function(){
   var idInstance = $(this).data('id');
@@ -459,30 +460,30 @@ $(document).on('change','#p_currency',function(){
 });
 
 $(document).on('change','#p_amount',function(){
-	var idInstance = $(this).data('id');
-	var total_value = 0;
-	var invoice_amount = parseFloat($("#p_amount").val());
-	var pre_remain_amount = $("#p_remain_dollor").val();
+  var idInstance = $(this).data('id');
+  var total_value = 0;
+  var invoice_amount = parseFloat($("#p_amount").val());
+  var pre_remain_amount = $("#p_remain_dollor").val();
     $('.partial_amount').each(function () {
-		if ($(this).val().trim() != "") {
-			total_value = total_value + Math.abs(parseFloat($(this).val()));
-		}
-	});
+    if ($(this).val().trim() != "") {
+      total_value = total_value + Math.abs(parseFloat($(this).val()));
+    }
+  });
     if(invoice_amount >= total_value){
-    	var remain_amount =parseFloat(invoice_amount - total_value);
+      var remain_amount =parseFloat(invoice_amount - total_value);
        $("#p_remain_dollor").val(remain_amount);
     }else{
       alert('Amount is less than applied amount,Please remove & reapply amount from invoice');
      
-    	$("#p_remain_dollor").val(0.00);
-    	$("#p_amount").val(0.00);
-    	$("#p_total_dollor").val(0.00);
+      $("#p_remain_dollor").val(0.00);
+      $("#p_amount").val(0.00);
+      $("#p_total_dollor").val(0.00);
     } 
 
 });
 
 $(document).on('keypress keyup','#p_exchange_rate,#p_amount',function(){
-	//alert('test');
+  //alert('test');
     var val  = $("#p_exchange_rate").val();
     var p_amount  = $('#p_amount').val();
     var remain_amount = $('#p_amount').val();

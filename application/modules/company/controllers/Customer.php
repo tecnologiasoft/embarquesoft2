@@ -285,6 +285,8 @@ public function invoiceview()
         $data['result'] = $this->customer_model->get_customer_data($this->uri->segment(4));
         /*10-jan-2019 count the invoice of the customer*/
         $data['countInvoice'] = $this->customer_model->countInvoiceData($this->uri->segment(4));
+        /*12-jan-2019 count the shipTo of the customer*/
+        $data['countShipTo'] = $this->customer_model->countShipToData($this->uri->segment(4));
         if (!empty($data['result'])) {
             $this->loadView($this->view_folder . 'edit', $data);
         } else {
@@ -621,7 +623,8 @@ public function invoiceview()
         $this->form_validation->set_rules('shipto_lname', $this->lang->line('field_last_name'), 'required|trim');
         $this->form_validation->set_rules('shipto_address', $this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('shipto_address_1', $this->lang->line('field_address_line_1'), 'required|trim');
-        $this->form_validation->set_rules('shipto_address_2', $this->lang->line('field_address_line_2'), 'trim|required');
+        /*Updated 13-jun-2019*/
+        //$this->form_validation->set_rules('shipto_address_2', $this->lang->line('field_address_line_2'), 'trim|required');
         $this->form_validation->set_rules('shipto_province', $this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('shipto_sector', $this->lang->line('label_sector'), 'required|trim');
         if (($this->input->post('shipto_telephone_number') == '') && ($this->input->post('shipto_cellphone_number') == '')) {
