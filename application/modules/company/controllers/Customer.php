@@ -623,7 +623,8 @@ public function invoiceview()
         $this->form_validation->set_rules('shipto_lname', $this->lang->line('field_last_name'), 'required|trim');
         $this->form_validation->set_rules('shipto_address', $this->lang->line('field_address'), 'required|trim');
         $this->form_validation->set_rules('shipto_address_1', $this->lang->line('field_address_line_1'), 'required|trim');
-        $this->form_validation->set_rules('shipto_address_2', $this->lang->line('field_address_line_2'), 'trim|required');
+        /*Updated 13-jun-2019*/
+        //$this->form_validation->set_rules('shipto_address_2', $this->lang->line('field_address_line_2'), 'trim|required');
         $this->form_validation->set_rules('shipto_province', $this->lang->line('label_province'), 'required|trim');
         $this->form_validation->set_rules('shipto_sector', $this->lang->line('label_sector'), 'required|trim');
         if (($this->input->post('shipto_telephone_number') == '') && ($this->input->post('shipto_cellphone_number') == '')) {
