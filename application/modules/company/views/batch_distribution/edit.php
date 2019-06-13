@@ -1,6 +1,9 @@
 <style>
    .vertical-a-t .m-checkbox{ vertical-align: top; margin-left: 5px; }
    .inner-checkbox-list{ margin-top: 10px; }
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+     padding: 0.7rem!important; 
+}
 </style>
                           <!-- <?php //echo "<pre>";
                           //print_r($result);
@@ -133,6 +136,7 @@
                                    </label>
                                    <div class="col-md-8 col-lg-9">
 
+
                                       <select class="form-control m-input" name="type" id="type" placeholder="<?php echo $this->lang->line('label_type'); ?>"  data-parsley-trigger="focusin focusout" data-parsley-errors-container="#driver_error">
 
                                           <option value = ""><?php echo $this->lang->line('label_select').' '.$this->lang->line('label_type')?></option>
@@ -147,6 +151,7 @@
                                       </div>
                                    </div>
                                 </div>
+
 
                                 <div class="row mb-3">
                                    <label class="form_label col-md-4 col-lg-3 text-right">
@@ -209,7 +214,10 @@
                              <div class="col-md-12">
                              <select class = "form-control" id = "module_selector">
                                 <option value = ""><?php echo $this->lang->line('label_select_module'); ?></option>
-                             <?php foreach($arr as $key => $value) { ?>
+                             <?php foreach($arr as $key => $value) {
+
+
+                                ?>
 
 
                                   <option value = "<?php echo $key ?>"><?php echo $this->lang->line($key); ?></option>
@@ -221,6 +229,7 @@
                                  $assingId = strtolower(str_replace(" ","_",$key));
 
                                 $dataOld = "no";
+
 
                                  ?>
                               <div id = "parent_<?php echo $assingId; ?>" data-module = "<?php echo $key; ?>" class = "moduler" style = "display:none" data-old = "<?php echo $dataOld; ?>">
@@ -358,19 +367,9 @@
                                   </div>
                                   <!--end: Search Form -->
 
-                                    <!-- <form method="post" role="form" id="BaschTran">
-                                    
-                                                                       <input type="text" class="form-control m-input" name="date" id="date" placeholder="<?php echo $this->lang->line('label_date'); ?>" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('date')?>">
-                                      <?php echo form_error('date'); ?>
-                                      <input type="text" name="invoice_number"  class="form-control m-input" value="<?php echo $result['invoice_number']?$result['invoice_number']:set_value('invoice_number')?>" id="invoice_number" >
-                                      <input type="text" name="nameShipto" class="form-control m-input" id="nameShipto" >
-                                      <input type="text" name="balance" class="form-control m-input" id="balance" >
-                                      <input type="text" name="total_packages" class="form-control m-input" id="total_packages" > -->
-                                  <!--begin: Datatable -->
                                   <div class="m_datatable"></div>
                                   <!--end: Datatable -->
-                                <!-- </form> -->
-                                <!-- <?php //echo form_close(); ?> -->
+                              
                               </div>
 
 
@@ -383,24 +382,7 @@
 
   </div>
 
-      <!--  <div class="col-sm-4">
-                   <form method="post" role="form" id="BaschTran">
 
-                       <input type="text" name="mdist_tdate" class="form-control m-input" id="mdist_tdate" >
-                      <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php //echo $this->lang->line('label_id'); ?>" value="<?php //echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
-                      <input type="text" name="mdist_tinvnum" class="form-control m-input" id="mdist_tinvnum" >
-                      <input type="text" name="mdist_tcustid" class="form-control m-input" id="mdist_tcustid" >
-                      <input type="text" name="mdist_tbalance" class="form-control m-input" id="mdist_tbalance" >
-                      <input type="text" name="mdist_tbox" class="form-control m-input" id="mdist_tbox" >
-                      <input type="text" name="mdist_tpaid" class="form-control m-input" id="mdist_tpaid" >
-                      <input type="text" name="mdist_delivered" class="form-control m-input" id="mdist_delivered" >
-                      <input type="text" name="mdist_shipto" class="form-control m-input" id="mdist_shipto" >
-                      <input type="text" name="mdist_exchange_balance" class="form-control m-input" id="mdist_exchange_balance" >
-
-                      <input type="hidden" id="tran" name="tran" value="" class="form-control">
-
-                 </form>
-      </div>  -->
 
  <script type="text/javascript">
 
@@ -486,19 +468,19 @@
                 }, {
                     field: "MDist_Exchange_Rate",
                     title: "<?php echo $this->lang->line('label_exchange_balance'); ?>",
-                    /*template: function() {
+                    template: function() {
                        // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
-                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="exbalance" style="width: 138px;"></span>'
-                    }*/
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span class="simboloMoneda" style="width: 138px;"></span><span class="exchange_balance" style="width: 138px;"></span>'
+                    }
                 },{
 
                     field: "chk_status",
-                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_done'); ?><span></span></label>",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_label_delivered'); ?><span></span></label>",
 
                 },{
 
                     field: "chk_status",
-                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_done'); ?><span></span></label>",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_paid'); ?><span></span></label>",
 
                 },
                 {
@@ -509,9 +491,10 @@
                     overflow: "visible",
                     template: function(t) {
                         /*\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
-                        return '\t\t\t\t\t\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/edit/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-edit"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_pickup('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
+                        return '\t\t\t\t\t\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_pickup('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
                     }
-                }]
+                }
+                ]
             }),
                     e = t.getDataSourceQuery();
                     m_datatables = t;
@@ -598,18 +581,32 @@
                 clearButton: true
             });
 
-     /*$("#m_form_search").on("blur", function(e) {
+     $("#m_form_search").on("keyup", function(e) {
        // $("#m_form_search").blur(function(event) {
         //montoBalance
-          var montoBalance = $(".montoBalance").val();
-          var exchange_rate = $(".exchange_rate").val();
-          var exchangeBalance = parseFloat($('.montoBalance').val()) + parseFloat($('.exchange_rate').val());
+          // var montoBalance = $(".montoBalance").val();
+          // var exchange_rate = $(".exchange_rate").val();
+          // var exchangeBalance = parseFloat($('.montoBalance').val()) + parseFloat($('.exchange_rate').val());
      // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
      // alert(exchangeBalance);
      // var valorExchange = exchangeBalance;
-      $(".exbalance").html(exchangeBalance);
+      // $(".exbalance").html(exchangeBalance);
+        setTimeout(function(){
+                    // var montoBalance = $(".montoBalance").val();
+          var montoBalance = $("span.balance").text();
+          var simboloMoneda = $("span.simboloMoneda").text("$ ");
 
-      });*/
+          var exchange_rate = $(".exchange_rate").val();
+          //alert(exchange_rate);
+          var exchangeBalance =  parseFloat(montoBalance) * parseFloat(exchange_rate);
+
+ /*         console.log('montoBalance', montoBalance);
+          console.log('exchange_rate', exchange_rate);*/
+     // var exchangeBalance = parseFloat(montoBalance) * parseFloat(exchange_rate);
+          $('span.exchange_balance').text( exchangeBalance);
+        }, 1500);
+
+      });
 
    });
 
@@ -631,44 +628,65 @@
     });*/
 
 
-      $(document).on('click', '.btnTran', function(e){
+    
 
-        alert("hola");
-      //console.log('serialized data', $("#AddDiplo").serialize());
+
+      $(document).on('click', '.btnTran', function(e){
+       
+         var data = {
+                  id: $('#m_form_1 input#id').val(),
+                  invoice: $('span.invoice').text(),
+                  customer: $('.customer').text(),
+                  nameShipto: $('.nameShipto').text(),
+                  total_packages: $('span.total_packages').text(),
+                  balance: $('span.balance').text(),
+                  invoice_date: $('span.invoice_date').text(),
+                  exchange_balance: $('span.exchange_balance').text(),
+                };
+               //console.log('serialized data', $("#AddDiplo").serialize());
                 $.ajax({
-                url: "<?php echo site_url('company/batch_distribution/addTran')?>",
-                data: $("#BaschTran").serialize(),
+                url: '<?php echo site_url('company/batch_distribution/addTran')?>',
+                data: data,
                 type: 'POST',
-                dataType: 'json'
+                dataType: 'json',
+       
+  
 
               }).done(function(data) {
 
-              //console.log('data diplo', data)
+             // console.log('data', data)
               if(data.st == 0)
                 {
-                  swal({
-                    title: "<?php //echo $this->lang->line('label_are_you_sure') ?>",
-                    text: "<?php //echo $this->lang->line('label_you_want_to_delete_driver') ?>",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    //confirmButtonText: "<?php //echo $this->lang->line('label_confirm') ?>",
-                }).then(function () {
-                 $('.validation-error').html(data.msg);
-
-                });
+                  //alert(data.msg);
+                  //alert('st 0');
+                // $('.validation-error').html(data.msg);
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: data.msg,
+          //footer: '<a href>Why do I have this issue?</a>'
+        })
                 }
 
               if(data.st == 1)
               {
-                $('.validation-error').html(data.msg).css('color', 'green');
+                /*$('.validation-error').html(data.msg).css('color', 'green');
                 $('.validation-error').html(data.msgsuccess).css('color', 'green');
                 //alert(data.msg);
                     setTimeout(function(){
                   $("#cerrar_miModal").trigger("click");
                       location.reload();
-                   },1500);
+                   },1500);*/
 
+        Swal.fire({
+          type: 'success',
+          title: 'Oops...',
+          text: data.msg,
+          //footer: '<a href>Why do I have this issue?</a>'
+        })
+                  setTimeout(function(){
+                    location.reload();
+                 },1500);
               }
 
               if(data.st == 2)
@@ -676,10 +694,15 @@
                 $('.validation-error').html(data.msg);
                 $('.validation-error').html(data.msgsuccess).css('color', 'green');
                //console.log(data.msg);
-                    setTimeout(function(){
-                  $("#cerrar_miModal").trigger("click");
-                      location.reload();
-                   },1500);
+                 Swal.fire({
+          type: 'success',
+          title: 'Oops...',
+          text: data.msg,
+          //footer: '<a href>Why do I have this issue?</a>'
+        })
+                  setTimeout(function(){
+                   // location.reload();
+                 },1500);
               }
 
               });

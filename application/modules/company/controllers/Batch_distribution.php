@@ -316,10 +316,11 @@ class Batch_distribution extends MYcom_Controller {
         $AllPostData = $this->input->post();
         $list = $this->Batch_distribution_model->get_datatables_invoice();
         $data['result'] = $list;
-        // $data['list'] = $this->Batch_distribution_model->get_datatables_invoice();
-        echo "<pre>";
+       // $data['list'] = $this->Batch_distribution_model->get_datatables_invoice();
+
+        /*echo "<pre>";
         var_dump($data['result']);exit;
-        echo "</pre>";
+        echo "</pre>";*/
 
         $output = array(
                     "meta" => array('page'=>$AllPostData['datatable']['pagination']['page'],'pages'=>$AllPostData['datatable']['pagination']['pages'],'perpage'=>$AllPostData['datatable']['pagination']['perpage'],'total'=>$this->Batch_distribution_model->count_filtered_invoice(),'sort'=>'asc','field'=>'invoice_number'),
@@ -332,146 +333,66 @@ class Batch_distribution extends MYcom_Controller {
 
 
 
-    /*Add new driver*/
-    function addTran()
-    {
-        /*echo "<pre>";
-        var_dump($_POST);exit;
-        echo "</pre>";*/
 
-        $data = array();
-
-            $params = array(
-                // 'MDist_Batch' => $this->input->post('invoice_number'),
-                 'MDist_TInvNUm' => $this->input->post('invoice_number'),
-                // 'MDist_TCustID' => $this->input->post('nameShipto'),
-                 'MDist_TBalance' => $this->input->post('balance'),
-                 'MDist_TBox' => $this->input->post('total_packages'),
-
-            );
-
-       // $data['result']= $this->Batch_distribution_model->get_datatables_invoice();
-        /*echo "<pre>";
-        var_dump($params);exit;
-        echo "<pre>";*/
-
-        $data['title'] = $this->lang->line('title_driver_list');
-        $data['second_title'] = $this->lang->line('title_add_new_driver');
-        //$data['title'] = $this->lang->line('title_add_new_batch');
-        //$data['second_title'] = $this->lang->line('title_batch_list');
-       // $data['css'] = ['customer'];
-       //* $data['max_value']= $this->Main_model->maxId('tbl_driver');
-       // $data['formAction'] = 'company/batch_distribution/add/';
-       /*$list = $this->Batch_distribution_model->get_datatables_invoice();
-       var_dump($list);exit;*/
-        //$data['js'] = ['https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js',MAP_API_URL,'driver'];
-       // $data['function'] = 'add';
-       // $this->load->model('company/branch_model');
-
-       //* $data['next_id'] = $this->driver_model->get_next_id();
-
-        $this->form_validation->set_rules('invoice_number',$this->lang->line('label_zone'),'required|trim');
-
-
-        $this->form_validation->set_error_delimiters('<div class="has-danger"><div class="form-control-feedback">', '</div></div>');
-        if ($this->form_validation->run() == FALSE)
-        {
-            //$this->loadView($this->view_folder.'listing', $data);
-            // echo validation_errors();
-            // die;
-           // $this->loadView($this->view_folder.'edit', $data);
-        }
-        else
+            public function addTran()
         {
 
-            $params = array(
-                'MDist_TDate' => $this->input->post('mdist_tdate'),
-                'MDist_Batch' => $this->input->post('mdist_batch'),
-                'MDist_TInvNUm' => $this->input->post('mdist_tinvnum'),
-                'MDist_TCustID' => date("Y-m-d", strtotime($this->input->post('mdist_tcustid'))),
-                'MDist_TBalance' => $this->input->post('mdist_tbalance'),
-                'MDist_TBox' => $this->input->post('mdist_tbox'),
-                'MDist_TPaid' => $this->input->post('mdist_tpaid'),
-                'MDist_Delivered' => $this->input->post('mdist_delivered'),
-                'MDist_ShipTo' => $this->input->post('mdist_shipto'),
-                'MDist_Exchange_Balance' => $this->input->post('mdist_exchange_balance'),
-
-
-       //
-            );
-
-            /* echo "<pre>";
-              var_dump($params);exit;
-             echo "</pre>";*/
-
-
-
-            $id = $this->Batch_distribution_model->add_Tran($params);
-            //$this->Main_model->updateCompanyRefIds('batch_id',$id);
-            // Update driver details
-            //$this->driver_model->update_driver($id, array('driver_code' => $id));
-
-            $this->session->set_flashdata('succ_msg1', $this->lang->line('text_driver_add_success'));
-            redirect('company/batch_distribution/','refresh');
-        }
-    }
-
-
-
-    /* Validacion CARRERA ASIGN*/
-   /* public function addTran()
-    { //return print_r($_POST);
-      //valida que viene por ajax,
-            if (!$this->input->is_ajax_request())
-        {
-            redirect('404');
-        }else
-        {
-
-            //$this->form_validation->set_rules('diplo_codigo', 'Código', 'required');
-            //$this->form_validation->set_rules('diplo_cod', 'Codigo Diplomado', 'required');
-            //$this->form_validation->set_rules('mdist_tbalance',$this->lang->line('label_zone'),'required|trim');
-            $this->form_validation->set_rules('invoice_number', 'invoice_number', 'required');
-
-
-
-            if ($this->form_validation->run()== false)
+             if (!$this->input->is_ajax_request())
             {
-             /* $error = json_encode(validation_errors());
-                 $error = str_replace('"',"", $error);
-                 $error = str_replace('<\/p>\n',"", $error);
-                 echo $error;  */
-
-           /*   echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));
-            }
-            else
+                redirect('404');
+            }else
             {
-                 $datos =
-                    array(
-                       // 'MDist_TDate' => $this->input->post('mdist_tdate'),
-                        'MDist_Batch' => $this->input->post('mdist_batch'),
-                        'MDist_TInvNUm' => $this->input->post('invoice_number'),
-                        'MDist_TCustID' => date("Y-m-d", strtotime($this->input->post('mdist_tcustid'))),
-                        'MDist_TBalance' => $this->input->post('mdist_tbalance'),
-                        'MDist_TBox' => $this->input->post('mdist_tbox'),
-                        'MDist_TPaid' => $this->input->post('mdist_tpaid'),
-                        'MDist_Delivered' => $this->input->post('mdist_delivered'),
-                        'MDist_ShipTo' => $this->input->post('mdist_shipto'),
-                        'MDist_Exchange_Balance' => $this->input->post('mdist_exchange_balance'),
-                    );
-           //     return print_r($datos);
+               //echo "hola";
+                
+               //  $this->form_validation->set_rules('uid_usuario', 'Asignar Roles', 'required');            
+                 $this->form_validation->set_rules('id', 'id', 'Required|callback_batch_check');  
+                 $this->form_validation->set_rules('invoice', 'invoice', 'Required');  
 
-                  echo "<PRE>";
-                     print_r($datos);exit;
-                  echo "</PRE>";
-                   $this->Batch_distribution_model->add_Tran($datos);
-                   echo json_encode(array('st'=>1, 'msg' => '<div class="alert alert-dismissable alert-success">Asignatura Actualizada </div>'));
+                 $this->form_validation->set_message('batch_check','Esta Factura ya esta asignada a este batch');          
+                
 
 
+                if ($this->form_validation->run()== false) 
+                {
+                     
+                     echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));         
+                }
+
+                else{
+                     
+                       $params = 
+                        array(
+ 
+                          'MDist_Batch'               => $this->input->post('id'),
+                          'MDist_TInvNUm'             => $this->input->post('invoice'),
+                          'MDist_TCustID'             => $this->input->post('customer'),
+                          'MDist_ShipTo'              => $this->input->post('nameShipto'),
+                          'MDist_TBox'                => $this->input->post('total_packages'),
+                          'MDist_TBalance'            => $this->input->post('balance'),
+                          'MDist_TDate'               => $this->input->post('invoice_date'),
+                          'MDist_Exchange_Balance'    => $this->input->post('exchange_balance')
+         
+                        );   
+
+                        /*echo "<pre>";
+                        var_dump($params);exit;
+                        echo "</pre>";*/
+                        $this->Batch_distribution_model->add_Tran($params);
+                       echo json_encode(array('st'=>1, 'msg' => '<div class="alert alert-dismissable alert-success">Creado</div>'));
+
+                
+                }
+            
             }
-
         }
-    }*/
+
+    function batch_check(){
+        $batch = $this->input->post('id');        
+        $invoice = $this->input->post('invoice');        
+
+         return $this->Batch_distribution_model->batch_ck($batch, $invoice);
+         echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));
+     }
 
 
 }

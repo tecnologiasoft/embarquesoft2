@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-define('APP_NAME', 'embarquesoft');
+define('APP_NAME', 'embarquesoft2');
 
-$siteUrl = 'https://'.$_SERVER['HTTP_HOST'].'/' . 'embarquesoft' .'/';
+$siteUrl = 'https://'.$_SERVER['HTTP_HOST'].'/' . 'embarquesoft2' .'/';
 defined('SITE_URL')      OR define('SITE_URL', $siteUrl); // lowest 
 defined('ASSETS')      OR define('ASSETS', $siteUrl.'assets/'); // lowest 
 defined('JS_FILE')      OR define('JS_FILE', $siteUrl.'assets/js/'); // lowest 
