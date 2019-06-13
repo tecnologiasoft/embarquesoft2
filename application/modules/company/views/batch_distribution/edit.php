@@ -46,6 +46,7 @@
                                    <div class="col-md-8 col-lg-9">
                                       <input type="text" class="form-control m-input" name="id" id="id" placeholder="<?php echo $this->lang->line('label_id'); ?>" value="<?php echo $result['MDist_BatchNum']?$result['MDist_BatchNum']:set_value('date')?>">
                                       <?php echo form_error('date'); ?>
+                                      
                                    </div>
                                 </div>
                                 <div class="row mb-3">
@@ -440,7 +441,7 @@
                     textAlign: "center",
                     width: 50,
                     template: function(t) {
-                        return '\t\t\t\t\t\t\t\t\t\t\t<span style="width: 138px;">'+t.id+'</span>'
+                        return '\t\t\t\t\t\t\t\t\t\t\t<span  style="width: 138px; display:none;">'+t.id+'</span><span class="mdist_id" style="width: 138px;"><?php echo $result['MDist_id']; ?></span><span class="statusDelivery" style="width: 138px; display:none;"><?php echo $result['MDist_Delivered']; ?></span><span class="statusPaid" style="width: 138px; display:none;"><?php echo $result['MDist_TPaid']; ?></span>'
                     }
                 }, {
                     field: "invoice_number",
@@ -475,13 +476,28 @@
                 },{
 
                     field: "chk_status",
-                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_label_delivered'); ?><span></span></label>",
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name='chk' class='chk_delivery'><?php echo $this->lang->line('label_label_delivered'); ?><span></span></label>",
+                    template: function(t) {
+                      var statusDelivery = $(".statusDelivery").text();
+                      var mdist_id = $(".mdist_id").text();
+                      var checked = (statusDelivery == "1") ? "checked" : "";
+                      //alert(dist_id);
+                       // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
+                        return "\t\t\t\t\t\t\t\t\t\t\t<label class=' m-checkbox m-checkbox--bold text-white'><input type='checkbox' value="+mdist_id+" "+checked+" name='chk_delivery[]' class='chk_delivery'><span></span></label>"
+                    }
 
                 },{
 
                     field: "chk_status",
-                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_status'><?php echo $this->lang->line('label_paid'); ?><span></span></label>",
-
+                    title: "<label class=' m-checkbox m-checkbox--bold text-white'><input type = 'checkbox' name = 'chk' class = 'chk_paid'><?php echo $this->lang->line('label_paid'); ?><span></span></label>",
+                    template: function(t) {
+                      var statusPaid = $(".statusPaid").text();
+                      var mdist_id = $(".mdist_id").text();
+                      var checkedPaid = (statusPaid == "1") ? "checked" : "";
+                      //alert(dist_id);
+                       // return '\t\t\t\t\t\t\t\t\t\t\t<input class="montoBalance" name="'+t.balance+'" value="'+t.balance+'" type="text">'
+                        return "\t\t\t\t\t\t\t\t\t\t\t<label class=' m-checkbox m-checkbox--bold text-white'><input type='checkbox' value="+mdist_id+" "+checkedPaid+" name='chk_paid[]' class='chk_paid'><span></span></label>"
+                    }
                 },
                 {
                     field: "Actions",
@@ -490,8 +506,9 @@
                     sortable: !1,
                     overflow: "visible",
                     template: function(t) {
-                        /*\t\t\t\t\t\t<a href="<?php echo base_url()."company/pickup/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
-                        return '\t\t\t\t\t\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_pickup('+t.id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
+                      var mdist_id = $(".mdist_id").text();
+                        /*\t\t\t\t\t\t<a href="<?php //echo base_url()."company/pickup/view/";?>'+t.id+'" class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill">\t\t\t\t\t\t\t<i class="la la-eye"></i>\t\t\t\t\t\t</a>\t\t\t\t\t\t</a>*/
+                        return '\t\t\t\t\t\t\t\t\t\t\t</a>\t\t\t\t\t\t\t\t\t\t\t<a href="javascript:;" onclick="delete_batch('+mdist_id+')" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" >\t\t\t\t\t\t\t<i class="la la-trash"></i>\t\t\t\t\t\t</a>'
                     }
                 }
                 ]
@@ -527,7 +544,8 @@
                 }
             }();
             jQuery(document).ready(function() {
-                DatatableRemoteAjaxDemo.init()
+                DatatableRemoteAjaxDemo.init();
+                m_datatables.search("<?php echo $result['MDist_TInvNUm']; ?>");
             });
 
             /* date picker */
@@ -708,6 +726,101 @@
               });
             event.preventDefault();
         });
+
+            function delete_batch(id)
+            {
+                swal({
+                    title: "<?php echo $this->lang->line('label_are_you_sure') ?>",
+                    text: "<?php echo $this->lang->line('label_you_want_to_delete_pickup') ?>",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "<?php echo $this->lang->line('label_confirm') ?>",
+                }).then(function () {
+                    $.ajax({
+                        url:  "<?php echo base_url(); ?>company/batch_distribution/delete_batch/"+id,
+                        type: "GET",
+                        success: function(data)
+                        {
+                            //$('#user_table').bootstrapTable('refresh');
+                            //$(".m_datatable").mDatatable().ajax.reload();
+                            //DatatableRemoteAjaxDemo.init();
+                            m_datatables.reload();
+                        },
+                            error: function(jqXHR, textStatus, errorThrown){
+                        },
+                            complete: function(){
+                        }
+                    }); // END OF AJAX CALL
+
+                });
+            }
+
+            $(document).on('change','.chk_delivery',function(){
+                //debugger;
+                var p = new Array;
+
+                idValue = $(this).val();
+
+                if($(this).attr('name') == 'chk'){
+                   /* $(".chk_status").each(function(e){
+                        if($(this).data('id') != undefined){
+                        p.push($(this).data('id'));
+                        }
+                    })*/
+
+                    var data = {idStatus:idValue,id:p,status:$('.chk_delivery').is(':checked') ? '1' : '0',type:'status'};
+                }else{
+                    var data = {idStatus:idValue,id:[$(this).data('id')],status:$(this).is(':checked') ? '1' : '0',type:'status'};
+                }
+
+                var url = SITE_URL+'company/batch_distribution/update_status';
+
+                toastr.success("Guardado Exitosamente");
+                   // alert("response");
+                ajaxCall(url, data, function(response){
+                    //m_datatables.reload();
+                    //console.log(response);
+                    return false;
+
+
+                });
+
+
+            });
+
+            $(document).on('change','.chk_paid',function(){
+                //debugger;
+                var p = new Array;
+
+                idValue = $(this).val();
+
+                if($(this).attr('name') == 'chk'){
+                   /* $(".chk_status").each(function(e){
+                        if($(this).data('id') != undefined){
+                        p.push($(this).data('id'));
+                        }
+                    })*/
+
+                    var data = {idPaid:idValue,id:p,checkedPaid:$('.chk_paid').is(':checked') ? '1' : '0',type:'checkedPaid'};
+                }else{
+                    var data = {idPaid:idValue,id:[$(this).data('id')],checkedPaid:$(this).is(':checked') ? '1' : '0',type:'checkedPaid'};
+                }
+
+                var url = SITE_URL+'company/batch_distribution/update_status_paid';
+
+                toastr.success("Guardado Exitosamente");
+                   // alert("response");
+                ajaxCall(url, data, function(response){
+                    //m_datatables.reload();
+                    //console.log(response);
+                    return false;
+
+
+                });
+
+
+            });
 
 </script>
 

@@ -111,6 +111,7 @@ class Batch_distribution_model extends My_model {
         {
             $this->company_db->where('invoice_number',$_REQUEST['datatable']['query']['invoice_number']);
         }*/
+
         $invoice_date = "";
 
 
@@ -228,21 +229,21 @@ class Batch_distribution_model extends My_model {
                 else
                     $row->pickup_date = date("m/d/Y", strtotime($row->pickup_date));*/
 
-                if($row->status != "Done"){
                     $row->chk_status = "<label class='m-checkbox m-checkbox--solid m-checkbox--brand'><input type='checkbox' id='chk_status_$row->id' value = '$row->id' class = 'chk_status' name='chk_status[]' data-id ='$row->id'>
                     <span></span></label>
                     ";
+                /*if($row->status != "Done"){
                 } else {
                     $row->chk_status = "<label class='m-checkbox m-checkbox--solid m-checkbox--brand'><input type='checkbox' id='chk_status_$row->id' value = '$row->id' class = 'chk_status' name='chk_status[]' data-id ='$row->id' checked>
                     <span></span></label>";
-                }
+                }*/
 
                 $row->chk_print = "<label class='m-checkbox m-checkbox--solid m-checkbox--brand'>
                                     <input type='checkbox' class = 'chk_print' name='chk_print[]' data-id ='$row->id' checked>
                                     <span></span>
                                             </label>";
 
-                if($row->driver_id != '0'){
+              /*  if($row->driver_id != '0'){
 
                 $row->chk_driver = "<label class='m-checkbox m-checkbox--solid m-checkbox--brand'><input type='checkbox' class = 'chk_driver'  name='chk_driver[]' data-id ='$row->id' checked>
                                     <span></span></label>";
@@ -252,7 +253,7 @@ class Batch_distribution_model extends My_model {
                     $row->chk_driver = "<label class='m-checkbox m-checkbox--solid m-checkbox--brand'><input type='checkbox' class = 'chk_driver'  name='chk_driver[]' data-id ='$row->id'>
                                         <span></span></label>
                                         ";
-                }
+                }*/
 
 
             }
@@ -379,11 +380,13 @@ class Batch_distribution_model extends My_model {
     /*Get driver details*/
     function get_driver_data($batch_id)
     {
-        $this->company_db->select("d.*");
+        $this->company_db->select("t.MDist_id, d.MDist_BatchNum,d.MDist_Zone, d.MDist_status, d.MDist_Date, d.MDist_BType, d.MDist_Driver,d.MDist_Exchange_Rate,  d.MDist_Comment,t.MDist_Batch,t.MDist_Delivered,
+            t.MDist_TInvNUm,t.MDist_TCustID,t.MDist_ShipTo,t.MDist_TBox,t.MDist_TDate,t.MDist_Exchange_Balance");
         $this->company_db->from('tbl_mdist_batch d');
+        $this->company_db->join('tbl_mdist_tran t', 'd.MDist_BatchNum = t.MDist_Batch', 'LEFT');
         $this->company_db->where('d.MDist_BatchNum', $batch_id);
         $query = $this->company_db->get();
-        //echo $this->company_db->last_query();exit;
+       // echo $this->company_db->last_query();exit;
         if($query->num_rows() >= 1)
         {
             return $query->row_array();
@@ -413,6 +416,35 @@ class Batch_distribution_model extends My_model {
             return TRUE;
         }
     }
+
+
+  public function delete_batch($id)
+  {
+    $this->company_db->where('MDist_id', $id);
+    $this->company_db->delete('tbl_mdist_tran');
+   // echo $this->company_db->last_query();exit;
+   // return $deleteCustom;
+  }
+
+
+   function update_status($post){
+
+      $sql= "UPDATE tbl_mdist_tran SET MDist_Delivered = ". $post['status']. " WHERE MDist_id = ". $post["idStatus"];
+       // $sql=  "update tbl_pickup set update_count =" . $status . " where id in($lds)";
+        $this->company_db->query($sql);
+        //echo $this->company_db->last_query();exit;
+
+    }
+
+   function update_status_paid($post){
+
+      $sql= "UPDATE tbl_mdist_tran SET MDist_TPaid = ". $post['status']. " WHERE MDist_id = ". $post["idPaid"];
+       // $sql=  "update tbl_pickup set update_count =" . $status . " where id in($lds)";
+        $this->company_db->query($sql);
+        //echo $this->company_db->last_query();exit;
+
+    }
+
 
 
 
