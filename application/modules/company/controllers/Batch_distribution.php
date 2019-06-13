@@ -388,11 +388,37 @@ class Batch_distribution extends MYcom_Controller {
 
     function batch_check(){
         $batch = $this->input->post('id');        
-        $invoice = $this->input->post('invoice');        
+        $invoice = $this->input->post('invoice');       
 
          return $this->Batch_distribution_model->batch_ck($batch, $invoice);
          echo json_encode(array('st'=>0, 'msg' => '<div class="alert alert-dismissable alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><small>'.  validation_errors().'</small></div>'));
      }
+
+
+
+      public function delete_batch($id)
+      {
+        $this->Batch_distribution_model->delete_batch($id);
+        echo json_encode(array('st'=>1, 'msg' => '<div class="alert alert-dismissable alert-success"></div>'));;
+      }
+
+    function update_status(){
+      //var_dump($this->input->post());
+
+        if($this->input->post() && $this->input->is_ajax_request()){
+
+            $this->Batch_distribution_model->update_status($this->input->post());
+        }
+    }
+
+    function update_status_paid(){
+      //var_dump($this->input->post());
+
+        if($this->input->post() && $this->input->is_ajax_request()){
+
+            $this->Batch_distribution_model->update_status_paid($this->input->post());
+        }
+    }
 
 
 }
